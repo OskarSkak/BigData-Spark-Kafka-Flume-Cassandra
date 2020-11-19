@@ -1,0 +1,24 @@
+.navContainer {
+    height: 3em;
+    width: 100%;
+    background-color: gainsboro;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.navContainer > button{
+    width:33%;
+    height:2em;
+}
+
+.heatMap{
+    background-color: blue;
+    width:100vw;
+    height:100vh;
+    display: flex;
+}
+
+    
