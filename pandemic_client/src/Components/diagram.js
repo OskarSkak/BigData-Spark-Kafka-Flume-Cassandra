@@ -24,4 +24,4 @@ defs.append("clipPath")
     .attr("cy", 200)
     .attr("r", 180);
 
- module.exports = node
+ module.exports = node;

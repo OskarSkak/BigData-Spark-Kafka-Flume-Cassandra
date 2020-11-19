@@ -19,8 +19,8 @@ export default class NavBar extends Component {
                 <button onClick={()=> {alert('Covid')}}>
                     Covid
                 </button>
-                <button onClick={()=> {alert('Coralation')}}>
-                    Corelation
+                <button onClick={()=> {alert('Correlation')}}>
+                    Correlation
                 </button>
             </div>
         )
