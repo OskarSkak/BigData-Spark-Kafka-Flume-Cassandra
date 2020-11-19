@@ -12,16 +12,19 @@ namespace spark_api.Kafka
     {
         private BackgroundWorker worker;
         private string topic;
+
         public void InitiateSubscription(string topic)
         {
-            worker = new BackgroundWorker();
             this.topic = topic;
+            worker = new BackgroundWorker();
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerAsync();
         }
 
-        private async void worker_Subscribe(object sender, ElapsedEventArgs e)
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             var consumer = new SimpleMessageConsumer();
-            await consumer.SubscribeAsync(topic, Console.WriteLine);
+            consumer.SubscribeAsync(topic, Console.WriteLine);
         }
 
     }
