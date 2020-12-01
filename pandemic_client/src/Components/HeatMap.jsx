@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './component.css';
 //import node from './diagram';
+
+import USA from '../USAmap.webp'
 import d3 from 'd3';
 import rd3 from 'react-d3-library';
 const RD3Component = rd3.Component;
@@ -49,7 +51,7 @@ export default class HeatMap extends Component {
         console.log("From: ",this.state.d3)
         return (
             <div className='heatMap'>
-                <RD3Component data={this.state.d3} />
+                <img src={USA}/>
             </div>
         )
     }
