@@ -12,10 +12,7 @@ export default class NavBar extends Component {
     }
 
     componentDidMount = async() => {
-        let respons = await fetch('https://corona.lmao.ninja/v2/countries')
-        let data = await respons.json()
-        this.setState({contryResults: data});
-        console.log(data)
+        
     }
     
     render() {
