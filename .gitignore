@@ -2,3 +2,4 @@
 spark-api/.vs
 spark-api/bin/Debug
 kafka-producer-console-test/obj
+kafka-producer-console-test/bin/Debug
