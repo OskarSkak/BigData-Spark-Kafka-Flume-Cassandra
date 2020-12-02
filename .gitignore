@@ -1,4 +1,5 @@
-﻿spark-api/obj
+spark-api/obj
 spark-api/.vs
 spark-api/bin/Debug
 kafka-producer-console-test/obj
+.DS_Store
