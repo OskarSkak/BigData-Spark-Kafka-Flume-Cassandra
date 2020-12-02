@@ -20,9 +20,51 @@
     margin-top: 2em;
 }
 
-.heatMap > img {
+.geoMap  {
     border: 2px solid black;
     box-shadow: 5px 10px 18px #888888;
+    background-color: #fff;
+    height: 80vh;
 }
 
+svg {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+  }
+
+  .sphere {
+    fill: #DCDCDC;
+  }
+  
+  .country {
+    fill: #D3D3D3;
+    stroke: black;
+    stroke-width: 0.05
+  }
+  
+  .country:hover {
+    fill: #E0FFFF
+  }
+  
+  .country-circle:hover, circle:hover {
+    fill: #E0FFFF
+  }
+  
+  .country-circle, circle {
+    fill-opacity: 0.4;
+    stroke: black;
+    stroke-width: 0.05;
+  }
+  
+  .legend-title {
+    fill: #635F5D;
+    text-anchor: middle;
+  }
+  
+  .tick-map text {
+    fill: #635F5D;
+    font-size: .75em
+  }
     
