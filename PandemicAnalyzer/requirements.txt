@@ -1,0 +1,5 @@
+six==1.15.0
+setuptools==51.0.0
+pip==20.3.1
+nltk==3.3
+kafka-python==2.0.2
