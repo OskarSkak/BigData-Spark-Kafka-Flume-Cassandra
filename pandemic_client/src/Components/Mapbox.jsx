@@ -1,5 +1,5 @@
 import React from "react";
-import ReactMapboxGl,{GeoJSONLayer} from 'react-mapbox-gl';
+import ReactMapboxGl,{GeoJSONLayer, Cluster} from 'react-mapbox-gl';
 import {ReactMapboxGlCluster} from 'react-mapbox-gl-cluster';
 import States from './us_state_capitals.json'
 
@@ -8,7 +8,7 @@ const MapContainer = ReactMapboxGl({
 });
     const circleLayout = { visibility: 'visible' };
     const circlePaint = {
-        'circle-color': [
+        'circle-color': '#fa5757',/*[
             'step',
                 ['get', 'posetive'],
                 '#02ed17',
@@ -20,7 +20,7 @@ const MapContainer = ReactMapboxGl({
                 "#db022a",
                 400000,
                 '#540312'
-            ],
+            ],*/
             'circle-radius': [
             'step',
                 ['get', 'posetive'],
@@ -40,7 +40,7 @@ const MapContainer = ReactMapboxGl({
 const symbolLayout= { 
     'text-field': '{posetive}',
     'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-    'text-size': 12
+    'text-size': 10
  };
 const symbolPaint = {'text-color':'white'}
 
@@ -55,8 +55,6 @@ class Map extends React.Component {
             zoom: [3.5],
             features: {type: "FeatureCollection",
                         features:[]},
-            showCovid: false,
-            showTwitter: false,
         }
     }
      
@@ -70,6 +68,7 @@ class Map extends React.Component {
         //map.on("click", this.onClickHandler)
         this.setState({mapProps: mapProps})
         this.fetchData();
+        
     }
     
 
@@ -97,27 +96,24 @@ class Map extends React.Component {
                         height: "95.5vh",
                         width: '100vw'}} >
                       { this.props.states === 'covid' ?
-                        <React.Fragment>
-                            <GeoJSONLayer
-                                data={this.state.features}
-                                circleLayout={circleLayout}
-                                circlePaint={circlePaint}
-                            />
-                            <GeoJSONLayer
-                                data={this.state.features}
-                                symbolPaint={symbolPaint}
-                                symbolLayout={symbolLayout}
-                            /> 
-                        </React.Fragment>: null}
-                        { this.props.states === 'twitter' ?
-                        <React.Fragment>
+                        <>  
+                                <GeoJSONLayer
+                                    data={this.state.features}
+                                    circleLayout={circleLayout}
+                                    circlePaint={circlePaint}
+                                    cluster
+                                />
+                                <GeoJSONLayer
+                                    data={this.state.features}
+                                    symbolPaint={symbolPaint}
+                                    symbolLayout={symbolLayout}
+                                /> 
+                        </>
+                        : null}
+                        { this.props.states === 'twitter'  ?
+                        <>
                             
-                        </React.Fragment>: null}
-                        { this.props.states === 'correlation' ?
-                        <React.Fragment>
-                            
-                        </React.Fragment>: null}
-                        
+                        </>: null}                
                 </MapContainer>
             </div>
         )
