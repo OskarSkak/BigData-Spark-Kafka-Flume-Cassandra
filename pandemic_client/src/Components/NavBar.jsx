@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DisplayMapData from './d3/DisplayMapData'
 import './component.css';
 
 export default class NavBar extends Component {
@@ -11,21 +10,24 @@ export default class NavBar extends Component {
         }
     }
 
-    componentDidMount = async() => {
-        
-    }
+    handleState = (states) => {
+        this.props.setStates(states);
+   }
     
     render() {
         return (
             <div className="navContainer">
-                <button onClick={()=> {alert('Twitter')}}>
+                <button onClick={() =>this.handleState('twitter')}>
                     Twitter
                 </button>
-                <button onClick={(event) => DisplayMapData(event.target.value, event.target.innerText, this.state.contryResults)}>
+                <button onClick={() => this.handleState('covid')}>
                     Covid
                 </button>
-                <button onClick={()=> {alert('Correlation')}}>
+                <button onClick={() => this.handleState('correlation')}>
                     Correlation
+                </button>
+                <button onClick={() => this.handleState('clear')}>
+                    Clear
                 </button>
             </div>
         )
