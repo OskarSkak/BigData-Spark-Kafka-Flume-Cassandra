@@ -34,15 +34,6 @@ namespace spark_api
             
             services.AddHostedService<WebsocketService>();
             
-            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
-            {
-                builder
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowAnyOrigin()
-                    .SetIsOriginAllowed((host) => true);
-            }));
-
             services.AddSignalR();
             
         }
@@ -61,44 +52,18 @@ namespace spark_api
 
             app.UseAuthorization();
             
-            app.UseCors("MyPolicy");
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:3000");
+                builder.AllowAnyMethod();
+                builder.AllowCredentials();
+                builder.AllowAnyHeader();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<SignalRHub>("/api/hub");
             });
-
-            /*var webSocketOptions = new WebSocketOptions()
-            {
-                KeepAliveInterval = TimeSpan.FromSeconds(120),
-                ReceiveBufferSize = 4 * 1024
-            };
-            webSocketOptions.AllowedOrigins.Add("http://localhost:3000/");
-
-            app.UseWebSockets(webSocketOptions);
-            
-
-            app.Use(async (context, next) =>
-            {
-                if (context.Request.Path == "/ws")
-                {
-                    if (context.WebSockets.IsWebSocketRequest)
-                    {
-                        using (WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync())
-                        {
-                            await Echo(context, webSocket);
-                        }
-                    }
-                    else
-                    {
-                        context.Response.StatusCode = 400;
-                    }
-                }
-                else
-                {
-                    await next();
-                }
-            });*/
         }
 
         /*private async Task Echo(HttpContext context, WebSocket webSocket)
