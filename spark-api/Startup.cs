@@ -37,9 +37,7 @@ namespace spark_api
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
                 builder
-                    .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowAnyOrigin()
                     .SetIsOriginAllowed((host) => true);
             }));
 
@@ -61,7 +59,7 @@ namespace spark_api
 
             app.UseAuthorization();
             
-            app.UseCors("MyPolicy");
+            app.UseCors("CorsPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
