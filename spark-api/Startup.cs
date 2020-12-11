@@ -26,6 +26,7 @@ namespace spark_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            new spark_api.Kafka.KafkaManager().InitiateSubscription("twitterraw");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
