@@ -7,7 +7,7 @@ analyser = SentimentAnalyzer.SentimentAnalyzer()
 
 consumer = KafkaConsumer(
     'twitterraw',
-     bootstrap_servers=['localhost:9092'],
+     bootstrap_servers=['node-master:9092'],
      auto_offset_reset='earliest',
      enable_auto_commit=True,
      group_id='twitteranalyzers',

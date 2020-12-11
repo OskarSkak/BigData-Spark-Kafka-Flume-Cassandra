@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using spark_api.hub;
+using spark_api.service;
 
 namespace spark_api
 {
@@ -29,7 +31,9 @@ namespace spark_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            new spark_api.Kafka.KafkaManager().InitiateSubscription("twitteranalyzed");
+            
+            services.AddSignalR();
+            services.AddHostedService<WebsocketService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,10 +49,11 @@ namespace spark_api
             app.UseRouting();
 
             app.UseAuthorization();
-
+                
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/api/hub");
             });
 
             var webSocketOptions = new WebSocketOptions()
