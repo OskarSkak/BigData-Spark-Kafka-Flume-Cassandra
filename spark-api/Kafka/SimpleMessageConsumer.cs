@@ -11,7 +11,7 @@ namespace spark_api.Kafka
     {
         ConsumerConfig consumerConfig = new ConsumerConfig
         {
-            GroupId = "twitterraw",
+            GroupId = "twitteranalyzed",
             BootstrapServers = "localhost:9092"
         };
 

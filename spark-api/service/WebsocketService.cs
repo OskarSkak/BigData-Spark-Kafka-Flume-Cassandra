@@ -1,14 +1,23 @@
 using System;
+using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
+using spark_api.hub;
 
 namespace spark_api.service
 {
     public class WebsocketService : Hub, IHostedService 
     {
+        private readonly IHubContext<SignalRHub> _hub;
+
+        public WebsocketService(IHubContext<SignalRHub> hub)
+        {
+            _hub = hub;
+        }
+        
         public Task StartAsync(CancellationToken cancellationToken)
         {
             InitKafkaConsumer();
@@ -17,14 +26,14 @@ namespace spark_api.service
 
         public async Task InitKafkaConsumer()
         {
-            while (true)
+
+            /*while (true)
             {
                 await Task.Delay(1000);
-                Console.WriteLine("Working");
-                await Clients.All.SendAsync("twitterraw" , "hej");
-            }
+                await _hub.Clients.All.SendAsync("twitterraw", "Hej");
+            }*/
             
-            /*var conf = new ConsumerConfig
+            var conf = new ConsumerConfig
             { 
                 GroupId = "test-consumer-group",
                 BootstrapServers = "localhost:9092",
@@ -34,7 +43,7 @@ namespace spark_api.service
                 // topic/partitions of interest. By default, offsets are committed
                 // automatically, so in this example, consumption will only start from the
                 // earliest message in the topic 'my-topic' the first time you run the program.
-                AutoOffsetReset = AutoOffsetReset.Latest,
+                AutoOffsetReset = AutoOffsetReset.Earliest,
                
             };
 
@@ -52,10 +61,11 @@ namespace spark_api.service
                 {
                     while (true)
                     {
+                        await Task.Delay(100);
                         try
-                        {
+                        { 
                             var cr = c.Consume(cts.Token);
-                            //Console.WriteLine($"Consumed message '{cr.Value}' at: '{cr.TopicPartitionOffset}'.");
+                            await _hub.Clients.All.SendAsync("twitterraw", cr.Message);
                         }
                         catch (ConsumeException e)
                         {
@@ -68,7 +78,7 @@ namespace spark_api.service
                     // Ensure the consumer leaves the group cleanly and final offsets are committed.
                     c.Close();
                 }
-            }*/
+            }
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

@@ -6,23 +6,22 @@ from json import loads, dumps
 analyser = SentimentAnalyzer.SentimentAnalyzer()
 
 consumer = KafkaConsumer(
-    'twitterraw',
+    'newscorrelated',
      bootstrap_servers=['node-master:9092'],
      auto_offset_reset='earliest',
      enable_auto_commit=True,
      group_id='twitteranalyzers',
      value_deserializer=lambda x: loads(x.decode('utf-8')))
 
-producer = KafkaProducer(bootstrap_servers=['node-master:9092'],
-                         value_serializer=lambda x:
-                         dumps(x).encode('utf-8'))
+producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
+                        value_serializer=lambda x: dumps(x).encode('utf-8'))
 
 for message in consumer:
     value = message.value
     sentiment = analyser.predict(value["text"]);
+    country = value["place"]
     value["sentiment"] = sentiment.__dict__
     json = dumps(value);
-
     data = json;
     producer.send('twitteranalyzed', value=data)
 
