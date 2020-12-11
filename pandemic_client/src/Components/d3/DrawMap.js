@@ -5,8 +5,8 @@ const DrawMap = () => {
     console.log("drawing map")
 
     // setting up svg element on Home component; making size responsive
-    const height = 500
-    const width = 960
+    const height = 125
+    const width = 240
 
     const svg = select(".mapviz").append("svg")
         .attr("preserveAspectRatio", "xMinYMid meet")

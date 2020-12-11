@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import DisplayMapData from './d3/DisplayMapData'
-import DrawMap from './d3/DrawMap'
+
 
 export default class HeatMap extends Component {
     constructor(props) {
@@ -12,14 +11,14 @@ export default class HeatMap extends Component {
     }
 
     componentDidMount = () => {
-        DrawMap();
+        
     }
 
 
     
     render() {
         return (
-            <div className="mapviz">
+            <div >
                 
             </div>
         )
