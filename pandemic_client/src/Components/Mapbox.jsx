@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactMapboxGl,{GeoJSONLayer, Cluster} from 'react-mapbox-gl';
 import {ReactMapboxGlCluster} from 'react-mapbox-gl-cluster';
-import States from './us_state_capitals.json'
+import States from './us_state_capitals.json';
+import usStates from '../us-states.json';
 
 const MapContainer = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g',
@@ -44,6 +45,17 @@ const symbolLayout= {
  };
 const symbolPaint = {'text-color':'white'}
 
+
+const fillPain = {
+    'fill-color': ['get', 'color'],
+    'fill-opacity': [
+    'case',
+    ['boolean', ['feature-state', 'hover'], false],
+    1,
+    0.5
+    ]
+    }
+
 class Map extends React.Component {
 
     constructor(props) {
@@ -53,13 +65,13 @@ class Map extends React.Component {
             lng: -98.93,
             lat: 39.79,
             zoom: [3.5],
-            features: {type: "FeatureCollection",
-                        features:[]},
+            features:{},
+                        
         }
     }
      
     
-    componentDidMount() {
+    componentDidMount = async() => {
         const mapProps = ({
             style: 'mapbox://styles/mapbox/dark-v10',
             center: [this.state.lng, this.state.lat],
@@ -67,25 +79,35 @@ class Map extends React.Component {
         });
         //map.on("click", this.onClickHandler)
         this.setState({mapProps: mapProps})
-        this.fetchData();
-        
+        await this.fetchData();
+        console.log("DID1", this.state.features.features)
+        console.log("DID2", this.state.features.features[0].geometry)
     }
     
 
     fetchData = async () => {
         let respons = await fetch('https://api.covidtracking.com/v1/states/current.json')
         let data = await respons.json();
+        let features = [];
         data.forEach(ele => {
             var state = States[ele.state]
             if(state) {
                 let feature = {
                     type: "Feature",
                     properties: { state: ele.state , posetive: ele.positive}, geometry: { type: "Point", coordinates: [ state.long, state.lat] } }
-                    this.state.features.features.push(feature);
+                features.push(feature)
             }
             }
-        )
+        );
+        this.setState({features:{type: "FeatureCollection",features:features}})
+        console.log("features", this.state.features.features)
     }
+
+    renderList = () => {
+        
+        console.log("hhh", this.state.features.features[3]) 
+    };
+
     render = () => {
         console.log(this.props.states)
         return (
@@ -97,27 +119,32 @@ class Map extends React.Component {
                         width: '100vw'}} >
                       { this.props.states === 'covid' ?
                         <>  
-                                <GeoJSONLayer
-                                    data={this.state.features}
-                                    circleLayout={circleLayout}
-                                    circlePaint={circlePaint}
-                                    cluster
-                                />
-                                <GeoJSONLayer
-                                    data={this.state.features}
-                                    symbolPaint={symbolPaint}
-                                    symbolLayout={symbolLayout}
-                                /> 
+                            <GeoJSONLayer
+                                data={this.state.features}
+                                circleLayout={circleLayout}
+                                circlePaint={circlePaint}
+                            />
+                            <GeoJSONLayer
+                                data={this.state.features}
+                                symbolPaint={symbolPaint}
+                                symbolLayout={symbolLayout}
+                            /> 
                         </>
                         : null}
                         { this.props.states === 'twitter'  ?
                         <>
+                            <GeoJSONLayer
+                                data={usStates}
+                                //fillLayout={}
+                                fillPaint={fillPain}
+                                linePaint={{'line-color': '#627BC1','line-width': 2}}
+                            />
                             
                         </>: null}                
                 </MapContainer>
             </div>
-        )
-
+        );
+       
     }
 }
 
