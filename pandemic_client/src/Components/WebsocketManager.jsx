@@ -1,17 +1,11 @@
 import React from "react";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 
-
-
 class WebsocketManager extends React.Component {
-
-    constructor() {
-        super(props)
-    }
 
     componentDidMount() {
         const connection = new HubConnectionBuilder()
-            .withUrl("url")
+            .withUrl("http://localhost:5000/api/hub")
             .build();
 
         connection
@@ -36,3 +30,5 @@ class WebsocketManager extends React.Component {
         return <div></div>
     }
 }
+
+export default WebsocketManager;

@@ -32,8 +32,19 @@ namespace spark_api
         {
             services.AddControllers();
             
-            services.AddSignalR();
             services.AddHostedService<WebsocketService>();
+            
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .SetIsOriginAllowed((host) => true);
+            }));
+
+            services.AddSignalR();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,19 +55,20 @@ namespace spark_api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
-                
+            
+            app.UseCors("MyPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<SignalRHub>("/api/hub");
             });
 
-            var webSocketOptions = new WebSocketOptions()
+            /*var webSocketOptions = new WebSocketOptions()
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(120),
                 ReceiveBufferSize = 4 * 1024
@@ -86,10 +98,10 @@ namespace spark_api
                 {
                     await next();
                 }
-            });
+            });*/
         }
 
-        private async Task Echo(HttpContext context, WebSocket webSocket)
+        /*private async Task Echo(HttpContext context, WebSocket webSocket)
         {
             var buffer = new byte[1024 * 4];
             WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
@@ -100,6 +112,6 @@ namespace spark_api
                 result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
             }
             await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationToken.None);
-        }
+        }*/
     }
 }
