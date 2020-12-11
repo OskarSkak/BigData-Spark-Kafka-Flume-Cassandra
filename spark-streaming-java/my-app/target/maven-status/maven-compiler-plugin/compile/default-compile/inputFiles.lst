@@ -1,1 +1,8 @@
 C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\App.java
+C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\MediaKeyWordComparisonManager.java
+C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\spark\kafka\consumers\RawTwitterDataConsumer.java
+C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\kafka\producers\SentimentAnalysisCorrelatedProducer.java
+C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\kafka\producers\CoronaCorrelatedEventProducer.java
+C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\kafka\producers\NewsMediaCorrelatedEventProducer.java
+C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\spark\kafka\consumers\SentimentAnalysisResultConsumer.java
+C:\Users\skakk\software_proj\PandemicSoftware\spark-streaming-java\my-app\src\main\java\com\mycompany\app\CoronaKeyWordComparisonManager.java
