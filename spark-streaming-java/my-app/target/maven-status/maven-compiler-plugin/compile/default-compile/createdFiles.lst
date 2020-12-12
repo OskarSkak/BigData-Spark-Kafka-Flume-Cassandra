@@ -1,8 +1,11 @@
+com\mycompany\app\spark\kafka\consumers\RawTwitterDataToNewsConsumer.class
 com\mycompany\app\spark\kafka\consumers\SentimentAnalysisResultConsumer.class
-com\mycompany\app\spark\kafka\consumers\RawTwitterDataConsumer.class
 com\mycompany\app\kafka\producers\NewsMediaCorrelatedEventProducer.class
 com\mycompany\app\kafka\producers\CoronaCorrelatedEventProducer.class
 com\mycompany\app\MediaKeyWordComparisonManager.class
+com\mycompany\app\spark\kafka\consumers\TestConsumer.class
+com\mycompany\app\spark\kafka\consumers\RawTwitterDataToCovidConsumer.class
 com\mycompany\app\App.class
+com\mycompany\app\SentimentAnalysisComparisonManager.class
 com\mycompany\app\CoronaKeyWordComparisonManager.class
 com\mycompany\app\kafka\producers\SentimentAnalysisCorrelatedProducer.class

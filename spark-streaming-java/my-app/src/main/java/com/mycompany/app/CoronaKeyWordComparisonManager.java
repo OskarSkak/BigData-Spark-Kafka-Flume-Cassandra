@@ -37,7 +37,7 @@ public class CoronaKeyWordComparisonManager {
         }
     }
     
-    public static boolean isCorrelatedWithNewsKeywords(String val){
+    public static boolean isCorrelatedWithCovidKeywords(String val){
         for(String keyword : keywords){
             if(val.toLowerCase().contains(keyword.toLowerCase()))
                 return true;
