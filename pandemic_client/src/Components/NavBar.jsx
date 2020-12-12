@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './component.css';
 
 export default class NavBar extends Component {
@@ -6,21 +6,28 @@ export default class NavBar extends Component {
         super(props)
     
         this.state = {
-             
+            contryResults: "",
         }
     }
+
+    handleState = (states) => {
+        this.props.setStates(states);
+   }
     
     render() {
         return (
             <div className="navContainer">
-                <button onClick={()=> {alert('Twitter')}}>
+                <button onClick={() =>this.handleState('twitter')}>
                     Twitter
                 </button>
-                <button onClick={()=> {alert('Covid')}}>
+                <button onClick={() => this.handleState('covid')}>
                     Covid
                 </button>
-                <button onClick={()=> {alert('Coralation')}}>
-                    Corelation
+                <button onClick={() => this.handleState('correlation')}>
+                    Correlation
+                </button>
+                <button onClick={() => this.handleState('clear')}>
+                    Clear
                 </button>
             </div>
         )
