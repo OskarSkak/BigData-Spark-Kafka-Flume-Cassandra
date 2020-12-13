@@ -15,6 +15,10 @@ import java.util.logging.Logger;
 public class MediaKeyWordComparisonManager {
     static ArrayList<String> keywords = new ArrayList<>();
     
+    public static ArrayList<String> getKeywords(){
+        return keywords;
+    }
+    
     static{
         //Could be troublesome, we'll see
         File f = new File("./src/main/java/com/mycompany/app/MEDIA_KEY_WORDS.txt");
@@ -34,7 +38,7 @@ public class MediaKeyWordComparisonManager {
     
     public static boolean isCorrelatedWithCoronaKeywords(String val){
         for(String keyword : keywords){
-            if(val.toLowerCase().contains(keyword.toLowerCase()))
+            if(val.toLowerCase().contains(" "+keyword.toLowerCase()+" "))
                 return true;
         }
         return false;

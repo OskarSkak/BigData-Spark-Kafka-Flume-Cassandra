@@ -62,6 +62,7 @@ public class RawTwitterDataToCovidConsumer {
                     String nextRecord = partitionOfRecords.next();
                     producer.sendCoronaCorrelatedEvent(nextRecord);
                 }
+                producer.close();
             });
         });
     }

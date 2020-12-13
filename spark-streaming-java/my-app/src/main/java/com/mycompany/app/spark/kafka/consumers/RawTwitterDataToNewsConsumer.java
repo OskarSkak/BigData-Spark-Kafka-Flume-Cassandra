@@ -62,6 +62,7 @@ public class RawTwitterDataToNewsConsumer {
                     String nextRecord = partitionOfRecords.next();
                     producer.sendNewsCorrelatedEvent(nextRecord);
                 }
+                producer.close();
             });
         });
     }
