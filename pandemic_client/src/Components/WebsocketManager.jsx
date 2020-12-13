@@ -21,7 +21,7 @@ class WebsocketManager extends React.Component {
             console.log("Websocket closed")
         })
 
-        connection.on("twitterraw", (response, a) => {
+        connection.on("client", (response, a) => {
             try { 
                 let res = JSON.parse(response.value);
                 this.props.setTweet(res);

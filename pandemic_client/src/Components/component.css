@@ -67,4 +67,9 @@ svg {
     fill: #635F5D;
     font-size: .75em
   }
+
+  .mapboxgl-map{
+    height:95.5vh;
+    width: 100vw;
+  }
     

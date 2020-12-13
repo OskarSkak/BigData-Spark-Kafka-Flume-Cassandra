@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './Components/NavBar';
-import Map from './Components/Mapbox';
+import Map from './Components/HeatMap';
 import { useState } from 'react';
 import WebsocketManager from './Components/WebsocketManager';
 
