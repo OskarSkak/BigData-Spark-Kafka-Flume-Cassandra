@@ -1,0 +1,6 @@
+FROM ubuntu:18.04
+
+RUN apt-get update && apt-get install openjdk-8-jre -y
+WORKDIR ./app
+COPY . ./app
+CMD [ "sh", "-c", "cd app && sh run.sh"]
