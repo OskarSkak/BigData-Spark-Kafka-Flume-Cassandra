@@ -2,10 +2,11 @@ import States from './us_state_capitals.json';
 import usStates from '../us-states.json';
 
 export default{
-    fetchCovidDate: async () => {
+    fetchCovidData: async () => {
         let respons = await fetch('https://api.covidtracking.com/v1/states/current.json');
         let data = await respons.json();
         let features = [];
+        console.log(data);
         data.forEach(ele => {
             var state = States[ele.state];
             if (state) {

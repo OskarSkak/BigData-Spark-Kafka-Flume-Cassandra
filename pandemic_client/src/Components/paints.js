@@ -85,5 +85,5 @@ export default{
         0.5
         ]
         },
-    linePaint: {'line-color': '#627BC1','line-width': 2}
+    linePaint: {'line-color': '#627BC1','line-width': 1}
 }

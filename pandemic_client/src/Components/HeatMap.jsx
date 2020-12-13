@@ -5,43 +5,95 @@ import "./component.css"
 
 import methods from "./methods";
 import paints from './paints';
+import {renderCovidLayers} from "./RenderLayers";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
-const HeatMap = (props) =>  {
-    const mapContainerRef = useRef(null);
-    const [mapContainer, setMapContainer] = useState();
-    const [covidData, setCovidData] = useState();
-    //setCovidData(methods.fetchCovidDate());
-    console.log(props)
+class HeatMap extends React.Component {
 
-    useEffect(() => {
-          const map = new mapboxgl.Map({
-          container: mapContainerRef.current,
-          style: 'mapbox://styles/mapbox/dark-v10',
-          center: [-98.93, 39.79],
-          zoom: [3.5],
-        });
-        map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
-       /* map.addSource('electionColor', {
-          type:'geojson',
-          data: usStates
-        });
-        /*map.addLayer('electionMap',{
-          id:'colors',
-          type:'fill',
-          source: 'electionColor',
-          paint: paints.electionPaint
-        });*/
-        return () => map.remove();
-      }, []);
-     
-      return (
-        <div className="map-container" ref={mapContainerRef} />
-            
-      );
+  constructor(props) {
+    super(props)
+    this.state = {
+      lng: 5,
+      lat: 34,
+      zoom: 2,
+      map: null
     };
-  
+  }
 
+  componentDidMount() {
+    const map = new mapboxgl.Map({
+      container: this.mapContainer,
+      style: 'mapbox://styles/mapbox/dark-v10',
+      center: [this.state.lng, this.state.lat],
+      zoom: this.state.zoom
+    });
+    this.setState({map: map});
+    // Bind eventhandlers to map below
+    map.on("load", this.onMapLoad)
+  }
+
+  onMapLoad = () => {
+    this.paintStates();
+    //this.fetchCovid();
+  }
+
+  fetchCovid = async () => {
+    const covidData = await methods.fetchCovidData();
+    this.plotCovidData(covidData);
+  }
+  
+  plotCovidData = (data) => {
+    console.log(data);
+    this.state.map?.addSource("CovidSource", {
+      type: "geojson",
+      data: data.features,
+      //cluster: true,
+      //clusterMaxZoom: 14, // Max zoom to cluster points on
+      //clusterRadius: 50
+    })
+    renderCovidLayers(this.state.map, "CovidSource");
+  }
+
+  paintStates = () => {
+    this.state.map?.addSource("StateSource", {
+      type: "geojson",
+      data: usStates
+    })
+
+    this.state.map?.addLayer({
+      'id': 'StateSourceLayer',
+      'type': 'fill',
+      'source': 'StateSource',
+      'layout': {},
+      'paint': paints.electionPaint
+    })
+    this.state.map?.addLayer({
+      "id": "StateSourceLineLayer",
+      "type": "line", 
+      "source": "StateSource",
+      "layout": {},
+      "paint": paints.linePaint
+    })
+  }
+
+  clearMap = () => {
+    try {
+      this.state.map?.removeLayer("CovidUnclusteredLayer")
+      this.state.map?.removeLayer("CovidCountLayer")
+      this.state.map?.removeSource("CovidSource")
+    } catch(err) {
+      console.log(err);
+    }
+    
+  }
+
+  render = () => {
+    return (
+      <div ref={el => this.mapContainer = el} />
+    );
+  }
+};
+  
 export default HeatMap;
 
 
