@@ -12,8 +12,7 @@ import { timeout } from "d3";
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
 
-
-  heatmapData = [];
+  heatmapData = {type: "FeatureCollection", features: []};
 
   constructor(props) {
     super(props)
@@ -41,7 +40,7 @@ class HeatMap extends React.Component {
   onMapLoad = () => {
     this.paintStates();
     //this.fetchCovid();
-    //this.paintHeatmap();
+    this.paintHeatmap();
   }
 
   fetchCovid = async () => {
@@ -72,14 +71,9 @@ class HeatMap extends React.Component {
   paintHeatmap = () => {
     this.state.map?.addSource('earthquakes', {
       'type': 'geojson',
-      'data':this.state.twitts
-      });
-      while(true)
-      {
-        renderHeatmap(this.state.map, "earthquakes");
-        setTimeout(20000)
-      }
-      
+      'data': this.heatmapData
+    });
+    renderHeatmap(this.state.map, "earthquakes")
   }
 
   clearMap = () => {
@@ -95,10 +89,10 @@ class HeatMap extends React.Component {
   handleWebsocket = (msg) => {
     if(msg.place.bounding_box.coordinates != null) {
       let center = this.getCenter(msg.place.bounding_box.coordinates);
-      let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]} }
-      this.heatmapData.push(feature);
-      console.log(this.state.twitts)
-      //console.log({type: "Feature", properties: { city: msg.text }, geometry: { type: "Point", coordinates: [center.long, center.lat]} })
+      let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+      this.heatmapData.features.push(feature);
+      this.state.map?.getSource("earthquakes")?.setData(this.heatmapData);
+      console.log(this.state.map?.getSource("earthquakes"))
     }
   }
 
