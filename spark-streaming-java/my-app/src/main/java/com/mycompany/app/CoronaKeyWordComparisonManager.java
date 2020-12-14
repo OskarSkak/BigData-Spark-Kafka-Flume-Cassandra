@@ -20,6 +20,10 @@ import java.util.logging.Logger;
 public class CoronaKeyWordComparisonManager {
     static ArrayList<String> keywords = new ArrayList<>();
     
+    public static ArrayList<String> getKeywords(){
+        return keywords;
+    }
+    
     static{
         //Could be troublesome, we'll see
         File f = new File("./src/main/java/com/mycompany/app/CORONA_KEY_WORDS.txt");
@@ -39,9 +43,9 @@ public class CoronaKeyWordComparisonManager {
     
     public static boolean isCorrelatedWithCovidKeywords(String val){
         for(String keyword : keywords){
-            if(val.toLowerCase().contains(keyword.toLowerCase()))
+            if(val.toLowerCase().contains(" "+keyword.toLowerCase()+" "))
                 return true;
         }
         return false;
-    }
+    }   
 }

@@ -3,26 +3,23 @@ mediator
 MediaSocial
 mediajobs
 mediacontent
-mediateam  
-mediacenter  
-mediaone  
+mediateam
+mediacenter
+mediaone
 mediainfluence
-mediabias  
-mediaval  
-mediablackout  
-MediaCityUK  
-mediagirls  
-MediaNoche  
-mediablasting  
-MediaTraining  
-mediapromosi  
-medialuna  
-mediacorp  
-mediaspecialist  
-mediasosial  
-mediapark  
-MEDIAMogul  
-MediaPA  
+mediabias
+mediablackout
+MediaCityUK
+MediaNoche
+mediablasting
+mediapromosi
+medialuna
+mediacorp
+mediaspecialist
+mediasosial
+mediapark
+MEDIAMogul
+MediaPA
 MediaKit
 media bias
 fake news
@@ -39,7 +36,6 @@ news corp
 fox news
 wall street journal
 new york post
-abs
 viacom
 cnn
 hbo
@@ -57,6 +53,8 @@ the new york times
 new york times
 la times
 los angeles times
+LA times
+L.A. times
 usa today
 the wall street journal
 wall street journal
@@ -65,7 +63,6 @@ washington post
 los angeles daily news
 bloomberg
 vice news
-hbo
 huffpost
 tmz
 cnet

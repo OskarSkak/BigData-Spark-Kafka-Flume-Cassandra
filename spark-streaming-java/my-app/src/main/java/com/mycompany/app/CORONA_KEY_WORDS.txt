@@ -4,7 +4,7 @@ Asymptomatic
 Case fatality rate
 Clinical trial
 Confirmed positive case
-Contactless
+Contactless spreading
 Containment area
 Epidemic
 Epidemic curve
@@ -35,7 +35,8 @@ Spanish flu
 Symptomatic
 Vaccine
 Ventilator
-WHF
+WHO
+World health organization
 Working from home
 Work from home
 Covid-19

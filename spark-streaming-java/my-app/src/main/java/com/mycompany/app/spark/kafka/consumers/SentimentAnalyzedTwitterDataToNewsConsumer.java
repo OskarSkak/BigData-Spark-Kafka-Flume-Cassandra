@@ -1,7 +1,7 @@
 package com.mycompany.app.spark.kafka.consumers;
 
-import com.mycompany.app.CoronaKeyWordComparisonManager;
-import com.mycompany.app.kafka.producers.CoronaCorrelatedEventProducer;
+import com.mycompany.app.MediaKeyWordComparisonManager;
+import com.mycompany.app.SentimentAnalysisComparisonManager;
 import com.mycompany.app.kafka.producers.NewsMediaCorrelatedEventProducer;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,12 +21,14 @@ import org.apache.spark.streaming.kafka010.LocationStrategies;
  *
  * @author skakk
  */
-public class RawTwitterDataToCovidConsumer {
+public class SentimentAnalyzedTwitterDataToNewsConsumer {
     Map<String, Object> kafkaParams = new HashMap<>();
     SparkConf conf;
     JavaStreamingContext ssc;
     
-    public RawTwitterDataToCovidConsumer(SparkConf _conf, JavaStreamingContext _ssc){
+    public static int NEUTRAL_INDICATOR = 0;
+    
+    public SentimentAnalyzedTwitterDataToNewsConsumer(SparkConf _conf, JavaStreamingContext _ssc){
         this.conf = _conf;
         this.ssc = _ssc;
     }
@@ -40,7 +42,7 @@ public class RawTwitterDataToCovidConsumer {
         kafkaParams.put("auto.offset.reset", "latest");
         kafkaParams.put("enable.auto.commit", false);
         
-        Collection<String> topics = Arrays.asList("twitterraw");
+        Collection<String> topics = Arrays.asList("twitteranalyzed");
         
         JavaInputDStream<ConsumerRecord<String, String>> stream = 
                 KafkaUtils.createDirectStream(
@@ -49,19 +51,25 @@ public class RawTwitterDataToCovidConsumer {
                         ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams)
                 );
         
+        
         JavaDStream<String> lines = stream.map(ConsumerRecord::value);
         
-        JavaDStream<String> correlatedWithCovid = lines.filter(line -> {
-            return CoronaKeyWordComparisonManager.isCorrelatedWithCovidKeywords(line);
+        JavaDStream<String> correlatedWithAmericanNews = lines.filter(line -> {
+            return MediaKeyWordComparisonManager.isCorrelatedWithCoronaKeywords(line);
         });
         
-        correlatedWithCovid.foreachRDD(rdd -> {
+        JavaDStream<String> clearlyNegativeOrPositiveAndCorrelated = correlatedWithAmericanNews.filter(tweet -> {
+            return !(SentimentAnalysisComparisonManager.hasClearlyPositiveOrNegativeSentiment(tweet) == NEUTRAL_INDICATOR);
+        });
+        
+        clearlyNegativeOrPositiveAndCorrelated.foreachRDD(rdd -> {
             rdd.foreachPartition(partitionOfRecords -> {
-                CoronaCorrelatedEventProducer producer = new CoronaCorrelatedEventProducer();
+                NewsMediaCorrelatedEventProducer producer = new NewsMediaCorrelatedEventProducer();
                 while(partitionOfRecords.hasNext()){
                     String nextRecord = partitionOfRecords.next();
-                    producer.sendCoronaCorrelatedEvent(nextRecord);
+                    producer.sendNewsCorrelatedEvent(nextRecord);
                 }
+                producer.close();
             });
         });
     }
