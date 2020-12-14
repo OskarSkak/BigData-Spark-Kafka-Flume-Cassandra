@@ -7,3 +7,4 @@ kafka-producer-console-test/bin/Debug
 venv
 .idea
 spark-streaming-java/my-app/target/my-app-1.0-SNAPSHOT.jar
+/spark-streaming-java/spark.structured.streaming.aggregator/target/
