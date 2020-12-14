@@ -33,7 +33,6 @@ function App() {
     <div className="App">
       <NavBar setStates={navClicked}/>
       <Map ref={myMap} states={states} tweets={tweet}/>
-      <WebsocketManager setTweet={setTweet}/>
     </div>
   );
 }

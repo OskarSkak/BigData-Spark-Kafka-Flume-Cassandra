@@ -21,10 +21,10 @@ class WebsocketManager extends React.Component {
             console.log("Websocket closed")
         })
 
-        connection.on("client", (response, a) => {
+        connection.on("twitterraw", (response, a) => {
             try { 
                 let res = JSON.parse(response.value);
-                this.props.setTweet(res);
+                if(this.props.subscribeWebsocket)this.props.subscribeWebsocket(res);
             } catch(err) {
                 console.log(err)
             }

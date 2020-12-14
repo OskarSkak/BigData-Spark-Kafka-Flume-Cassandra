@@ -66,7 +66,7 @@ namespace spark_api.service
                         { 
                             var cr = c.Consume(cts.Token);
                             await _hub.Clients.All.SendAsync("twitterraw", cr.Message);
-                            Console.WriteLine(cr);
+                            Console.WriteLine(cr.Message);
                         }
                         catch (ConsumeException e)
                         {

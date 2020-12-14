@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, Fragment } from "react";
 import mapboxgl from 'mapbox-gl';
 import usStates from '../us-states.json'
 import "./component.css"
@@ -6,9 +6,13 @@ import "./component.css"
 import methods from "./methods";
 import paints from './paints';
 import {renderCovidLayers, renderStateLayers, renderHeatmap} from "./RenderLayers";
+import WebsocketManager from "./WebsocketManager";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
+
+
+  heatmapData = [];
 
   constructor(props) {
     super(props)
@@ -16,7 +20,7 @@ class HeatMap extends React.Component {
       lng: 5,
       lat: 34,
       zoom: 2,
-      map: null
+      map: null,
     };
   }
 
@@ -35,7 +39,7 @@ class HeatMap extends React.Component {
   onMapLoad = () => {
     this.paintStates();
     //this.fetchCovid();
-    this.paintHeatmap();
+    //this.paintHeatmap();
   }
 
   fetchCovid = async () => {
@@ -83,9 +87,29 @@ class HeatMap extends React.Component {
     }
   }
 
+  handleWebsocket = (msg) => {
+    if(msg.place.bounding_box.coordinates != null) {
+      let center = this.getCenter(msg.place.bounding_box.coordinates);
+
+
+
+
+      console.log({type: "Feature", properties: { city: msg.text }, geometry: { type: "Point", coordinates: [center.long, center.lat]} })
+    }
+  }
+
+  getCenter = (bounding_box) => {
+    let long = (bounding_box[0][0][0]+bounding_box[0][2][0]) / 2;
+    let lat = (bounding_box[0][0][1]+bounding_box[0][1][1]) / 2;
+    return {long, lat};
+  }
+
   render = () => {
     return (
-      <div ref={el => this.mapContainer = el} />
+      <Fragment>
+        <div ref={el => this.mapContainer = el} />
+        <WebsocketManager subscribeWebsocket={msg => this.handleWebsocket(msg)}></WebsocketManager>
+      </Fragment>
     );
   }
 };
