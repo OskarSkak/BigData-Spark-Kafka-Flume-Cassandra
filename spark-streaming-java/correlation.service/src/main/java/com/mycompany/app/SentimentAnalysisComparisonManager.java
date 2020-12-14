@@ -63,8 +63,8 @@ public class SentimentAnalysisComparisonManager {
         
         Map<String, Double> res = new HashMap<>();
         
-        if(!negativeConfidence.isBlank()) res.put(NEGATIVE_CONFIDENCE, extractConfidence(negativeConfidence));
-        if(!posititveConfidence.isBlank()) res.put(POSITIVE_CONFIDENCE, extractConfidence(posititveConfidence));
+        if(!negativeConfidence.isEmpty()) res.put(NEGATIVE_CONFIDENCE, extractConfidence(negativeConfidence));
+        if(!posititveConfidence.isEmpty()) res.put(POSITIVE_CONFIDENCE, extractConfidence(posititveConfidence));
         
         return res;
     }
