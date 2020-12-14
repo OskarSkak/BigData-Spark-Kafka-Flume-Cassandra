@@ -11,7 +11,7 @@ public class App
     public static void main( String[] args ) throws InterruptedException
     {
         SparkConf conf = new SparkConf().setAppName("correlation_app").setMaster("spark://node-master:7077");
-        JavaStreamingContext ssc = new JavaStreamingContext(conf, new Duration(10000));
+        JavaStreamingContext ssc = new JavaStreamingContext(conf, new Duration(5000));
         
         new SentimentAnalyzedTwitterDataToNewsConsumer(conf, ssc).initiate();
         new SentimentAnalyzedTwitterDataToCovidConsumer(conf, ssc).initiate();
