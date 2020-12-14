@@ -1,4 +1,5 @@
 import paints from "./paints";
+import mapboxgl from "mapbox-gl"
 
 const renderCovidLayers = (map, source) => {
 
@@ -57,16 +58,16 @@ const renderStateLayers = (map, source) => {
       })
 }
 
-const renderHeatmap = (map, source) => {
+const renderCoronaHeatmap = (map, source) => {
     map?.addLayer(
     {
-        'id': 'earthquakes-heat',
+        'id': 'Corona-heat',
         'type': 'heatmap',
         'source': source,
         'maxzoom': 9,
         'paint': {
             // Increase the heatmap weight based on frequency and property magnitude
-            'heatmap-weight': [
+            /*'heatmap-weight': [
                 'interpolate',
                 ['linear'],
                 ['get', 'mag'],
@@ -74,7 +75,7 @@ const renderHeatmap = (map, source) => {
                 0,
                 6,
                 1
-            ],
+            ],*/
             // Increase the heatmap color weight weight by zoom level
             // heatmap-intensity is a multiplier on top of heatmap-weight
             'heatmap-intensity': [
@@ -93,18 +94,11 @@ const renderHeatmap = (map, source) => {
                 'interpolate',
                 ['linear'],
                 ['heatmap-density'],
-                0,
-                'rgba(33,102,172,0)',
-                0.2,
-                'rgb(103,169,207)',
-                0.4,
-                'rgb(209,229,240)',
-                0.6,
-                'rgb(253,219,199)',
-                0.8,
-                'rgb(239,138,98)',
-                1,
-                'rgb(178,24,43)'
+                0, 'rgba(236,222,239,0)',
+                0.2, 'rgb(208,209,230)',
+                0.4, 'rgb(166,189,219)',
+                0.6, 'rgb(103,169,207)',
+                0.8, 'rgb(28,144,153)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -131,7 +125,7 @@ const renderHeatmap = (map, source) => {
             
     map?.addLayer(
     {
-        'id': 'earthquakes-point',
+        'id': 'Corona-point',
         'type': 'circle',
         'source': source,
         'minzoom': 7,
@@ -147,24 +141,8 @@ const renderHeatmap = (map, source) => {
                 ['interpolate', ['linear'], ['get', 'mag'], 1, 5, 6, 50]
             ],
             // Color circle by earthquake magnitude
-            'circle-color': [
-                'interpolate',
-                ['linear'],
-                ['get', 'mag'],
-                1,
-                'rgba(33,102,172,0)',
-                2,
-                'rgb(103,169,207)',
-                3,
-                'rgb(209,229,240)',
-                4,
-                'rgb(253,219,199)',
-                5,
-                'rgb(239,138,98)',
-                6,
-                'rgb(178,24,43)'
-            ],
-            'circle-stroke-color': 'white',
+            'circle-color': "green",
+            'circle-stroke-color': 'black',
             'circle-stroke-width': 1,
             // Transition from heatmap to circle layer by zoom level
             'circle-opacity': [
@@ -180,16 +158,16 @@ const renderHeatmap = (map, source) => {
     });
 }
 
-const renderNewsCorrelatedHeatmap = (map, source) => {
+const renderPositiveCoronaHeatmap = (map, source) => {
     map?.addLayer(
         {
-            'id': 'earthquakes-heat',
+            'id': 'PositiveCoronaHeatmap-heat',
             'type': 'heatmap',
             'source': source,
             'maxzoom': 9,
             'paint': {
                 // Increase the heatmap weight based on frequency and property magnitude
-                'heatmap-weight': [
+                /*'heatmap-weight': [
                     'interpolate',
                     ['linear'],
                     ['get', 'mag'],
@@ -197,7 +175,7 @@ const renderNewsCorrelatedHeatmap = (map, source) => {
                     0,
                     6,
                     1
-                ],
+                ],*/
                 // Increase the heatmap color weight weight by zoom level
                 // heatmap-intensity is a multiplier on top of heatmap-weight
                 'heatmap-intensity': [
@@ -216,18 +194,12 @@ const renderNewsCorrelatedHeatmap = (map, source) => {
                     'interpolate',
                     ['linear'],
                     ['heatmap-density'],
-                    0,
-                    'rgba(33,102,172,0)',
-                    0.2,
-                    'rgb(103,169,207)',
-                    0.4,
-                    'rgb(209,229,240)',
-                    0.6,
-                    'rgb(253,219,199)',
-                    0.8,
-                    'rgb(239,138,98)',
-                    1,
-                    'rgb(178,24,43)'
+                    0,"rgba(0, 0, 255, 0)",
+                    0.1,"#ffffb2",
+                    0.3,"#feb24c",
+                    0.5,"#fd8d3c",
+                    0.7,"#fc4e2a",
+                    1,"#e31a1c"
                 ],
                 // Adjust the heatmap radius by zoom level
                 'heatmap-radius': [
@@ -254,7 +226,7 @@ const renderNewsCorrelatedHeatmap = (map, source) => {
                 
         map?.addLayer(
         {
-            'id': 'earthquakes-point',
+            'id': 'PositiveCoronaHeatmap-point',
             'type': 'circle',
             'source': source,
             'minzoom': 7,
@@ -265,29 +237,13 @@ const renderNewsCorrelatedHeatmap = (map, source) => {
                     ['linear'],
                     ['zoom'],
                     7,
-                    ['interpolate', ['linear'], ['get', 'mag'], 1, 1, 6, 4],
+                    10,
                     16,
-                    ['interpolate', ['linear'], ['get', 'mag'], 1, 5, 6, 50]
+                    10
                 ],
                 // Color circle by earthquake magnitude
-                'circle-color': [
-                    'interpolate',
-                    ['linear'],
-                    ['get', 'mag'],
-                    1,
-                    'rgba(33,102,172,0)',
-                    2,
-                    'rgb(103,169,207)',
-                    3,
-                    'rgb(209,229,240)',
-                    4,
-                    'rgb(253,219,199)',
-                    5,
-                    'rgb(239,138,98)',
-                    6,
-                    'rgb(178,24,43)'
-                ],
-                'circle-stroke-color': 'white',
+                'circle-color': "red",
+                'circle-stroke-color': 'black',
                 'circle-stroke-width': 1,
                 // Transition from heatmap to circle layer by zoom level
                 'circle-opacity': [
@@ -300,12 +256,12 @@ const renderNewsCorrelatedHeatmap = (map, source) => {
                     1
                 ]
             }
-        });
+    });
 }
 
 export {
     renderCovidLayers,
     renderStateLayers,
-    renderHeatmap,
-    renderNewsCorrelatedHeatmap
+    renderCoronaHeatmap,
+    renderPositiveCoronaHeatmap
 }

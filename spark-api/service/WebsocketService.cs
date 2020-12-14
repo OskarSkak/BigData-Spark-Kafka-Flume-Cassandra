@@ -44,7 +44,7 @@ namespace spark_api.service
 
             using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
             {
-                c.Subscribe("twitterraw");
+                c.Subscribe("twitteranalyzed");
 
                 CancellationTokenSource cts = new CancellationTokenSource();
                 Console.CancelKeyPress += (_, e) => {
@@ -102,7 +102,7 @@ namespace spark_api.service
 
             using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
             {
-                c.Subscribe("twitteranalyzed");
+                c.Subscribe("twitterraw");
 
                 CancellationTokenSource cts = new CancellationTokenSource();
                 Console.CancelKeyPress += (_, e) => {

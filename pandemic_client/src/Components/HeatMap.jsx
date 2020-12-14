@@ -7,15 +7,22 @@ import Typography from '@material-ui/core/Typography';
 
 import methods from "./methods";
 import paints from './paints';
-import {renderCovidLayers, renderStateLayers, renderHeatmap, renderNewsCorrelatedHeatmap} from "./RenderLayers";
+import {renderCovidLayers, renderStateLayers, renderCoronaHeatmap, renderPositiveCoronaHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
 import { timeout } from "d3";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
 
-  newsCorrelatedData = {type: "FeatureCollection", features: []};
+  positiveCoronaData = {type: "FeatureCollection", features: []};
+  negativeCoronaData = {type: "FeatureCollection", features: []};
+
+  positiveNewsData = {type: "FeatureCollection", features: []};
+  negativeNewsData = {type: "FeatureCollection", features: []};
+
+  historicNewsCorrelatedData = {type: "FeatureCollection", features: []}
   coronaCorrelatedData = {type: "FeatureCollection", features: []};
+  historicCoronaCorrelatedData = {type: "FeatureCollection", features: []};
 
   constructor(props) {
     super(props)
@@ -29,9 +36,9 @@ class HeatMap extends React.Component {
       isCronaStreamToggled:false,
       isNewsCorralatedToggled: false,
       isHistoricDataToggled: false,
+      isStatesToggled: false,
       dateSlider:[50,1 ],
       covidData: null,
-
     };
   }
 
@@ -48,9 +55,11 @@ class HeatMap extends React.Component {
   }
 
   onMapLoad = () => {
+    this.setState({isStatesToggled: true})
     this.paintStates();
-    //this.fetchCovid();
-    //this.paintHeatmap();
+
+    // Initialize the different heatmaps
+    this.plotPositiveCoronaHeatmap();
   }
 
   paintStates = () => {
@@ -61,18 +70,26 @@ class HeatMap extends React.Component {
     renderStateLayers(this.state.map, "StateSource")
   }
 
+  removePaintStates = () => {
+    try {
+      this.state.map?.removeLayer("StateSourceLayer");
+      this.state.map?.removeLayer("StateSourceLineLayer");
+      this.state.map?.removeSource("StateSource");
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   fetchCovid = async () => {
     const covidData = await methods.fetchCovidData();
     this.setState({covidData: covidData}, () => this.plotCovidData(covidData))
   }
   
   plotCovidData = (data) => {
-    
     this.state.map?.addSource("CovidSource", {
       type: "geojson",
       data: data.features
     })
-
     renderCovidLayers(this.state.map, "CovidSource");
   }
 
@@ -86,33 +103,52 @@ class HeatMap extends React.Component {
     }
   }
 
-  plotNewsCorrelatedHeatmap = () => {
-    this.state.map?.addSource("NewsCorrelatedSource", {
+  plotPositiveCoronaHeatmap = () => {
+    this.state.map?.addSource("PositiveCoronaHeatmapSource", {
       type: "geojson",
-      data: this.newsCorrelatedData
+      data: this.positiveCoronaData
     })
-    renderHeatmap(this.state.map, "NewsCorrelatedSource");
+    renderPositiveCoronaHeatmap(this.state.map, "PositiveCoronaHeatmap");
+    this.state.map?.on("click", 'PositiveCoronaHeatmap-point', this.onPositiveHeatmapClicked)
   }
 
-  removeNewsCorrelatedHeatmap = () => {
-    console.log("removing")
+  onPositiveHeatmapClicked = (e) => {
+      new mapboxgl.Popup()
+          .setLngLat(e.features[0].geometry.coordinates)
+          .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+          .addTo(this.state.map);
+  }
+
+  removePositiveCoronaHeatmap = () => {
     try {
-      this.state.map?.removeLayer("earthquakes-point");
-      this.state.map?.removeLayer("earthquakes-heat");
-      this.state.map?.removeSource("NewsCorrelatedSource");
+      this.state.map?.off("click", "PositiveCoronaHeatmap-point", this.onPositiveHeatmapClicked)
+      this.state.map?.removeLayer("PositiveCoronaHeatmap-point");
+      this.state.map?.removeLayer("PositiveCoronaHeatmap-heat");
+      this.state.map?.removeSource("PositiveCoronaHeatmapSource");
       this.newsCorrelatedData.features = [];
     } catch (err) {
       console.log(err);
     }
   }
 
-  /*paintHeatmap = () => {
-    this.state.map?.addSource('earthquakes', {
-      'type': 'geojson',
-      'data': this.heatmapData
-    });
-    renderNewsCorrelatedHeatmap(this.state.map, "earthquakes")
-  }*/
+  plotCoronaHeatmap = () => {
+    this.state.map?.addSource("CoronaSource", {
+      type: "geojson",
+      data: this.coronaCorrelatedData
+    })
+    renderCoronaHeatmap(this.state.map, "CoronaSource");
+  }
+
+  removeCoronaHeatmap = () => {
+    try {
+      this.state.map?.removeLayer("Corona-heat");
+      this.state.map?.removeLayer("Corona-point");
+      this.state.map?.removeSource("CoronaSource")
+      this.coronaCorrelatedData.features = [];
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   clearMap = () => {
     try {
@@ -124,28 +160,6 @@ class HeatMap extends React.Component {
     }
   }
 
-  handleWebsocket = (msg) => {
-    if(msg.place.bounding_box.coordinates != null) {
-      if(this.state.isNewsCorralatedToggled) {
-        let center = this.getCenter(msg.place.bounding_box.coordinates);
-        let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
-        this.newsCorrelatedData.features.push(feature);
-        this.state.map?.getSource("earthquakes")?.setData(this.newsCorrelatedData);
-      }
-
-      /*if(this.state.isCronaStreamToggled) {
-        let center = this.getCenter(msg.place.bounding_box.coordinates);
-        let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
-        this.coronaCorrelatedData.features.push(feature);
-        this.state.map?.getSource("CoronaSource").setData(this.coronaCorrelatedData);
-      }*/
-      
-      /*this.heatmapData.features.push(feature);
-      this.state.map?.getSource("earthquakes")?.setData(this.heatmapData);
-      console.log(this.state.map?.getSource("earthquakes"))*/
-    }
-  }
-
   getCenter = (bounding_box) => {
     let long = (bounding_box[0][0][0]+bounding_box[0][2][0]) / 2;
     let lat = (bounding_box[0][0][1]+bounding_box[0][1][1]) / 2;
@@ -153,12 +167,17 @@ class HeatMap extends React.Component {
   }
 
   handleCoronaEvent = (event) => {
-    //console.log("Corona stream")
-    //console.log(event)
+    if(this.state.isCronaStreamToggled) {
+      let center = this.getCenter(event.place.bounding_box.coordinates);
+      let feature = {type: "Feature", properties: { city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+      this.coronaCorrelatedData.features.push(feature);
+      this.state.map?.getSource("CoronaSource")?.setData(this.coronaCorrelatedData);
+    }
   }
 
   handleNewsCorrelated = (event) => {
     if(this.state.isNewsCorralatedToggled) {
+      console.log(event)
       let center = this.getCenter(event.place.bounding_box.coordinates);
       let feature = {type: "Feature", properties: { city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
       this.newsCorrelatedData.features.push(feature);
@@ -175,56 +194,36 @@ class HeatMap extends React.Component {
       this.plotNewsCorrelatedHeatmap();
     }
     this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
-    console.log(this.state.isNewsCorralatedToggled)
   }
 
   toggleCoronaStream = () => {
+    if(this.state.isCronaStreamToggled) {
+      // Remove live data from both positive and negative tweets
+
+    } else {
+      // Start adding tweets to both positive and negative tweets
+
+    }
     this.setState({isCronaStreamToggled: !this.state.isCronaStreamToggled})
-    console.log(this.state.isCronaStreamToggled)
   }
 
-  toggleCovidData = () => {
-    this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
-    
-    
-  }
+  toggleHistoricCoronaData = async () => {
 
-  toggleHistoricData = () =>{
-    this.setState({isHistoricDataToggled: !this.state.isHistoricDataToggled})
-    console.log("his: ", this.state.isHistoricDataToggled)
-  }
-  handleText = () => {
-    return "Days:" + this.state.dateSlider
-  }
-  handleSlider = (event, newVal) => {
-    let val1 = (50 - newVal[0])
-    let val2 = (50 - newVal[1]);
-   // let newDate = [val1, val2]
-    //this.setState({dateSlider: [newVal[1], val2]})
-    console.log("val1:", val1)
-    console.log("val2:", val2)
-    //console.log("state",this.state.dateSlider)
-
-    //console.log("newval", newVal)
-  }
-
-
-
-  
-
-  toggleCovidData = () => {
-    if(this.state.isCovidDataToggled) {
+    if(this.state.isHistoricDataToggled) {
       // Remove data
-      this.removeCovidData();
+
+
+
     } else {
       // Add data
-      if(this.state.covidData) {
-        this.plotCovidData(this.state.covidData)
-      } else {
-        this.fetchCovid()
-      }
+      //let result = await methods.
     }
-    this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
+
+    this.setState({isCoronaHistoricDataToggled: !this.state.isHistoricDataToggled})
+  }
+
+  toggleHistoricNewsCorrelatedData = () => {
+    this.setState({isNewsCorrelatedHistoricToggled: !this.state.isNewsCorrelatedHistoricToggled})
   }
 
   render = () => {
@@ -237,6 +236,12 @@ class HeatMap extends React.Component {
           <h4 style={{padding:"10px"}}>Visualization parameters:</h4>
             <div className="radio">
               <label>
+                <input type="checkbox" value="option1" onClick={this.toggleStatesData} checked={this.state.isStatesToggled} />
+                State Boundaries
+              </label>
+            </div>
+            <div className="radio">
+              <label>
                 <input type="checkbox" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
                   Covid data
               </label>
@@ -245,6 +250,12 @@ class HeatMap extends React.Component {
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
                   Corona stream
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
+                  Corona Historic
               </label>
             </div>
             <div className="radio">
@@ -261,7 +272,7 @@ class HeatMap extends React.Component {
             </div>
             <div style={{padding:"0 20px", textAlign:"center"}}>
             <Typography id="range-slider" gutterBottom>
-              Get data between {this.state.dateSlider[0]} and {this.state.dateSlider[1]} days ago
+              Get data between {(this.state.dateSlider[1] - 50) * -1} and {(this.state.dateSlider[0] -50) * -1} days ago
             </Typography>
             <Slider 
               value={this.state.dateSlider}
@@ -279,6 +290,34 @@ class HeatMap extends React.Component {
         <WebsocketManager subscribeCorona={msg => this.handleCoronaEvent(msg)} subscribeNews={msg => this.handleNewsCorrelated(msg)}></WebsocketManager>
       </Fragment>
     );
+  }
+
+  toggleStatesData = () => {
+    if(this.state.isStatesToggled) {
+      this.removePaintStates();
+    } else {
+      this.paintStates();
+    }
+    this.setState({isStatesToggled: !this.state.isStatesToggled})
+  }
+
+  handleSlider = (event, newVal) => {
+    this.setState({dateSlider: newVal})
+  }
+
+  toggleCovidData = () => {
+    if(this.state.isCovidDataToggled) {
+      // Remove data
+      this.removeCovidData();
+    } else {
+      // Add data
+      if(this.state.covidData) {
+        this.plotCovidData(this.state.covidData)
+      } else {
+        this.fetchCovid()
+      }
+    }
+    this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
   }
 };
   

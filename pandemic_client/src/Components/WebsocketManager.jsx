@@ -21,7 +21,7 @@ class WebsocketManager extends React.Component {
             console.log("Websocket closed")
         })
 
-        connection.on("newscorrelated", (response, a) => {
+        connection.on("corona", (response, a) => {
             try { 
                 let res = JSON.parse(response.value);
                 if(this.props.subscribeCorona)this.props.subscribeCorona(res);
@@ -30,7 +30,7 @@ class WebsocketManager extends React.Component {
             }
         })
 
-        connection.on("corona", (response, a) => {
+        connection.on("newscorrelated", (response, a) => {
             try {
                 let res = JSON.parse(response.value);
                 if(this.props.subscribeNews)this.props.subscribeNews(res);
