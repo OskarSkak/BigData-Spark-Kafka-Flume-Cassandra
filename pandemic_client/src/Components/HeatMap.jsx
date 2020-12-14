@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState, Fragment } from "react";
 import mapboxgl from 'mapbox-gl';
 import usStates from '../us-states.json'
 import "./component.css"
+import Slider from '@material-ui/core/Slider'
+import Typography from '@material-ui/core/Typography';
 
 import methods from "./methods";
 import paints from './paints';
@@ -18,14 +20,16 @@ class HeatMap extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      lng: 5,
-      lat: 34,
-      zoom: 2,
+      lng: -98.93,
+      lat: 39.79,
+      zoom: [3.5],
       map: null,
       twitts:{type: "FeatureCollection",features:this.heatmapData},
       isCovidDataToggled:false,
       isCronaStreamToggled:false,
       isNewsCorralatedToggled: false,
+      isHistoricDataToggled: false,
+      dateSlider:[50,1 ],
       covidData: null,
 
     };
@@ -171,11 +175,42 @@ class HeatMap extends React.Component {
       this.plotNewsCorrelatedHeatmap();
     }
     this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
+    console.log(this.state.isNewsCorralatedToggled)
   }
 
   toggleCoronaStream = () => {
-
+    this.setState({isCronaStreamToggled: !this.state.isCronaStreamToggled})
+    console.log(this.state.isCronaStreamToggled)
   }
+
+  toggleCovidData = () => {
+    this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
+    
+    
+  }
+
+  toggleHistoricData = () =>{
+    this.setState({isHistoricDataToggled: !this.state.isHistoricDataToggled})
+    console.log("his: ", this.state.isHistoricDataToggled)
+  }
+  handleText = () => {
+    return "Days:" + this.state.dateSlider
+  }
+  handleSlider = (event, newVal) => {
+    let val1 = (50 - newVal[0])
+    let val2 = (50 - newVal[1]);
+   // let newDate = [val1, val2]
+    //this.setState({dateSlider: [newVal[1], val2]})
+    console.log("val1:", val1)
+    console.log("val2:", val2)
+    //console.log("state",this.state.dateSlider)
+
+    //console.log("newval", newVal)
+  }
+
+
+
+  
 
   toggleCovidData = () => {
     if(this.state.isCovidDataToggled) {
@@ -198,26 +233,47 @@ class HeatMap extends React.Component {
         <div ref={el => this.mapContainer = el} />
         <>
         <form>
-        <div className="checkFrom">
-          <div className="radio">
+          <div className="checkFrom">
+          <h4 style={{padding:"10px"}}>Visualization parameters:</h4>
+            <div className="radio">
+              <label>
+                <input type="checkbox" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
+                  Covid data
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
+                  Corona stream
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="checkbox" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
+                  news corraltion
+              </label>
+            </div>
+            <div className="radio">
             <label>
-              <input type="radio" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
-              Covid data
+              <input type="checkbox" value="option1" onClick={this.toggleHistoricData} checked={this.state.isHistoricDataToggled} />
+                Histroical data
             </label>
+            </div>
+            <div style={{padding:"0 20px", textAlign:"center"}}>
+            <Typography id="range-slider" gutterBottom>
+              Get data between {this.state.dateSlider[0]} and {this.state.dateSlider[1]} days ago
+            </Typography>
+            <Slider 
+              value={this.state.dateSlider}
+              onChange={this.handleSlider}
+              //valueLabelDisplay="auto"
+              //aria-labelledby="range-slider"
+              //getAriaValueText={this.handleText}
+              max={50}
+              min={1}
+            />
+            </div>
           </div>
-          <div className="radio">
-          <label>
-            <input type="radio" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
-            Corona stream
-          </label>
-          </div>
-          <div className="radio">
-          <label>
-            <input type="radio" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
-            news corraltion
-          </label>
-          </div>
-        </div>
         </form>
         </>
         <WebsocketManager subscribeCorona={msg => this.handleCoronaEvent(msg)} subscribeNews={msg => this.handleNewsCorrelated(msg)}></WebsocketManager>
@@ -227,29 +283,3 @@ class HeatMap extends React.Component {
 };
   
 export default HeatMap;
-
-
-/*
-{props.states === 'twitter' ? 
-              mapContainerRef.current?.on("load", () => {
-              // add the data source for new a feature collection with no features
-              mapContainerRef.current?.addSource("trees", {
-                type: "geojson",
-                data: trees
-              });
-              // now add the layer, and reference the data source above by name
-              mapContainerRef.current?.addLayer({
-                id: 'trees-heat',
-                type: 'heatmap',
-                source: 'trees',
-                maxzoom: 15,
-                paint: paints.heatMapPaint
-              }, 'waterway-label');
-              mapContainerRef.current?.addLayer({
-                id: 'trees-point',
-                type: 'circle',
-                source: 'trees',
-                minzoom: 14,
-                paint: paints.circleHeatPaint
-              }, 'waterway-label');
-          }) : null} */
