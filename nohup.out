@@ -1,0 +1,14 @@
+consumerAPI
+docker-compose.yml
+Flume
+kafka-producer-console-test
+kafka-setup.txt
+LICENSE
+nohup.out
+package-lock.json
+PandemicAnalyzer
+pandemic_client
+README.md
+spark-api
+spark-streaming-intro
+spark-streaming-test
