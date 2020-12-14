@@ -7,6 +7,7 @@ import methods from "./methods";
 import paints from './paints';
 import {renderCovidLayers, renderStateLayers, renderHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
+import { timeout } from "d3";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
@@ -21,6 +22,7 @@ class HeatMap extends React.Component {
       lat: 34,
       zoom: 2,
       map: null,
+      twitts:{type: "FeatureCollection",features:this.heatmapData}
     };
   }
 
@@ -70,11 +72,14 @@ class HeatMap extends React.Component {
   paintHeatmap = () => {
     this.state.map?.addSource('earthquakes', {
       'type': 'geojson',
-      'data':
-      'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson'
+      'data':this.state.twitts
       });
-
-      renderHeatmap(this.state.map, "earthquakes");
+      while(true)
+      {
+        renderHeatmap(this.state.map, "earthquakes");
+        setTimeout(20000)
+      }
+      
   }
 
   clearMap = () => {
@@ -90,11 +95,10 @@ class HeatMap extends React.Component {
   handleWebsocket = (msg) => {
     if(msg.place.bounding_box.coordinates != null) {
       let center = this.getCenter(msg.place.bounding_box.coordinates);
-
-
-
-
-      console.log({type: "Feature", properties: { city: msg.text }, geometry: { type: "Point", coordinates: [center.long, center.lat]} })
+      let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]} }
+      this.heatmapData.push(feature);
+      console.log(this.state.twitts)
+      //console.log({type: "Feature", properties: { city: msg.text }, geometry: { type: "Point", coordinates: [center.long, center.lat]} })
     }
   }
 
