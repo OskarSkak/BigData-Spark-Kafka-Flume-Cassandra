@@ -33,7 +33,7 @@ public class SentimentAnalysisResultConsumer {
         this.ssc = _ssc;
     }
     
-    public void initiate() throws InterruptedException{
+    /*public void initiate() throws InterruptedException{
         Map<String, Object> kafkaParams = new HashMap<>();
         kafkaParams.put("bootstrap.servers", "localhost:9092");
         kafkaParams.put("key.deserializer", StringDeserializer.class);
@@ -67,5 +67,5 @@ public class SentimentAnalysisResultConsumer {
                 producer.close();
             });
         });
-    }
+    }*/
 }
