@@ -14674,3 +14674,130 @@ org.json.JSONException: JSONObject["place"] is not a JSONObject.
 	at twitter4j.StatusStreamImpl.onStatus(StatusStreamImpl.java:75)
 	at twitter4j.StatusStreamBase$1.run(StatusStreamBase.java:114)
 	at twitter4j.internal.async.ExecuteThread.run(DispatcherImpl.java:116)
+14 Dec 2020 17:03:19,541 ERROR [Twitter4J Async Dispatcher[0]] (com.casper.TwitterInterceptor.intercept:60)  - Error parsing EventBody to JSON. 
+org.json.JSONException: JSONObject["place"] is not a JSONObject.
+	at org.json.JSONObject.getJSONObject(JSONObject.java:782)
+	at com.casper.TwitterInterceptor.intercept(TwitterInterceptor.java:43)
+	at org.apache.flume.interceptor.InterceptorChain.intercept(InterceptorChain.java:51)
+	at org.apache.flume.channel.ChannelProcessor.processEvent(ChannelProcessor.java:255)
+	at com.casper.TwitterSource$1.onStatus(TwitterSource.java:90)
+	at twitter4j.StatusStreamImpl.onStatus(StatusStreamImpl.java:75)
+	at twitter4j.StatusStreamBase$1.run(StatusStreamBase.java:114)
+	at twitter4j.internal.async.ExecuteThread.run(DispatcherImpl.java:116)
+14 Dec 2020 17:04:48,982 ERROR [Twitter4J Async Dispatcher[0]] (com.casper.TwitterInterceptor.intercept:60)  - Error parsing EventBody to JSON. 
+org.json.JSONException: JSONObject["place"] is not a JSONObject.
+	at org.json.JSONObject.getJSONObject(JSONObject.java:782)
+	at com.casper.TwitterInterceptor.intercept(TwitterInterceptor.java:43)
+	at org.apache.flume.interceptor.InterceptorChain.intercept(InterceptorChain.java:51)
+	at org.apache.flume.channel.ChannelProcessor.processEvent(ChannelProcessor.java:255)
+	at com.casper.TwitterSource$1.onStatus(TwitterSource.java:90)
+	at twitter4j.StatusStreamImpl.onStatus(StatusStreamImpl.java:75)
+	at twitter4j.StatusStreamBase$1.run(StatusStreamBase.java:114)
+	at twitter4j.internal.async.ExecuteThread.run(DispatcherImpl.java:116)
+14 Dec 2020 17:04:57,299 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@174205a1 counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }, HDFS=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@bde8f1e counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }} channels:{hdfsChannel=org.apache.flume.channel.MemoryChannel{name: hdfsChannel}, kafkaChannel=org.apache.flume.channel.MemoryChannel{name: kafkaChannel}} }
+14 Dec 2020 17:04:57,303 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+14 Dec 2020 17:04:57,303 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+14 Dec 2020 17:04:57,359 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+14 Dec 2020 17:04:57,363 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.util.zip.Inflater.ensureOpen(Inflater.java:389)
+	at java.util.zip.Inflater.inflate(Inflater.java:257)
+	at java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	at java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.io.BufferedReader.readLine(BufferedReader.java:324)
+	at java.io.BufferedReader.readLine(BufferedReader.java:389)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:481)
+14 Dec 2020 17:04:57,389 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink ToKafka
+14 Dec 2020 17:04:57,391 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@174205a1 counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }
+14 Dec 2020 17:04:57,391 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.kafka.KafkaSink.process:255)  - Failed to publish events
+java.lang.InterruptedException
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1302)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:231)
+	at org.apache.kafka.clients.producer.internals.ProduceRequestResult.await(ProduceRequestResult.java:76)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:61)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:29)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:244)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.lang.Thread.run(Thread.java:748)
+14 Dec 2020 17:04:57,392 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.SinkRunner$PollingRunner.run:158)  - Unable to deliver event. Exception follows.
+org.apache.flume.EventDeliveryException: Failed to publish events
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:268)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.InterruptedException
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1302)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:231)
+	at org.apache.kafka.clients.producer.internals.ProduceRequestResult.await(ProduceRequestResult.java:76)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:61)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:29)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:244)
+	... 3 more
+14 Dec 2020 17:05:02,393 INFO  [agent-shutdown-hook] (org.apache.kafka.clients.producer.KafkaProducer.close:1090)  - [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+14 Dec 2020 17:05:02,413 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: ToKafka stopped
+14 Dec 2020 17:05:02,413 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: ToKafka. sink.start.time == 1607888005931
+14 Dec 2020 17:05:02,413 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: ToKafka. sink.stop.time == 1607961902413
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.kafka.event.send.time == 73880426
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.rollback.count == 1
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.complete == 0
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.empty == 0
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.underflow == 41
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.channel.read.fail == 0
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.closed.count == 0
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.creation.count == 0
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.failed.count == 0
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.attempt == 675941
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.sucess == 675883
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.write.fail == 1
+14 Dec 2020 17:05:02,414 INFO  [agent-shutdown-hook] (org.apache.flume.sink.kafka.KafkaSink.stop:290)  - Kafka Sink ToKafka stopped. Metrics: SINK:ToKafka{sink.batch.underflow=41, sink.event.write.fail=1, sink.connection.failed.count=0, sink.channel.read.fail=0, sink.connection.closed.count=0, channel.kafka.event.send.time=73880426, sink.event.drain.attempt=675941, sink.batch.complete=0, sink.event.drain.sucess=675883, sink.connection.creation.count=0, channel.rollback.count=1, sink.batch.empty=0}
+14 Dec 2020 17:05:02,415 INFO  [lifecycleSupervisor-1-3] (org.apache.flume.lifecycle.LifecycleSupervisor$MonitorRunnable.run:228)  - Component has already been stopped SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@174205a1 counterGroup:{ name:null counters:{runner.deliveryErrors=1, runner.backoffs.consecutive=0} } }
+14 Dec 2020 17:05:02,415 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink HDFS
+14 Dec 2020 17:05:02,415 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@bde8f1e counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }
+14 Dec 2020 17:05:02,415 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.HDFSEventSink.stop:494)  - Closing hdfs://node-master:9000/twitterraw/FlumeData
+14 Dec 2020 17:05:02,415 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.BucketWriter.doClose:438)  - Closing hdfs://node-master:9000/twitterraw/FlumeData.1607960016028.tmp
+14 Dec 2020 17:05:02,430 INFO  [hdfs-HDFS-call-runner-8] (org.apache.flume.sink.hdfs.BucketWriter$7.call:681)  - Renaming hdfs://node-master:9000/twitterraw/FlumeData.1607960016028.tmp to hdfs://node-master:9000/twitterraw/FlumeData.1607960016028
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: HDFS stopped
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: HDFS. sink.start.time == 1607888005526
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: HDFS. sink.stop.time == 1607961902435
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.complete == 0
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.empty == 1
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.underflow == 41
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.channel.read.fail == 0
+14 Dec 2020 17:05:02,435 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.closed.count == 21
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.creation.count == 21
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.failed.count == 0
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.drain.attempt == 675941
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.drain.sucess == 675941
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.write.fail == 0
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel hdfsChannel
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: hdfsChannel}
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: hdfsChannel stopped
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.start.time == 1607888005518
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.stop.time == 1607961902436
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.capacity == 10000000
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.current.size == 0
+14 Dec 2020 17:05:02,436 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.event.put.attempt == 675941
+14 Dec 2020 17:05:02,437 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.event.put.success == 675941
+14 Dec 2020 17:05:02,437 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.event.take.attempt == 675983
+14 Dec 2020 17:05:02,437 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: hdfsChannel. channel.event.take.success == 675941
+14 Dec 2020 17:05:02,437 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel kafkaChannel
+14 Dec 2020 17:05:02,437 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: kafkaChannel}
+14 Dec 2020 17:05:02,437 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: kafkaChannel stopped
+14 Dec 2020 17:05:02,437 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.start.time == 1607888005517
+14 Dec 2020 17:05:02,440 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.stop.time == 1607961902437
+14 Dec 2020 17:05:02,440 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.capacity == 1000
+14 Dec 2020 17:05:02,440 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.current.size == 58
+14 Dec 2020 17:05:02,440 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.event.put.attempt == 675941
+14 Dec 2020 17:05:02,440 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.event.put.success == 675941
+14 Dec 2020 17:05:02,440 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.event.take.attempt == 675982
+14 Dec 2020 17:05:02,440 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: kafkaChannel. channel.event.take.success == 675883
+14 Dec 2020 17:05:02,441 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 10
+14 Dec 2020 17:05:02,443 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
