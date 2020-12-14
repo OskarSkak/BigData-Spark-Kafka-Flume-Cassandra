@@ -5,7 +5,7 @@ import "./component.css"
 
 import methods from "./methods";
 import paints from './paints';
-import {renderCovidLayers} from "./RenderLayers";
+import {renderCovidLayers, renderStateLayers, renderHeatmap} from "./RenderLayers";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
@@ -35,6 +35,7 @@ class HeatMap extends React.Component {
   onMapLoad = () => {
     this.paintStates();
     //this.fetchCovid();
+    this.paintHeatmap();
   }
 
   fetchCovid = async () => {
@@ -59,21 +60,17 @@ class HeatMap extends React.Component {
       type: "geojson",
       data: usStates
     })
+    renderStateLayers(this.state.map, "StateSource")
+  }
 
-    this.state.map?.addLayer({
-      'id': 'StateSourceLayer',
-      'type': 'fill',
-      'source': 'StateSource',
-      'layout': {},
-      'paint': paints.electionPaint
-    })
-    this.state.map?.addLayer({
-      "id": "StateSourceLineLayer",
-      "type": "line", 
-      "source": "StateSource",
-      "layout": {},
-      "paint": paints.linePaint
-    })
+  paintHeatmap = () => {
+    this.state.map?.addSource('earthquakes', {
+      'type': 'geojson',
+      'data':
+      'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson'
+      });
+
+      renderHeatmap(this.state.map, "earthquakes");
   }
 
   clearMap = () => {
@@ -84,7 +81,6 @@ class HeatMap extends React.Component {
     } catch(err) {
       console.log(err);
     }
-    
   }
 
   render = () => {
