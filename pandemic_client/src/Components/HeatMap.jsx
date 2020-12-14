@@ -5,14 +5,15 @@ import "./component.css"
 
 import methods from "./methods";
 import paints from './paints';
-import {renderCovidLayers, renderStateLayers, renderHeatmap} from "./RenderLayers";
+import {renderCovidLayers, renderStateLayers, renderHeatmap, renderNewsCorrelatedHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
 import { timeout } from "d3";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
 
-  heatmapData = {type: "FeatureCollection", features: []};
+  newsCorrelatedData = {type: "FeatureCollection", features: []};
+  coronaCorrelatedData = {type: "FeatureCollection", features: []};
 
   constructor(props) {
     super(props)
@@ -24,7 +25,9 @@ class HeatMap extends React.Component {
       twitts:{type: "FeatureCollection",features:this.heatmapData},
       isCovidDataToggled:false,
       isCronaStreamToggled:false,
-      isNewsCorralatedToggled: false
+      isNewsCorralatedToggled: false,
+      covidData: null,
+
     };
   }
 
@@ -43,24 +46,7 @@ class HeatMap extends React.Component {
   onMapLoad = () => {
     this.paintStates();
     //this.fetchCovid();
-    this.paintHeatmap();
-  }
-
-  fetchCovid = async () => {
-    const covidData = await methods.fetchCovidData();
-    this.plotCovidData(covidData);
-  }
-  
-  plotCovidData = (data) => {
-    console.log(data);
-    this.state.map?.addSource("CovidSource", {
-      type: "geojson",
-      data: data.features,
-      //cluster: true,
-      //clusterMaxZoom: 14, // Max zoom to cluster points on
-      //clusterRadius: 50
-    })
-    renderCovidLayers(this.state.map, "CovidSource");
+    //this.paintHeatmap();
   }
 
   paintStates = () => {
@@ -71,13 +57,58 @@ class HeatMap extends React.Component {
     renderStateLayers(this.state.map, "StateSource")
   }
 
-  paintHeatmap = () => {
+  fetchCovid = async () => {
+    const covidData = await methods.fetchCovidData();
+    this.setState({covidData: covidData}, () => this.plotCovidData(covidData))
+  }
+  
+  plotCovidData = (data) => {
+    
+    this.state.map?.addSource("CovidSource", {
+      type: "geojson",
+      data: data.features
+    })
+
+    renderCovidLayers(this.state.map, "CovidSource");
+  }
+
+  removeCovidData = () => {
+    try {
+      this.state.map?.removeLayer("CovidUnclusteredLayer")
+      this.state.map?.removeLayer("CovidCountLayer")
+      this.state.map?.removeSource("CovidSource")
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  plotNewsCorrelatedHeatmap = () => {
+    this.state.map?.addSource("NewsCorrelatedSource", {
+      type: "geojson",
+      data: this.newsCorrelatedData
+    })
+    renderHeatmap(this.state.map, "NewsCorrelatedSource");
+  }
+
+  removeNewsCorrelatedHeatmap = () => {
+    console.log("removing")
+    try {
+      this.state.map?.removeLayer("earthquakes-point");
+      this.state.map?.removeLayer("earthquakes-heat");
+      this.state.map?.removeSource("NewsCorrelatedSource");
+      this.newsCorrelatedData.features = [];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  /*paintHeatmap = () => {
     this.state.map?.addSource('earthquakes', {
       'type': 'geojson',
       'data': this.heatmapData
     });
-    renderHeatmap(this.state.map, "earthquakes")
-  }
+    renderNewsCorrelatedHeatmap(this.state.map, "earthquakes")
+  }*/
 
   clearMap = () => {
     try {
@@ -91,11 +122,23 @@ class HeatMap extends React.Component {
 
   handleWebsocket = (msg) => {
     if(msg.place.bounding_box.coordinates != null) {
-      let center = this.getCenter(msg.place.bounding_box.coordinates);
-      let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
-      this.heatmapData.features.push(feature);
+      if(this.state.isNewsCorralatedToggled) {
+        let center = this.getCenter(msg.place.bounding_box.coordinates);
+        let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+        this.newsCorrelatedData.features.push(feature);
+        this.state.map?.getSource("earthquakes")?.setData(this.newsCorrelatedData);
+      }
+
+      /*if(this.state.isCronaStreamToggled) {
+        let center = this.getCenter(msg.place.bounding_box.coordinates);
+        let feature = {type: "Feature", properties: { city: msg.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+        this.coronaCorrelatedData.features.push(feature);
+        this.state.map?.getSource("CoronaSource").setData(this.coronaCorrelatedData);
+      }*/
+      
+      /*this.heatmapData.features.push(feature);
       this.state.map?.getSource("earthquakes")?.setData(this.heatmapData);
-      console.log(this.state.map?.getSource("earthquakes"))
+      console.log(this.state.map?.getSource("earthquakes"))*/
     }
   }
 
@@ -105,23 +148,49 @@ class HeatMap extends React.Component {
     return {long, lat};
   }
 
+  handleCoronaEvent = (event) => {
+    //console.log("Corona stream")
+    //console.log(event)
+  }
+
+  handleNewsCorrelated = (event) => {
+    if(this.state.isNewsCorralatedToggled) {
+      let center = this.getCenter(event.place.bounding_box.coordinates);
+      let feature = {type: "Feature", properties: { city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+      this.newsCorrelatedData.features.push(feature);
+      this.state.map?.getSource("NewsCorrelatedSource")?.setData(this.newsCorrelatedData);
+    }
+  }
+
   toggleNewsCorrlated = () => {
-    console.log("news")
+    if(this.state.isNewsCorralatedToggled) {
+      // Remove data
+      this.removeNewsCorrelatedHeatmap();
+    } else {
+      // Add data
+      this.plotNewsCorrelatedHeatmap();
+    }
     this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
   }
 
   toggleCoronaStream = () => {
-    console.log("corona")
-    this.setState({isCronaStreamToggled: !this.state.isCronaStreamToggled})
+
   }
 
   toggleCovidData = () => {
-    console.log('covid')
+    if(this.state.isCovidDataToggled) {
+      // Remove data
+      this.removeCovidData();
+    } else {
+      // Add data
+      if(this.state.covidData) {
+        this.plotCovidData(this.state.covidData)
+      } else {
+        this.fetchCovid()
+      }
+    }
     this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
-    
   }
-  
-
 
   render = () => {
     return (
@@ -151,7 +220,7 @@ class HeatMap extends React.Component {
         </div>
         </form>
         </>
-        <WebsocketManager subscribeWebsocket={msg => this.handleWebsocket(msg)}></WebsocketManager>
+        <WebsocketManager subscribeCorona={msg => this.handleCoronaEvent(msg)} subscribeNews={msg => this.handleNewsCorrelated(msg)}></WebsocketManager>
       </Fragment>
     );
   }
