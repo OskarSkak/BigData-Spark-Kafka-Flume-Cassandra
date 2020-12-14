@@ -21,7 +21,10 @@ class HeatMap extends React.Component {
       lat: 34,
       zoom: 2,
       map: null,
-      twitts:{type: "FeatureCollection",features:this.heatmapData}
+      twitts:{type: "FeatureCollection",features:this.heatmapData},
+      isCovidDataToggled:false,
+      isCronaStreamToggled:false,
+      isNewsCorralatedToggled: false
     };
   }
 
@@ -102,10 +105,52 @@ class HeatMap extends React.Component {
     return {long, lat};
   }
 
+  toggleNewsCorrlated = () => {
+    console.log("news")
+    this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
+  }
+
+  toggleCoronaStream = () => {
+    console.log("corona")
+    this.setState({isCronaStreamToggled: !this.state.isCronaStreamToggled})
+  }
+
+  toggleCovidData = () => {
+    console.log('covid')
+    this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
+    
+  }
+  
+
+
   render = () => {
     return (
       <Fragment>
         <div ref={el => this.mapContainer = el} />
+        <>
+        <form>
+        <div className="checkFrom">
+          <div className="radio">
+            <label>
+              <input type="radio" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
+              Covid data
+            </label>
+          </div>
+          <div className="radio">
+          <label>
+            <input type="radio" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
+            Corona stream
+          </label>
+          </div>
+          <div className="radio">
+          <label>
+            <input type="radio" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
+            news corraltion
+          </label>
+          </div>
+        </div>
+        </form>
+        </>
         <WebsocketManager subscribeWebsocket={msg => this.handleWebsocket(msg)}></WebsocketManager>
       </Fragment>
     );
