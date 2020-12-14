@@ -1,14 +1,19 @@
 version: "3.4"
 services:
   analyzer:
-    image: "ulriksandberg/sentimentanalyzer:2.0"
-  api:
-    build:
-      context: ./spark-api
-    environment:
-      - ASPNETCORE_URLS=http://+:5002
-    -networks:
+    image: "ulriksandberg/sentimentanalyzer:4.0"
+    networks:
       - outside
+    deploy:
+      mode: replicated
+      replicas: 3
+ # api:
+ #   build:
+ #     context: ./spark-api
+ #   environment:
+ #     - ASPNETCORE_URLS=http://+:5002
+ #   -networks:
+ #     - outside
 
 networks:
   outside:

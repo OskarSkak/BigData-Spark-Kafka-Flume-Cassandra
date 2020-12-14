@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Confluent.Kafka;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Linq;
 using spark_api.hub;
 
 namespace spark_api.service
@@ -43,7 +44,7 @@ namespace spark_api.service
                 // topic/partitions of interest. By default, offsets are committed
                 // automatically, so in this example, consumption will only start from the
                 // earliest message in the topic 'my-topic' the first time you run the program.
-                AutoOffsetReset = AutoOffsetReset.Earliest,
+                AutoOffsetReset = AutoOffsetReset.Latest,
                
             };
 
@@ -56,7 +57,6 @@ namespace spark_api.service
                     e.Cancel = true; // prevent the process from terminating.
                     cts.Cancel();
                 };
-
                 try
                 {
                     while (true)
@@ -66,9 +66,11 @@ namespace spark_api.service
                         { 
                             var cr = c.Consume(cts.Token);
                             await _hub.Clients.All.SendAsync("twitterraw", cr.Message);
+                            Console.WriteLine(cr);
                         }
                         catch (ConsumeException e)
                         {
+                            
                             Console.WriteLine($"Error occured: {e.Error.Reason}");
                         }
                     }
