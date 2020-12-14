@@ -17,5 +17,5 @@ services:
 
 networks:
   outside:
-    external: 
-	name:"host"
+    external:
+      name: 'host'

@@ -1,1 +1,1 @@
-sudo docker run --name flumer --net="host" flumer:1.5
+sudo docker run --name flumer --net="host" flumer:2.5

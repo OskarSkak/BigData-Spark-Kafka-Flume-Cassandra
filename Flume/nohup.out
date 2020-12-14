@@ -1,0 +1,125 @@
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+  PID TTY          TIME CMD
+17720 pts/0    00:00:00 bash
+18071 pts/0    00:00:00 ps
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Starting up Twitter filtering...
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
+Warning: JAVA_HOME is not set!
+Info: Including Hadoop libraries found via (/home/hadoop/hadoop/bin/hadoop) for HDFS access
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2360: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_USER: bad substitution
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2455: HADOOP_ORG.APACHE.FLUME.TOOLS.GETJAVAPROPERTY_OPTS: bad substitution
+Info: Including Hive libraries found via () for Hive access
++ exec /usr/bin/java -Xmx20m -Xmx512M -cp '/home/hadoop/PandemicSoftware/Flume/conf:/home/hadoop/PandemicSoftware/Flume/lib/*:./plugins.d//twitter-interceptor/lib/*:./plugins.d//twitter-source/lib/*:./plugins.d//twitter-interceptor/libext/*:./plugins.d//twitter-source/libext/*:/home/hadoop/hadoop/etc/hadoop:/home/hadoop/hadoop/share/hadoop/common/lib/*:/home/hadoop/hadoop/share/hadoop/common/*:/home/hadoop/hadoop/share/hadoop/hdfs:/home/hadoop/hadoop/share/hadoop/hdfs/lib/*:/home/hadoop/hadoop/share/hadoop/hdfs/*:/home/hadoop/hadoop/share/hadoop/mapreduce/lib/*:/home/hadoop/hadoop/share/hadoop/mapreduce/*:/home/hadoop/hadoop/share/hadoop/yarn:/home/hadoop/hadoop/share/hadoop/yarn/lib/*:/home/hadoop/hadoop/share/hadoop/yarn/*:/lib/*' -Djava.library.path=:/home/hadoop/hadoop/lib/native org.apache.flume.node.Application -f ./conf/flume-twitter-to-file.conf --name TwitterAgent
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/PandemicSoftware/Flume/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Starting up Twitter filtering...
