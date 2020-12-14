@@ -17,14 +17,15 @@ class HeatMap extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      lng: 5,
-      lat: 34,
-      zoom: 2,
+      lng: -98.93,
+      lat: 39.79,
+      zoom: [3.5],
       map: null,
       twitts:{type: "FeatureCollection",features:this.heatmapData},
       isCovidDataToggled:false,
       isCronaStreamToggled:false,
-      isNewsCorralatedToggled: false
+      isNewsCorralatedToggled: false,
+      isHistoricDataToggled: false
     };
   }
 
@@ -120,6 +121,11 @@ class HeatMap extends React.Component {
     this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
     
   }
+
+  toggleHistoricData = () =>{
+    this.setState({isHistoricDataToggled: !this.state.isHistoricDataToggled})
+    console.log("Historical data")
+  }
   
 
 
@@ -129,26 +135,33 @@ class HeatMap extends React.Component {
         <div ref={el => this.mapContainer = el} />
         <>
         <form>
-        <div className="checkFrom">
-          <div className="radio">
+          <div className="checkFrom">
+          <text style={{padding:"10px"}}>Visiulization parameters:</text>
+            <div className="radio">
+              <label>
+                <input type="checkbox" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
+                  Covid data
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
+                  Corona stream
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="checkbox" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
+                  news corraltion
+              </label>
+            </div>
+            <div className="radio">
             <label>
-              <input type="radio" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
-              Covid data
+              <input type="checkbox" value="option1" onClick={this.toggleHistoricData} checked={this.state.isHistoricDataToggled} />
+                Histroical data
             </label>
+            </div>
           </div>
-          <div className="radio">
-          <label>
-            <input type="radio" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
-            Corona stream
-          </label>
-          </div>
-          <div className="radio">
-          <label>
-            <input type="radio" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
-            news corraltion
-          </label>
-          </div>
-        </div>
         </form>
         </>
         <WebsocketManager subscribeWebsocket={msg => this.handleWebsocket(msg)}></WebsocketManager>
@@ -158,29 +171,3 @@ class HeatMap extends React.Component {
 };
   
 export default HeatMap;
-
-
-/*
-{props.states === 'twitter' ? 
-              mapContainerRef.current?.on("load", () => {
-              // add the data source for new a feature collection with no features
-              mapContainerRef.current?.addSource("trees", {
-                type: "geojson",
-                data: trees
-              });
-              // now add the layer, and reference the data source above by name
-              mapContainerRef.current?.addLayer({
-                id: 'trees-heat',
-                type: 'heatmap',
-                source: 'trees',
-                maxzoom: 15,
-                paint: paints.heatMapPaint
-              }, 'waterway-label');
-              mapContainerRef.current?.addLayer({
-                id: 'trees-point',
-                type: 'circle',
-                source: 'trees',
-                minzoom: 14,
-                paint: paints.circleHeatPaint
-              }, 'waterway-label');
-          }) : null} */

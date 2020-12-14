@@ -31,7 +31,6 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar setStates={navClicked}/>
       <Map ref={myMap} states={states} tweets={tweet}/>
     </div>
   );
