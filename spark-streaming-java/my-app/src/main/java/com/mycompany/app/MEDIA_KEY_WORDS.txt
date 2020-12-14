@@ -36,7 +36,6 @@ news corp
 fox news
 wall street journal
 new york post
-abs
 viacom
 cnn
 hbo
@@ -64,7 +63,6 @@ washington post
 los angeles daily news
 bloomberg
 vice news
-hbo
 huffpost
 tmz
 cnet

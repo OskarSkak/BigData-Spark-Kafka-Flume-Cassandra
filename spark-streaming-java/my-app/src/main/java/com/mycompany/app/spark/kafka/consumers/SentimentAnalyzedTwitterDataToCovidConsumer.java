@@ -1,8 +1,8 @@
 package com.mycompany.app.spark.kafka.consumers;
 
 import com.mycompany.app.CoronaKeyWordComparisonManager;
+import com.mycompany.app.SentimentAnalysisComparisonManager;
 import com.mycompany.app.kafka.producers.CoronaCorrelatedEventProducer;
-import com.mycompany.app.kafka.producers.NewsMediaCorrelatedEventProducer;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,12 +21,13 @@ import org.apache.spark.streaming.kafka010.LocationStrategies;
  *
  * @author skakk
  */
-public class RawTwitterDataToCovidConsumer {
+public class SentimentAnalyzedTwitterDataToCovidConsumer {
     Map<String, Object> kafkaParams = new HashMap<>();
     SparkConf conf;
     JavaStreamingContext ssc;
+    static int NEUTRAL_INDICATOR = 0;
     
-    public RawTwitterDataToCovidConsumer(SparkConf _conf, JavaStreamingContext _ssc){
+    public SentimentAnalyzedTwitterDataToCovidConsumer(SparkConf _conf, JavaStreamingContext _ssc){
         this.conf = _conf;
         this.ssc = _ssc;
     }
@@ -40,7 +41,7 @@ public class RawTwitterDataToCovidConsumer {
         kafkaParams.put("auto.offset.reset", "latest");
         kafkaParams.put("enable.auto.commit", false);
         
-        Collection<String> topics = Arrays.asList("twitterraw");
+        Collection<String> topics = Arrays.asList("twitteranalyzed");
         
         JavaInputDStream<ConsumerRecord<String, String>> stream = 
                 KafkaUtils.createDirectStream(
@@ -55,7 +56,11 @@ public class RawTwitterDataToCovidConsumer {
             return CoronaKeyWordComparisonManager.isCorrelatedWithCovidKeywords(line);
         });
         
-        correlatedWithCovid.foreachRDD(rdd -> {
+        JavaDStream<String> clearlyPositiveOrNegativeAndCorrelatedWithCovid = correlatedWithCovid.filter(t -> {
+            return !(SentimentAnalysisComparisonManager.hasClearlyPositiveOrNegativeSentiment(t) == NEUTRAL_INDICATOR);
+        });
+        
+        clearlyPositiveOrNegativeAndCorrelatedWithCovid.foreachRDD(rdd -> {
             rdd.foreachPartition(partitionOfRecords -> {
                 CoronaCorrelatedEventProducer producer = new CoronaCorrelatedEventProducer();
                 while(partitionOfRecords.hasNext()){

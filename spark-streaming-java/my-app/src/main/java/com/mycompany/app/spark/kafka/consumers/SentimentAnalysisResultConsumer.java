@@ -15,11 +15,13 @@ import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
-import scala.Tuple2;
+
 /**
- *
+ * THIS IS NOW DEPRECATED - please don't use 
  * @author skakk
  */
+
+
 public class SentimentAnalysisResultConsumer {
     Map<String, Object> kafkaParams = new HashMap<>();
     SparkConf conf;

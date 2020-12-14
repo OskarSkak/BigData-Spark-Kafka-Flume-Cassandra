@@ -1,6 +1,6 @@
 package com.mycompany.app;
-import com.mycompany.app.spark.kafka.consumers.RawTwitterDataToCovidConsumer;
-import com.mycompany.app.spark.kafka.consumers.RawTwitterDataToNewsConsumer;
+import com.mycompany.app.spark.kafka.consumers.SentimentAnalyzedTwitterDataToCovidConsumer;
+import com.mycompany.app.spark.kafka.consumers.SentimentAnalyzedTwitterDataToNewsConsumer;
 import com.mycompany.app.spark.kafka.consumers.SentimentAnalysisResultConsumer;
 import org.apache.spark.*;
 import org.apache.spark.streaming.Duration;
@@ -13,9 +13,8 @@ public class App
         SparkConf conf = new SparkConf().setAppName("app name").setMaster("local[*]");
         JavaStreamingContext ssc = new JavaStreamingContext(conf, new Duration(10000));
         
-        new RawTwitterDataToNewsConsumer(conf, ssc).initiate();
-        new SentimentAnalysisResultConsumer(conf, ssc).initiate();
-        new RawTwitterDataToCovidConsumer(conf, ssc).initiate();
+        new SentimentAnalyzedTwitterDataToNewsConsumer(conf, ssc).initiate();
+        new SentimentAnalyzedTwitterDataToCovidConsumer(conf, ssc).initiate();
         
         ssc.start();
         ssc.awaitTermination();
