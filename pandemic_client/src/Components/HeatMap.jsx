@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState, Fragment } from "react";
 import mapboxgl from 'mapbox-gl';
 import usStates from '../us-states.json'
 import "./component.css"
+import Slider from '@material-ui/core/Slider'
+import Typography from '@material-ui/core/Typography';
 
 import methods from "./methods";
 import paints from './paints';
@@ -25,7 +27,8 @@ class HeatMap extends React.Component {
       isCovidDataToggled:false,
       isCronaStreamToggled:false,
       isNewsCorralatedToggled: false,
-      isHistoricDataToggled: false
+      isHistoricDataToggled: false,
+      dateSlider:[50,1 ]
     };
   }
 
@@ -107,26 +110,40 @@ class HeatMap extends React.Component {
   }
 
   toggleNewsCorrlated = () => {
-    console.log("news")
     this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
+    console.log(this.state.isNewsCorralatedToggled)
   }
 
   toggleCoronaStream = () => {
-    console.log("corona")
     this.setState({isCronaStreamToggled: !this.state.isCronaStreamToggled})
+    console.log(this.state.isCronaStreamToggled)
   }
 
   toggleCovidData = () => {
-    console.log('covid')
     this.setState({isCovidDataToggled: !this.state.isCovidDataToggled})
+    
     
   }
 
   toggleHistoricData = () =>{
     this.setState({isHistoricDataToggled: !this.state.isHistoricDataToggled})
-    console.log("Historical data")
+    console.log("his: ", this.state.isHistoricDataToggled)
   }
-  
+  handleText = () => {
+    return "Days:" + this.state.dateSlider
+  }
+  handleSlider = (event, newVal) => {
+    let val1 = (50 - newVal[0])
+    let val2 = (50 - newVal[1]);
+   // let newDate = [val1, val2]
+    //this.setState({dateSlider: [newVal[1], val2]})
+    console.log("val1:", val1)
+    console.log("val2:", val2)
+    //console.log("state",this.state.dateSlider)
+
+    //console.log("newval", newVal)
+  }
+
 
 
   render = () => {
@@ -136,7 +153,7 @@ class HeatMap extends React.Component {
         <>
         <form>
           <div className="checkFrom">
-          <text style={{padding:"10px"}}>Visiulization parameters:</text>
+          <h4 style={{padding:"10px"}}>Visualization parameters:</h4>
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
@@ -160,6 +177,20 @@ class HeatMap extends React.Component {
               <input type="checkbox" value="option1" onClick={this.toggleHistoricData} checked={this.state.isHistoricDataToggled} />
                 Histroical data
             </label>
+            </div>
+            <div style={{padding:"0 20px", textAlign:"center"}}>
+            <Typography id="range-slider" gutterBottom>
+              Get data between {this.state.dateSlider[0]} and {this.state.dateSlider[1]} days ago
+            </Typography>
+            <Slider 
+              value={this.state.dateSlider}
+              onChange={this.handleSlider}
+              //valueLabelDisplay="auto"
+              //aria-labelledby="range-slider"
+              //getAriaValueText={this.handleText}
+              max={50}
+              min={1}
+            />
             </div>
           </div>
         </form>
