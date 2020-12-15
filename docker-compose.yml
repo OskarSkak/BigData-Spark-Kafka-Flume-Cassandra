@@ -14,13 +14,13 @@ services:
     deploy:
       mode: replicated
       replicas: 1
- # api:
- #   build:
- #     context: ./spark-api
- #   environment:
- #     - ASPNETCORE_URLS=http://+:5002
- #   -networks:
- #     - outside
+  api:
+    image: "ulriksandberg/sparkfront:1.0"
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    -networks:
+      - outside
 
 networks:
   outside:
