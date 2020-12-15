@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,10 +33,10 @@ namespace spark_api
         {
             services.AddControllers();
             
-            services.AddHostedService<WebsocketService>();
+            //services.AddHostedService<WebsocketService>();
             services.AddSingleton<ICassandraService , CassandraService>();
             services.AddSignalR();
-            
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +52,8 @@ namespace spark_api
             app.UseRouting();
 
             app.UseAuthorization();
-            
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
             app.UseCors(builder =>
             {
                 builder.WithOrigins("http://localhost:3000");
@@ -64,19 +66,20 @@ namespace spark_api
                 endpoints.MapControllers();
                 endpoints.MapHub<SignalRHub>("/api/hub");
             });
-        }
-
-        /*private async Task Echo(HttpContext context, WebSocket webSocket)
-        {
-            var buffer = new byte[1024 * 4];
-            WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-            while (!result.CloseStatus.HasValue)
+            
+            app.UseSpa(spa =>
             {
-                await webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, result.Count), result.MessageType, result.EndOfMessage, CancellationToken.None);
+                spa.Options.SourcePath = "ClientApp";
 
-                result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-            }
-            await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationToken.None);
-        }*/
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
+        }
+        
+        
+
+       
     }
 }
