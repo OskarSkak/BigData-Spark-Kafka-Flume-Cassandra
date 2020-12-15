@@ -33,6 +33,8 @@ class HeatMap extends React.Component {
       isHistoricCoronaToggled: false,
       isNewsCorralatedToggled: false,
       isHistoricNewsCorrelatedToggled: false,
+      isCoronaLayerAdded: false,
+      isNewsLayerAdded: false,
       isStatesToggled: false,
       dateSlider:[50,1 ],
       covidData: null,
@@ -56,10 +58,10 @@ class HeatMap extends React.Component {
     this.paintStates();
 
     // Initialize the different heatmaps
-    this.plotPositiveCoronaHeatmap();
-    this.plotNegativeCoronaHeatmap();
-    this.plotPositiveNewsHeatmap();
-    this.plotNegativeNewsHeatmap();
+    // this.plotPositiveCoronaHeatmap();
+    // this.plotNegativeCoronaHeatmap();
+    // this.plotPositiveNewsHeatmap();
+    // this.plotNegativeNewsHeatmap();
   }
 
   plotPositiveNewsHeatmap = () => {
@@ -72,10 +74,10 @@ class HeatMap extends React.Component {
   }
 
   onPositiveNewsClicked = (e) => {
-      new mapboxgl.Popup()
-          .setLngLat(e.features[0].geometry.coordinates)
-          .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
-          .addTo(this.state.map);
+    new mapboxgl.Popup()
+        .setLngLat(e.features[0].geometry.coordinates)
+        .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+        .addTo(this.state.map);
   }
 
   removePositiveNewsHeatmap = () => {
@@ -100,10 +102,10 @@ class HeatMap extends React.Component {
   }
 
   onNegativeNewsClicked = (e) => {
-      new mapboxgl.Popup()
-          .setLngLat(e.features[0].geometry.coordinates)
-          .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
-          .addTo(this.state.map);
+    new mapboxgl.Popup()
+      .setLngLat(e.features[0].geometry.coordinates)
+      .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+      .addTo(this.state.map);
   }
 
   removeNegativeNewsHeatmap = () => {
@@ -148,13 +150,43 @@ class HeatMap extends React.Component {
     }
   }
 
+  removeUnusedLayers = () => {
+    if(!this.state.isNewsCorrelatedHistoricToggled && !this.state.isHistoricNewsCorrelatedToggled && this.state.isNewsLayerAdded) {
+      this.removeNegativeNewsHeatmap();
+      this.removePositiveNewsHeatmap();
+      this.setState({isNewsLayerAdded: false});
+    }
+
+    if(!this.state.isCronaStreamToggled && !this.state.isHistoricCoronaToggled && this.state.isCoronaLayerAdded) {
+      this.removeNegativeCoronaHeatmap();
+      this.removePositiveCoronaHeatmap();
+      this.setState({isCoronaLayerAdded: false})
+    }
+  }
+
+  addCoronaLayer = () => {
+    if(!this.state.isCoronaLayerAdded) {
+      this.plotPositiveCoronaHeatmap();
+      this.plotNegativeCoronaHeatmap();
+      this.setState({isCoronaLayerAdded: true})
+    }
+  }
+  addNewsLayer = () => {
+    if(!this.state.isNewsLayerAdded) {
+      this.plotNegativeNewsHeatmap();
+      this.plotPositiveNewsHeatmap();
+      this.setState({isNewsLayerAdded: true})
+    }
+  }
+
   toggleNewsCorrlated = () => {
     if(this.state.isNewsCorralatedToggled) {
       // Remove data
       this.filterNewsCorrelatedData("stream");
+      this.removeUnusedLayers();
     } else {
       // Add data
-
+      this.addNewsLayer();
     }
     this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
   }
@@ -164,8 +196,10 @@ class HeatMap extends React.Component {
     if(this.state.isHistoricNewsCorrelatedToggled) {
       // Remove stream data from news correlated
       this.filterNewsCorrelatedData("historic")
+      this.removeUnusedLayers();
       // check if layer could be removed
     } else {
+      this.addNewsLayer();
       // Start adding news correlated stream data
       // check if layer should be added
       let result = await methods.fetchHistoricNewsStream(0,1);
@@ -188,10 +222,12 @@ class HeatMap extends React.Component {
     if(this.state.isCronaStreamToggled) {
       // Remove stream data from corona
       this.filterCoronaData("stream");
+      this.removeUnusedLayers();
       // Check if layer could be removed
     } else {
       // Start adding corona stream data
       // Check if layer should be added
+      this.addCoronaLayer();
     }
     this.setState({isCronaStreamToggled: !this.state.isCronaStreamToggled})
   }
@@ -200,6 +236,7 @@ class HeatMap extends React.Component {
     if(this.state.isHistoricCoronaToggled) {
       // remove data
       this.filterCoronaData("historic");
+      this.removeUnusedLayers();
       // Check if layer could be removed
     } else {
       // Fetch historic data
@@ -215,6 +252,7 @@ class HeatMap extends React.Component {
         this.updateCoronaLayerData();
       }) 
       // Check if layer should be added?
+      this.addCoronaLayer();
     }
     this.setState({isHistoricCoronaToggled: !this.state.isHistoricCoronaToggled});
   }
