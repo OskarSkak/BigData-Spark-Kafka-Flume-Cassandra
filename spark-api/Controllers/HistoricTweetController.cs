@@ -16,16 +16,16 @@ namespace spark_api.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery]  int from , int to, string type)
+        public async Task<IActionResult> Get([FromQuery]  int from , int to, string type ,int size)
         {
             if (type == "newscorrelated")
             {
-                var resNews = await _cassandraService.GetAllBetweenNews( from , to); 
+                var resNews = await _cassandraService.GetAllBetweenNews( from , to , size); 
                 return Ok(resNews);
             }
             else 
             {
-                var resCorona = await _cassandraService.GetAllBetweenCorona( from , to);
+                var resCorona = await _cassandraService.GetAllBetweenCorona( from , to ,size);
                 return Ok(resCorona);
             }
 
