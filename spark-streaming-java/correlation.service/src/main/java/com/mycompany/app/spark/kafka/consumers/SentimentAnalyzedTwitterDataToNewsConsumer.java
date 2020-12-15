@@ -38,7 +38,7 @@ public class SentimentAnalyzedTwitterDataToNewsConsumer {
         kafkaParams.put("bootstrap.servers", "localhost:9092");
         kafkaParams.put("key.deserializer", StringDeserializer.class);
         kafkaParams.put("value.deserializer", StringDeserializer.class);
-        kafkaParams.put("group.id", "raw");
+        kafkaParams.put("group.id", "sentimenttonews");
         kafkaParams.put("auto.offset.reset", "latest");
         kafkaParams.put("enable.auto.commit", false);
         
