@@ -826,3 +826,386 @@ Caused by: java.lang.InterruptedException
 12 Dec 2020 14:56:42,416 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
 12 Dec 2020 14:56:42,415 INFO  [lifecycleSupervisor-1-5] (org.apache.flume.lifecycle.LifecycleSupervisor$MonitorRunnable.run:228)  - Component has already been stopped SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{runner.deliveryErrors=1, runner.backoffs.consecutive=0} } }
 12 Dec 2020 14:56:42,423 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
+12 Dec 2020 21:51:40,366 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 21:51:40,374 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 21:51:40,387 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:51:40,390 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: ToKafka # , HDFS Agent: TwitterAgent
+12 Dec 2020 21:51:40,390 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 21:51:40,407 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink#
+12 Dec 2020 21:51:40,409 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:884)  - Could not configure sink  ToKafka due to: No channel configured for sink: ToKafka
+org.apache.flume.conf.ConfigurationException: No channel configured for sink: ToKafka
+	at org.apache.flume.conf.sink.SinkConfiguration.configure(SinkConfiguration.java:52)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks(FlumeConfiguration.java:867)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.isValid(FlumeConfiguration.java:383)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.access$000(FlumeConfiguration.java:228)
+	at org.apache.flume.conf.FlumeConfiguration.validateConfiguration(FlumeConfiguration.java:153)
+	at org.apache.flume.conf.FlumeConfiguration.<init>(FlumeConfiguration.java:133)
+	at org.apache.flume.node.PropertiesFileConfigurationProvider.getFlumeConfiguration(PropertiesFileConfigurationProvider.java:194)
+	at org.apache.flume.node.AbstractConfigurationProvider.getConfiguration(AbstractConfigurationProvider.java:97)
+	at org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run(PollingPropertiesFileConfigurationProvider.java:145)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+12 Dec 2020 21:51:40,411 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sinkHDFS
+12 Dec 2020 21:51:40,412 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 21:51:40,412 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 21:51:40,412 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 21:51:40,419 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 21:51:40,425 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 21:51:40,425 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 21:51:40,501 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter]
+12 Dec 2020 21:51:40,508 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:51:40,508 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 21:51:40,726 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 21:51:40,726 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 21:51:40,726 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 21:51:40,729 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 21:51:42,454 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 21:51:42,454 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 21:51:51,088 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:51:51,089 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 21:51:51,089 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 21:51:51,359 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 21:51:51,360 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 21:51:51,366 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607806300726
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607806311367
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 82
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 82
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 82
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 0
+12 Dec 2020 21:51:51,368 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 0
+12 Dec 2020 21:51:51,368 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 21:51:51,369 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
+12 Dec 2020 21:55:04,785 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 21:55:04,794 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 21:55:04,803 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,804 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,804 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: ToKafka # , HDFS Agent: TwitterAgent
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,808 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,808 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,809 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,809 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 21:55:04,835 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink#
+12 Dec 2020 21:55:04,837 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:884)  - Could not configure sink  ToKafka due to: No channel configured for sink: ToKafka
+org.apache.flume.conf.ConfigurationException: No channel configured for sink: ToKafka
+	at org.apache.flume.conf.sink.SinkConfiguration.configure(SinkConfiguration.java:52)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks(FlumeConfiguration.java:867)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.isValid(FlumeConfiguration.java:383)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.access$000(FlumeConfiguration.java:228)
+	at org.apache.flume.conf.FlumeConfiguration.validateConfiguration(FlumeConfiguration.java:153)
+	at org.apache.flume.conf.FlumeConfiguration.<init>(FlumeConfiguration.java:133)
+	at org.apache.flume.node.PropertiesFileConfigurationProvider.getFlumeConfiguration(PropertiesFileConfigurationProvider.java:194)
+	at org.apache.flume.node.AbstractConfigurationProvider.getConfiguration(AbstractConfigurationProvider.java:97)
+	at org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run(PollingPropertiesFileConfigurationProvider.java:145)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+12 Dec 2020 21:55:04,840 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sinkHDFS
+12 Dec 2020 21:55:04,841 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 21:55:04,841 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 21:55:04,841 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 21:55:04,852 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 21:55:04,867 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 21:55:04,868 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 21:55:04,963 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter]
+12 Dec 2020 21:55:04,970 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:55:04,970 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 21:55:05,200 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 21:55:05,201 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 21:55:05,202 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 21:55:05,206 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 21:55:07,051 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 21:55:07,051 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 21:55:13,533 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:55:13,534 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 21:55:13,534 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 21:55:13,561 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 21:55:13,561 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 21:55:13,567 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607806505201
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607806513568
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 78
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 78
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 78
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 0
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 0
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 21:55:13,570 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
+12 Dec 2020 21:56:22,680 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 21:56:22,687 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 21:56:22,696 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,697 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,697 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,698 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:56:22,698 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,698 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: ToKafka # , HDFS Agent: TwitterAgent
+12 Dec 2020 21:56:22,702 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 21:56:22,722 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink#
+12 Dec 2020 21:56:22,724 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sinkHDFS
+12 Dec 2020 21:56:22,724 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 21:56:22,724 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 21:56:22,724 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 21:56:22,731 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 21:56:22,742 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 21:56:22,743 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 21:56:22,820 INFO  [conf-file-poller-0] (org.apache.flume.sink.DefaultSinkFactory.create:42)  - Creating instance of sink: ToKafka, type: org.apache.flume.sink.kafka.KafkaSink
+12 Dec 2020 21:56:22,826 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:367)  - topic is deprecated. Please use the parameter kafka.topic
+12 Dec 2020 21:56:22,826 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:378)  - brokerList is deprecated. Please use the parameter kafka.bootstrap.servers
+12 Dec 2020 21:56:22,826 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:388)  - batchSize is deprecated. Please use the parameter flumeBatchSize
+12 Dec 2020 21:56:22,826 INFO  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.configure:318)  - Using the static topic twitterraw. This may be overridden by event headers
+12 Dec 2020 21:56:22,834 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter, ToKafka]
+12 Dec 2020 21:56:22,841 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@6e993692 counterGroup:{ name:null counters:{} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:56:22,842 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 21:56:23,070 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 21:56:23,070 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 21:56:23,071 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:196)  - Starting Sink ToKafka
+12 Dec 2020 21:56:23,071 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 21:56:23,079 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 21:56:23,110 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.config.AbstractConfig.logAll:279)  - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+12 Dec 2020 21:56:23,214 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:109)  - Kafka version : 2.0.1
+12 Dec 2020 21:56:23,214 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:110)  - Kafka commitId : fa14705e51bd2ce5
+12 Dec 2020 21:56:23,216 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: SINK, name: ToKafka: Successfully registered new MBean.
+12 Dec 2020 21:56:23,217 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: SINK, name: ToKafka started
+12 Dec 2020 21:56:24,775 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 21:56:24,775 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 21:56:24,888 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:24,943 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:25,054 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:25,321 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:25,797 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:26,589 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:27,482 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:28,542 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:29,580 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:30,750 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:31,113 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@6e993692 counterGroup:{ name:null counters:{} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:56:31,114 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 21:56:31,114 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 21:56:31,267 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 21:56:31,272 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 21:56:31,273 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink ToKafka
+12 Dec 2020 21:56:31,276 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@6e993692 counterGroup:{ name:null counters:{} } }
+12 Dec 2020 21:56:31,277 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.kafka.KafkaSink.process:255)  - Failed to publish events
+org.apache.flume.EventDeliveryException: Could not send event
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:234)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.kafka.common.errors.InterruptException: java.lang.InterruptedException
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:884)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:803)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:227)
+	... 3 more
+Caused by: java.lang.InterruptedException
+	at java.base/java.lang.Object.wait(Native Method)
+	at org.apache.kafka.clients.Metadata.awaitUpdate(Metadata.java:193)
+	at org.apache.kafka.clients.producer.KafkaProducer.waitOnMetadata(KafkaProducer.java:938)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:823)
+	... 5 more
+12 Dec 2020 21:56:31,278 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.SinkRunner$PollingRunner.run:158)  - Unable to deliver event. Exception follows.
+org.apache.flume.EventDeliveryException: Failed to publish events
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:268)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.flume.EventDeliveryException: Could not send event
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:234)
+	... 3 more
+Caused by: org.apache.kafka.common.errors.InterruptException: java.lang.InterruptedException
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:884)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:803)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:227)
+	... 3 more
+Caused by: java.lang.InterruptedException
+	at java.base/java.lang.Object.wait(Native Method)
+	at org.apache.kafka.clients.Metadata.awaitUpdate(Metadata.java:193)
+	at org.apache.kafka.clients.producer.KafkaProducer.waitOnMetadata(KafkaProducer.java:938)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:823)
+	... 5 more
+12 Dec 2020 21:56:31,279 INFO  [agent-shutdown-hook] (org.apache.kafka.clients.producer.KafkaProducer.close:1090)  - [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: ToKafka stopped
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: ToKafka. sink.start.time == 1607806583217
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: ToKafka. sink.stop.time == 1607806591285
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.kafka.event.send.time == 0
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.rollback.count == 1
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.complete == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.empty == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.underflow == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.channel.read.fail == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.closed.count == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.creation.count == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.failed.count == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.attempt == 1
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.sucess == 0
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.write.fail == 1
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.sink.kafka.KafkaSink.stop:290)  - Kafka Sink ToKafka stopped. Metrics: SINK:ToKafka{sink.batch.underflow=0, sink.event.write.fail=1, sink.connection.failed.count=0, sink.channel.read.fail=0, sink.connection.closed.count=0, channel.kafka.event.send.time=0, sink.event.drain.attempt=1, sink.batch.complete=0, sink.event.drain.sucess=0, sink.connection.creation.count=0, channel.rollback.count=1, sink.batch.empty=0}
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607806583070
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607806591287
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 76
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 76
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 76
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 1
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 0
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 21:56:31,289 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
