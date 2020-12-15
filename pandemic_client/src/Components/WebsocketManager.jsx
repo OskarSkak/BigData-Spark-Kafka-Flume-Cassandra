@@ -5,7 +5,7 @@ class WebsocketManager extends React.Component {
 
     componentDidMount() {
         const connection = new HubConnectionBuilder()
-            .withUrl("http://localhost:5002/api/hub")
+            .withUrl("https://localhost:5001/api/hub")
             .build();
 
         connection
@@ -21,8 +21,23 @@ class WebsocketManager extends React.Component {
             console.log("Websocket closed")
         })
 
-        connection.on("twitterraw", (response, a) => {
-            console.log(response);
+        connection.on("corona", (response, a) => {
+            try { 
+                let res = JSON.parse(response.value);
+                //if(this.props.subscribeCorona)this.props.subscribeCorona(res);
+            } catch(err) {
+                console.log(err)
+            }
+        })
+
+        connection.on("newscorrelated", (response, a) => {
+            try {
+                let res = JSON.parse(response.value);
+                if(this.props.subscribeNews)this.props.subscribeNews(res);
+                if(this.props.subscribeCorona)this.props.subscribeCorona(res);
+            } catch(err) {
+                console.log(err)
+            }
         })
     }
 

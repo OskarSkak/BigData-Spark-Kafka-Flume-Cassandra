@@ -6,3 +6,7 @@ kafka-producer-console-test/bin/Debug
 .DS_Store
 venv
 .idea
+spark-streaming-java/my-app/target/my-app-1.0-SNAPSHOT.jar
+/spark-streaming-java/spark.structured.streaming.aggregator/target/
+/spark-streaming-java/correlation.service/target/
+Flume/logs/*
