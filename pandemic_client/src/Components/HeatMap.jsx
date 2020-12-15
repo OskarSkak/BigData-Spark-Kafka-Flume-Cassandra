@@ -168,6 +168,7 @@ class HeatMap extends React.Component {
   }
 
   handleCoronaEvent = (event) => {
+    console.log("handle corona")
     if(this.state.isCronaStreamToggled) {
       console.log(event);
       let center = this.getCenter(event.place.bounding_box.coordinates);
@@ -185,7 +186,7 @@ class HeatMap extends React.Component {
 
   handleNewsCorrelated = (event) => {
     if(this.state.isNewsCorralatedToggled) {
-      
+      console.log(event);
       /*let center = this.getCenter(event.place.bounding_box.coordinates);
       let feature = {type: "Feature", properties: { city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
       this.newsCorrelatedData.features.push(feature);
@@ -193,7 +194,7 @@ class HeatMap extends React.Component {
     }
   }
 
-  toggleNewsCorrlated = () => {
+  /*toggleNewsCorrlated = () => {
     if(this.state.isNewsCorralatedToggled) {
       // Remove data
       this.removeNewsCorrelatedHeatmap();
@@ -203,8 +204,9 @@ class HeatMap extends React.Component {
     }
     this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
   }
-
+*/
   toggleCoronaStream = () => {
+    console.log("toggle corona")
     if(this.state.isCronaStreamToggled) {
       // Remove live data from both positive and negative tweets
 
