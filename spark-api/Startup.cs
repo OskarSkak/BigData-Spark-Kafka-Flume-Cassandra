@@ -33,7 +33,7 @@ namespace spark_api
             services.AddControllers();
             
             services.AddHostedService<WebsocketService>();
-            
+            services.AddSingleton<ICassandraService , CassandraService>();
             services.AddSignalR();
             
         }

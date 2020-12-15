@@ -1,0 +1,6 @@
+magic:
+  image: digitsy/kafka-magic
+  ports:
+    - "8080:80"
+  environment:
+    KMAGIC_ALLOW_TOPIC_DELETE: "true"

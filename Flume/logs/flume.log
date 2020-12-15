@@ -1,0 +1,1211 @@
+12 Dec 2020 14:55:53,576 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 14:55:53,582 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 14:55:53,590 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,591 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:55:53,591 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,591 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:55:53,592 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,592 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,592 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:55:53,592 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,592 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:55:53,592 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 14:55:53,592 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: HDFS , ToKafka Agent: TwitterAgent
+12 Dec 2020 14:55:53,593 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,593 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,593 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,594 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,594 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,594 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:55:53,594 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,594 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 14:55:53,595 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,595 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 14:55:53,595 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,595 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,595 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,595 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,596 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:55:53,596 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:55:53,596 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 14:55:53,609 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 14:55:53,610 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 14:55:53,611 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 14:55:53,619 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 14:55:53,624 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 14:55:53,626 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 14:55:53,686 INFO  [conf-file-poller-0] (org.apache.flume.sink.DefaultSinkFactory.create:42)  - Creating instance of sink: HDFS, type: hdfs
+12 Dec 2020 14:55:53,695 INFO  [conf-file-poller-0] (org.apache.flume.sink.DefaultSinkFactory.create:42)  - Creating instance of sink: ToKafka, type: org.apache.flume.sink.kafka.KafkaSink
+12 Dec 2020 14:55:53,704 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:367)  - topic is deprecated. Please use the parameter kafka.topic
+12 Dec 2020 14:55:53,704 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:378)  - brokerList is deprecated. Please use the parameter kafka.bootstrap.servers
+12 Dec 2020 14:55:53,704 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:388)  - batchSize is deprecated. Please use the parameter flumeBatchSize
+12 Dec 2020 14:55:53,705 INFO  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.configure:318)  - Using the static topic twitterraw. This may be overridden by event headers
+12 Dec 2020 14:55:53,710 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter, HDFS, ToKafka]
+12 Dec 2020 14:55:53,712 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{HDFS=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@139b291f counterGroup:{ name:null counters:{} } }, ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 14:55:53,712 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 14:55:53,843 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 14:55:53,843 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 14:55:53,843 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:196)  - Starting Sink HDFS
+12 Dec 2020 14:55:53,844 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:196)  - Starting Sink ToKafka
+12 Dec 2020 14:55:53,844 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 14:55:53,845 INFO  [lifecycleSupervisor-1-3] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: SINK, name: HDFS: Successfully registered new MBean.
+12 Dec 2020 14:55:53,846 INFO  [lifecycleSupervisor-1-3] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: SINK, name: HDFS started
+12 Dec 2020 14:55:53,849 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 14:55:53,877 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.config.AbstractConfig.logAll:279)  - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+12 Dec 2020 14:55:53,973 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:109)  - Kafka version : 2.0.1
+12 Dec 2020 14:55:53,973 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:110)  - Kafka commitId : fa14705e51bd2ce5
+12 Dec 2020 14:55:53,975 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: SINK, name: ToKafka: Successfully registered new MBean.
+12 Dec 2020 14:55:53,975 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: SINK, name: ToKafka started
+12 Dec 2020 14:55:55,740 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 14:55:55,741 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 14:55:55,822 INFO  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.HDFSDataStream.configure:57)  - Serializer = TEXT, UseRawLocalFileSystem = false
+12 Dec 2020 14:55:55,989 INFO  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.BucketWriter.open:246)  - Creating hdfs://localhost:9000/user/hadoop/twitterraw/FlumeData.1607781355823.tmp
+12 Dec 2020 14:55:55,999 INFO  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.Metadata.update:285)  - Cluster ID: D-Q07R6tRuKQsLc9ECkk-Q
+12 Dec 2020 14:55:56,122 WARN  [hdfs-HDFS-call-runner-0] (org.apache.hadoop.util.NativeCodeLoader.<clinit>:60)  - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+12 Dec 2020 14:55:57,501 WARN  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.HDFSEventSink.process:454)  - HDFS IO error
+org.apache.hadoop.security.AccessControlException: Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:121)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:88)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:286)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1263)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1242)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1224)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1162)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:549)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:546)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:560)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:487)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1164)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1144)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1033)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1021)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.doOpen(HDFSDataStream.java:81)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.open(HDFSDataStream.java:108)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:257)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:247)
+	at org.apache.flume.sink.hdfs.BucketWriter$8$1.run(BucketWriter.java:727)
+	at org.apache.flume.auth.SimpleAuthenticator.execute(SimpleAuthenticator.java:50)
+	at org.apache.flume.sink.hdfs.BucketWriter$8.call(BucketWriter.java:724)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1562)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1508)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1405)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:234)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:119)
+	at com.sun.proxy.$Proxy14.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:382)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
+	at com.sun.proxy.$Proxy15.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:280)
+	... 24 more
+12 Dec 2020 14:55:58,930 INFO  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.BucketWriter.open:246)  - Creating hdfs://localhost:9000/user/hadoop/twitterraw/FlumeData.1607781355824.tmp
+12 Dec 2020 14:55:58,965 WARN  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.HDFSEventSink.process:454)  - HDFS IO error
+org.apache.hadoop.security.AccessControlException: Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:121)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:88)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:286)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1263)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1242)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1224)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1162)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:549)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:546)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:560)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:487)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1164)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1144)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1033)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1021)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.doOpen(HDFSDataStream.java:81)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.open(HDFSDataStream.java:108)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:257)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:247)
+	at org.apache.flume.sink.hdfs.BucketWriter$8$1.run(BucketWriter.java:727)
+	at org.apache.flume.auth.SimpleAuthenticator.execute(SimpleAuthenticator.java:50)
+	at org.apache.flume.sink.hdfs.BucketWriter$8.call(BucketWriter.java:724)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1562)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1508)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1405)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:234)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:119)
+	at com.sun.proxy.$Proxy14.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:382)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
+	at com.sun.proxy.$Proxy15.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:280)
+	... 24 more
+12 Dec 2020 14:55:59,756 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{HDFS=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@139b291f counterGroup:{ name:null counters:{runner.backoffs.consecutive=2, runner.backoffs=2} } }, ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 14:55:59,758 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 14:55:59,758 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 14:55:59,773 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 14:55:59,773 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 14:55:59,786 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink HDFS
+12 Dec 2020 14:55:59,787 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@139b291f counterGroup:{ name:null counters:{runner.backoffs.consecutive=2, runner.backoffs=2} } }
+12 Dec 2020 14:55:59,788 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.HDFSEventSink.stop:494)  - Closing hdfs://localhost:9000/user/hadoop/twitterraw/FlumeData
+12 Dec 2020 14:55:59,789 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.BucketWriter.doClose:438)  - Closing hdfs://localhost:9000/user/hadoop/twitterraw/FlumeData.1607781355824.tmp
+12 Dec 2020 14:55:59,789 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.BucketWriter.doClose:443)  - HDFSWriter is already closed: hdfs://localhost:9000/user/hadoop/twitterraw/FlumeData.1607781355824.tmp
+12 Dec 2020 14:55:59,812 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: HDFS stopped
+12 Dec 2020 14:55:59,812 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: HDFS. sink.start.time == 1607781353846
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: HDFS. sink.stop.time == 1607781359812
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.complete == 0
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.empty == 0
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.underflow == 0
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.channel.read.fail == 0
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.closed.count == 0
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.creation.count == 0
+12 Dec 2020 14:55:59,813 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.failed.count == 4
+12 Dec 2020 14:55:59,814 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.drain.attempt == 0
+12 Dec 2020 14:55:59,814 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.drain.sucess == 0
+12 Dec 2020 14:55:59,814 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.write.fail == 2
+12 Dec 2020 14:55:59,814 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink ToKafka
+12 Dec 2020 14:55:59,814 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }
+12 Dec 2020 14:55:59,815 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.kafka.KafkaSink.process:255)  - Failed to publish events
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1047)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:232)
+	at org.apache.kafka.clients.producer.internals.ProduceRequestResult.await(ProduceRequestResult.java:76)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:61)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:29)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:244)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+12 Dec 2020 14:55:59,815 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.SinkRunner$PollingRunner.run:158)  - Unable to deliver event. Exception follows.
+org.apache.flume.EventDeliveryException: Failed to publish events
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:268)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1047)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:232)
+	at org.apache.kafka.clients.producer.internals.ProduceRequestResult.await(ProduceRequestResult.java:76)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:61)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:29)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:244)
+	... 3 more
+12 Dec 2020 14:56:04,820 INFO  [agent-shutdown-hook] (org.apache.kafka.clients.producer.KafkaProducer.close:1090)  - [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+12 Dec 2020 14:56:04,832 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: ToKafka stopped
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: ToKafka. sink.start.time == 1607781353975
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: ToKafka. sink.stop.time == 1607781364832
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.kafka.event.send.time == 5707
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.rollback.count == 1
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.complete == 0
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.empty == 0
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.underflow == 1
+12 Dec 2020 14:56:04,833 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.channel.read.fail == 0
+12 Dec 2020 14:56:04,834 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.closed.count == 0
+12 Dec 2020 14:56:04,834 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.creation.count == 0
+12 Dec 2020 14:56:04,834 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.failed.count == 0
+12 Dec 2020 14:56:04,834 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.attempt == 41
+12 Dec 2020 14:56:04,834 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.sucess == 40
+12 Dec 2020 14:56:04,834 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.write.fail == 1
+12 Dec 2020 14:56:04,834 INFO  [agent-shutdown-hook] (org.apache.flume.sink.kafka.KafkaSink.stop:290)  - Kafka Sink ToKafka stopped. Metrics: SINK:ToKafka{sink.batch.underflow=1, sink.event.write.fail=1, sink.connection.failed.count=0, sink.channel.read.fail=0, sink.connection.closed.count=0, channel.kafka.event.send.time=5707, sink.event.drain.attempt=41, sink.batch.complete=0, sink.event.drain.sucess=40, sink.connection.creation.count=0, channel.rollback.count=1, sink.batch.empty=0}
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 14:56:04,835 INFO  [lifecycleSupervisor-1-2] (org.apache.flume.lifecycle.LifecycleSupervisor$MonitorRunnable.run:228)  - Component has already been stopped SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{runner.deliveryErrors=1, runner.backoffs.consecutive=0} } }
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607781353843
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607781364835
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 1
+12 Dec 2020 14:56:04,835 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 41
+12 Dec 2020 14:56:04,836 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 41
+12 Dec 2020 14:56:04,836 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 44
+12 Dec 2020 14:56:04,836 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 40
+12 Dec 2020 14:56:04,836 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 14:56:04,837 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
+12 Dec 2020 14:56:29,257 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 14:56:29,264 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 14:56:29,274 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,275 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:56:29,275 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,275 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:56:29,275 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,275 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,276 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:56:29,276 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,276 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:56:29,276 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 14:56:29,276 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: HDFS , ToKafka Agent: TwitterAgent
+12 Dec 2020 14:56:29,276 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,277 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,277 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,278 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,278 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,278 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 14:56:29,278 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 14:56:29,279 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:HDFS
+12 Dec 2020 14:56:29,280 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 14:56:29,294 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 14:56:29,295 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 14:56:29,295 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 14:56:29,303 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 14:56:29,315 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 14:56:29,324 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 14:56:29,455 INFO  [conf-file-poller-0] (org.apache.flume.sink.DefaultSinkFactory.create:42)  - Creating instance of sink: HDFS, type: hdfs
+12 Dec 2020 14:56:29,477 INFO  [conf-file-poller-0] (org.apache.flume.sink.DefaultSinkFactory.create:42)  - Creating instance of sink: ToKafka, type: org.apache.flume.sink.kafka.KafkaSink
+12 Dec 2020 14:56:29,486 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:367)  - topic is deprecated. Please use the parameter kafka.topic
+12 Dec 2020 14:56:29,487 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:378)  - brokerList is deprecated. Please use the parameter kafka.bootstrap.servers
+12 Dec 2020 14:56:29,487 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:388)  - batchSize is deprecated. Please use the parameter flumeBatchSize
+12 Dec 2020 14:56:29,487 INFO  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.configure:318)  - Using the static topic twitterraw. This may be overridden by event headers
+12 Dec 2020 14:56:29,498 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter, HDFS, ToKafka]
+12 Dec 2020 14:56:29,501 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{HDFS=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@139b291f counterGroup:{ name:null counters:{} } }, ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 14:56:29,502 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 14:56:29,656 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 14:56:29,657 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 14:56:29,657 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:196)  - Starting Sink HDFS
+12 Dec 2020 14:56:29,658 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:196)  - Starting Sink ToKafka
+12 Dec 2020 14:56:29,659 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 14:56:29,660 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: SINK, name: HDFS: Successfully registered new MBean.
+12 Dec 2020 14:56:29,660 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: SINK, name: HDFS started
+12 Dec 2020 14:56:29,670 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 14:56:29,782 INFO  [lifecycleSupervisor-1-3] (org.apache.kafka.common.config.AbstractConfig.logAll:279)  - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+12 Dec 2020 14:56:29,911 INFO  [lifecycleSupervisor-1-3] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:109)  - Kafka version : 2.0.1
+12 Dec 2020 14:56:29,911 INFO  [lifecycleSupervisor-1-3] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:110)  - Kafka commitId : fa14705e51bd2ce5
+12 Dec 2020 14:56:29,912 INFO  [lifecycleSupervisor-1-3] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: SINK, name: ToKafka: Successfully registered new MBean.
+12 Dec 2020 14:56:29,913 INFO  [lifecycleSupervisor-1-3] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: SINK, name: ToKafka started
+12 Dec 2020 14:56:31,486 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 14:56:31,487 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 14:56:31,615 INFO  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.HDFSDataStream.configure:57)  - Serializer = TEXT, UseRawLocalFileSystem = false
+12 Dec 2020 14:56:31,758 INFO  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.Metadata.update:285)  - Cluster ID: D-Q07R6tRuKQsLc9ECkk-Q
+12 Dec 2020 14:56:31,844 INFO  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.BucketWriter.open:246)  - Creating hdfs://localhost:9000/user/hadoop/casperhansen/twitter/FlumeData.1607781391616.tmp
+12 Dec 2020 14:56:32,084 WARN  [hdfs-HDFS-call-runner-0] (org.apache.hadoop.util.NativeCodeLoader.<clinit>:60)  - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+12 Dec 2020 14:56:34,048 WARN  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.HDFSEventSink.process:454)  - HDFS IO error
+org.apache.hadoop.security.AccessControlException: Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:121)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:88)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:286)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1263)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1242)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1224)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1162)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:549)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:546)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:560)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:487)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1164)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1144)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1033)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1021)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.doOpen(HDFSDataStream.java:81)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.open(HDFSDataStream.java:108)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:257)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:247)
+	at org.apache.flume.sink.hdfs.BucketWriter$8$1.run(BucketWriter.java:727)
+	at org.apache.flume.auth.SimpleAuthenticator.execute(SimpleAuthenticator.java:50)
+	at org.apache.flume.sink.hdfs.BucketWriter$8.call(BucketWriter.java:724)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1562)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1508)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1405)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:234)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:119)
+	at com.sun.proxy.$Proxy14.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:382)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
+	at com.sun.proxy.$Proxy15.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:280)
+	... 24 more
+12 Dec 2020 14:56:35,366 INFO  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.BucketWriter.open:246)  - Creating hdfs://localhost:9000/user/hadoop/casperhansen/twitter/FlumeData.1607781391617.tmp
+12 Dec 2020 14:56:35,408 WARN  [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.hdfs.HDFSEventSink.process:454)  - HDFS IO error
+org.apache.hadoop.security.AccessControlException: Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:121)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:88)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:286)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1263)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1242)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1224)
+	at org.apache.hadoop.hdfs.DFSClient.create(DFSClient.java:1162)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:549)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$8.doCall(DistributedFileSystem.java:546)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:560)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.create(DistributedFileSystem.java:487)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1164)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1144)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1033)
+	at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1021)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.doOpen(HDFSDataStream.java:81)
+	at org.apache.flume.sink.hdfs.HDFSDataStream.open(HDFSDataStream.java:108)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:257)
+	at org.apache.flume.sink.hdfs.BucketWriter$1.call(BucketWriter.java:247)
+	at org.apache.flume.sink.hdfs.BucketWriter$8$1.run(BucketWriter.java:727)
+	at org.apache.flume.auth.SimpleAuthenticator.execute(SimpleAuthenticator.java:50)
+	at org.apache.flume.sink.hdfs.BucketWriter$8.call(BucketWriter.java:724)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied: user=casperhansen, access=WRITE, inode="/user/hadoop":hadoop:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1855)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1839)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1798)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.resolvePathForStartFile(FSDirWriteFileOp.java:323)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2431)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2375)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:791)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:469)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:527)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1000)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:928)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2916)
+
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1562)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1508)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1405)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:234)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:119)
+	at com.sun.proxy.$Proxy14.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:382)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
+	at com.sun.proxy.$Proxy15.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:280)
+	... 24 more
+12 Dec 2020 14:56:37,128 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{HDFS=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@139b291f counterGroup:{ name:null counters:{runner.backoffs.consecutive=2, runner.backoffs=2} } }, ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 14:56:37,128 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 14:56:37,129 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 14:56:37,323 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 14:56:37,323 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 14:56:37,330 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink HDFS
+12 Dec 2020 14:56:37,330 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@139b291f counterGroup:{ name:null counters:{runner.backoffs.consecutive=2, runner.backoffs=2} } }
+12 Dec 2020 14:56:37,330 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.HDFSEventSink.stop:494)  - Closing hdfs://localhost:9000/user/hadoop/casperhansen/twitter/FlumeData
+12 Dec 2020 14:56:37,331 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.BucketWriter.doClose:438)  - Closing hdfs://localhost:9000/user/hadoop/casperhansen/twitter/FlumeData.1607781391617.tmp
+12 Dec 2020 14:56:37,331 INFO  [agent-shutdown-hook] (org.apache.flume.sink.hdfs.BucketWriter.doClose:443)  - HDFSWriter is already closed: hdfs://localhost:9000/user/hadoop/casperhansen/twitter/FlumeData.1607781391617.tmp
+12 Dec 2020 14:56:37,355 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: HDFS stopped
+12 Dec 2020 14:56:37,355 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: HDFS. sink.start.time == 1607781389660
+12 Dec 2020 14:56:37,355 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: HDFS. sink.stop.time == 1607781397355
+12 Dec 2020 14:56:37,355 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.complete == 0
+12 Dec 2020 14:56:37,355 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.empty == 0
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.batch.underflow == 0
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.channel.read.fail == 0
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.closed.count == 0
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.creation.count == 0
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.connection.failed.count == 4
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.drain.attempt == 0
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.drain.sucess == 0
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: HDFS. sink.event.write.fail == 2
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink ToKafka
+12 Dec 2020 14:56:37,356 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{runner.backoffs.consecutive=0} } }
+12 Dec 2020 14:56:37,357 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.kafka.KafkaSink.process:255)  - Failed to publish events
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1047)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:232)
+	at org.apache.kafka.clients.producer.internals.ProduceRequestResult.await(ProduceRequestResult.java:76)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:61)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:29)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:244)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+12 Dec 2020 14:56:37,357 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.SinkRunner$PollingRunner.run:158)  - Unable to deliver event. Exception follows.
+org.apache.flume.EventDeliveryException: Failed to publish events
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:268)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1047)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:232)
+	at org.apache.kafka.clients.producer.internals.ProduceRequestResult.await(ProduceRequestResult.java:76)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:61)
+	at org.apache.kafka.clients.producer.internals.FutureRecordMetadata.get(FutureRecordMetadata.java:29)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:244)
+	... 3 more
+12 Dec 2020 14:56:42,373 INFO  [agent-shutdown-hook] (org.apache.kafka.clients.producer.KafkaProducer.close:1090)  - [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+12 Dec 2020 14:56:42,408 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: ToKafka stopped
+12 Dec 2020 14:56:42,413 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: ToKafka. sink.start.time == 1607781389913
+12 Dec 2020 14:56:42,413 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: ToKafka. sink.stop.time == 1607781402408
+12 Dec 2020 14:56:42,413 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.kafka.event.send.time == 6503
+12 Dec 2020 14:56:42,413 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.rollback.count == 1
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.complete == 0
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.empty == 0
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.underflow == 1
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.channel.read.fail == 0
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.closed.count == 0
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.creation.count == 0
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.failed.count == 0
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.attempt == 50
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.sucess == 40
+12 Dec 2020 14:56:42,414 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.write.fail == 1
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.sink.kafka.KafkaSink.stop:290)  - Kafka Sink ToKafka stopped. Metrics: SINK:ToKafka{sink.batch.underflow=1, sink.event.write.fail=1, sink.connection.failed.count=0, sink.channel.read.fail=0, sink.connection.closed.count=0, channel.kafka.event.send.time=6503, sink.event.drain.attempt=50, sink.batch.complete=0, sink.event.drain.sucess=40, sink.connection.creation.count=0, channel.rollback.count=1, sink.batch.empty=0}
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607781389657
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607781402415
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 14:56:42,415 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 10
+12 Dec 2020 14:56:42,416 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 50
+12 Dec 2020 14:56:42,416 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 50
+12 Dec 2020 14:56:42,416 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 53
+12 Dec 2020 14:56:42,416 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 40
+12 Dec 2020 14:56:42,416 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 14:56:42,415 INFO  [lifecycleSupervisor-1-5] (org.apache.flume.lifecycle.LifecycleSupervisor$MonitorRunnable.run:228)  - Component has already been stopped SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@21ba152b counterGroup:{ name:null counters:{runner.deliveryErrors=1, runner.backoffs.consecutive=0} } }
+12 Dec 2020 14:56:42,423 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
+12 Dec 2020 21:51:40,366 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 21:51:40,374 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 21:51:40,387 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,388 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,389 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:51:40,390 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: ToKafka # , HDFS Agent: TwitterAgent
+12 Dec 2020 21:51:40,390 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:51:40,391 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 21:51:40,407 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink#
+12 Dec 2020 21:51:40,409 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:884)  - Could not configure sink  ToKafka due to: No channel configured for sink: ToKafka
+org.apache.flume.conf.ConfigurationException: No channel configured for sink: ToKafka
+	at org.apache.flume.conf.sink.SinkConfiguration.configure(SinkConfiguration.java:52)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks(FlumeConfiguration.java:867)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.isValid(FlumeConfiguration.java:383)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.access$000(FlumeConfiguration.java:228)
+	at org.apache.flume.conf.FlumeConfiguration.validateConfiguration(FlumeConfiguration.java:153)
+	at org.apache.flume.conf.FlumeConfiguration.<init>(FlumeConfiguration.java:133)
+	at org.apache.flume.node.PropertiesFileConfigurationProvider.getFlumeConfiguration(PropertiesFileConfigurationProvider.java:194)
+	at org.apache.flume.node.AbstractConfigurationProvider.getConfiguration(AbstractConfigurationProvider.java:97)
+	at org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run(PollingPropertiesFileConfigurationProvider.java:145)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+12 Dec 2020 21:51:40,411 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sinkHDFS
+12 Dec 2020 21:51:40,412 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 21:51:40,412 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 21:51:40,412 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 21:51:40,419 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 21:51:40,425 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 21:51:40,425 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 21:51:40,501 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter]
+12 Dec 2020 21:51:40,508 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:51:40,508 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 21:51:40,726 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 21:51:40,726 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 21:51:40,726 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 21:51:40,729 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 21:51:42,454 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 21:51:42,454 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 21:51:51,088 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:51:51,089 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 21:51:51,089 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 21:51:51,359 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 21:51:51,360 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 21:51:51,366 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607806300726
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607806311367
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 82
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 82
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 82
+12 Dec 2020 21:51:51,367 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 0
+12 Dec 2020 21:51:51,368 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 0
+12 Dec 2020 21:51:51,368 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 21:51:51,369 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
+12 Dec 2020 21:55:04,785 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 21:55:04,794 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 21:55:04,803 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,804 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,804 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,805 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: ToKafka # , HDFS Agent: TwitterAgent
+12 Dec 2020 21:55:04,806 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,808 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,808 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,809 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:55:04,809 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 21:55:04,835 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink#
+12 Dec 2020 21:55:04,837 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:884)  - Could not configure sink  ToKafka due to: No channel configured for sink: ToKafka
+org.apache.flume.conf.ConfigurationException: No channel configured for sink: ToKafka
+	at org.apache.flume.conf.sink.SinkConfiguration.configure(SinkConfiguration.java:52)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks(FlumeConfiguration.java:867)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.isValid(FlumeConfiguration.java:383)
+	at org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.access$000(FlumeConfiguration.java:228)
+	at org.apache.flume.conf.FlumeConfiguration.validateConfiguration(FlumeConfiguration.java:153)
+	at org.apache.flume.conf.FlumeConfiguration.<init>(FlumeConfiguration.java:133)
+	at org.apache.flume.node.PropertiesFileConfigurationProvider.getFlumeConfiguration(PropertiesFileConfigurationProvider.java:194)
+	at org.apache.flume.node.AbstractConfigurationProvider.getConfiguration(AbstractConfigurationProvider.java:97)
+	at org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run(PollingPropertiesFileConfigurationProvider.java:145)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+12 Dec 2020 21:55:04,840 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sinkHDFS
+12 Dec 2020 21:55:04,841 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 21:55:04,841 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 21:55:04,841 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 21:55:04,852 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 21:55:04,867 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 21:55:04,868 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 21:55:04,963 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter]
+12 Dec 2020 21:55:04,970 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:55:04,970 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 21:55:05,200 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 21:55:05,201 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 21:55:05,202 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 21:55:05,206 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 21:55:07,051 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 21:55:07,051 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 21:55:13,533 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:55:13,534 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 21:55:13,534 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 21:55:13,561 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 21:55:13,561 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 21:55:13,567 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607806505201
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607806513568
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 78
+12 Dec 2020 21:55:13,568 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 78
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 78
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 0
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 0
+12 Dec 2020 21:55:13,569 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 21:55:13,570 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
+12 Dec 2020 21:56:22,680 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.start:62)  - Configuration provider starting
+12 Dec 2020 21:56:22,687 INFO  [conf-file-poller-0] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable.run:138)  - Reloading configuration file:./conf/flume-twitter-to-file.conf
+12 Dec 2020 21:56:22,696 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,697 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,697 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,698 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:56:22,698 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,698 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,699 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:ToKafka
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:twitter
+12 Dec 2020 21:56:22,700 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addProperty:1117)  - Added sinks: ToKafka # , HDFS Agent: TwitterAgent
+12 Dec 2020 21:56:22,702 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.addComponentConfig:1203)  - Processing:Twitter
+12 Dec 2020 21:56:22,703 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateConfigFilterSet:623)  - Agent configuration for 'TwitterAgent' has no configfilters.
+12 Dec 2020 21:56:22,722 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink#
+12 Dec 2020 21:56:22,724 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sinkHDFS
+12 Dec 2020 21:56:22,724 WARN  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration$AgentConfiguration.validateSinks:841)  - no context for sink,
+12 Dec 2020 21:56:22,724 INFO  [conf-file-poller-0] (org.apache.flume.conf.FlumeConfiguration.validateConfiguration:163)  - Post-validation flume configuration contains configuration for agents: [TwitterAgent]
+12 Dec 2020 21:56:22,724 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:151)  - Creating channels
+12 Dec 2020 21:56:22,731 INFO  [conf-file-poller-0] (org.apache.flume.channel.DefaultChannelFactory.create:42)  - Creating instance of channel twitter type memory
+12 Dec 2020 21:56:22,742 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.loadChannels:205)  - Created channel twitter
+12 Dec 2020 21:56:22,743 INFO  [conf-file-poller-0] (org.apache.flume.source.DefaultSourceFactory.create:41)  - Creating instance of source Twitter, type com.casper.TwitterSource
+12 Dec 2020 21:56:22,820 INFO  [conf-file-poller-0] (org.apache.flume.sink.DefaultSinkFactory.create:42)  - Creating instance of sink: ToKafka, type: org.apache.flume.sink.kafka.KafkaSink
+12 Dec 2020 21:56:22,826 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:367)  - topic is deprecated. Please use the parameter kafka.topic
+12 Dec 2020 21:56:22,826 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:378)  - brokerList is deprecated. Please use the parameter kafka.bootstrap.servers
+12 Dec 2020 21:56:22,826 WARN  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.translateOldProps:388)  - batchSize is deprecated. Please use the parameter flumeBatchSize
+12 Dec 2020 21:56:22,826 INFO  [conf-file-poller-0] (org.apache.flume.sink.kafka.KafkaSink.configure:318)  - Using the static topic twitterraw. This may be overridden by event headers
+12 Dec 2020 21:56:22,834 INFO  [conf-file-poller-0] (org.apache.flume.node.AbstractConfigurationProvider.getConfiguration:120)  - Channel twitter connected to [Twitter, ToKafka]
+12 Dec 2020 21:56:22,841 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:162)  - Starting new configuration:{ sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:IDLE} }} sinkRunners:{ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@6e993692 counterGroup:{ name:null counters:{} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:56:22,842 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:169)  - Starting Channel twitter
+12 Dec 2020 21:56:23,070 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: CHANNEL, name: twitter: Successfully registered new MBean.
+12 Dec 2020 21:56:23,070 INFO  [lifecycleSupervisor-1-0] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: CHANNEL, name: twitter started
+12 Dec 2020 21:56:23,071 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:196)  - Starting Sink ToKafka
+12 Dec 2020 21:56:23,071 INFO  [conf-file-poller-0] (org.apache.flume.node.Application.startAllComponents:207)  - Starting Source Twitter
+12 Dec 2020 21:56:23,079 INFO  [Twitter Stream consumer-1[initializing]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Establishing connection.
+12 Dec 2020 21:56:23,110 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.config.AbstractConfig.logAll:279)  - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+12 Dec 2020 21:56:23,214 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:109)  - Kafka version : 2.0.1
+12 Dec 2020 21:56:23,214 INFO  [lifecycleSupervisor-1-1] (org.apache.kafka.common.utils.AppInfoParser$AppInfo.<init>:110)  - Kafka commitId : fa14705e51bd2ce5
+12 Dec 2020 21:56:23,216 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.register:119)  - Monitored counter group for type: SINK, name: ToKafka: Successfully registered new MBean.
+12 Dec 2020 21:56:23,217 INFO  [lifecycleSupervisor-1-1] (org.apache.flume.instrumentation.MonitoredCounterGroup.start:95)  - Component type: SINK, name: ToKafka started
+12 Dec 2020 21:56:24,775 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Connection established.
+12 Dec 2020 21:56:24,775 INFO  [Twitter Stream consumer-1[Establishing connection]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Receiving status stream.
+12 Dec 2020 21:56:24,888 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:24,943 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:25,054 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:25,321 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:25,797 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:26,589 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:27,482 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:28,542 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:29,580 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:30,750 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient.processDisconnection:671)  - [Producer clientId=producer-1] Connection to node -1 could not be established. Broker may not be available.
+12 Dec 2020 21:56:31,113 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:125)  - Shutting down configuration: { sourceRunners:{Twitter=EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }} sinkRunners:{ToKafka=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@6e993692 counterGroup:{ name:null counters:{} } }} channels:{twitter=org.apache.flume.channel.MemoryChannel{name: twitter}} }
+12 Dec 2020 21:56:31,114 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:129)  - Stopping Source Twitter
+12 Dec 2020 21:56:31,114 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: EventDrivenSourceRunner: { source:com.casper.TwitterSource{name:Twitter,state:START} }
+12 Dec 2020 21:56:31,267 INFO  [Twitter Stream consumer-1[Disposing thread]] (twitter4j.internal.logging.SLF4JLogger.info:83)  - Inflater has been closed
+12 Dec 2020 21:56:31,272 ERROR [Twitter Stream consumer-1[Disposing thread]] (com.casper.TwitterSource$1.onException:99)  - Error while listening to Twitter stream.
+java.lang.NullPointerException: Inflater has been closed
+	at java.base/java.util.zip.Inflater.ensureOpen(Inflater.java:714)
+	at java.base/java.util.zip.Inflater.inflate(Inflater.java:370)
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:152)
+	at java.base/java.util.zip.GZIPInputStream.read(GZIPInputStream.java:117)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at twitter4j.StatusStreamBase.handleNextElement(StatusStreamBase.java:85)
+	at twitter4j.StatusStreamImpl.next(StatusStreamImpl.java:57)
+	at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:478)
+12 Dec 2020 21:56:31,273 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:139)  - Stopping Sink ToKafka
+12 Dec 2020 21:56:31,276 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@6e993692 counterGroup:{ name:null counters:{} } }
+12 Dec 2020 21:56:31,277 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.sink.kafka.KafkaSink.process:255)  - Failed to publish events
+org.apache.flume.EventDeliveryException: Could not send event
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:234)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.kafka.common.errors.InterruptException: java.lang.InterruptedException
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:884)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:803)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:227)
+	... 3 more
+Caused by: java.lang.InterruptedException
+	at java.base/java.lang.Object.wait(Native Method)
+	at org.apache.kafka.clients.Metadata.awaitUpdate(Metadata.java:193)
+	at org.apache.kafka.clients.producer.KafkaProducer.waitOnMetadata(KafkaProducer.java:938)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:823)
+	... 5 more
+12 Dec 2020 21:56:31,278 ERROR [SinkRunner-PollingRunner-DefaultSinkProcessor] (org.apache.flume.SinkRunner$PollingRunner.run:158)  - Unable to deliver event. Exception follows.
+org.apache.flume.EventDeliveryException: Failed to publish events
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:268)
+	at org.apache.flume.sink.DefaultSinkProcessor.process(DefaultSinkProcessor.java:67)
+	at org.apache.flume.SinkRunner$PollingRunner.run(SinkRunner.java:145)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.apache.flume.EventDeliveryException: Could not send event
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:234)
+	... 3 more
+Caused by: org.apache.kafka.common.errors.InterruptException: java.lang.InterruptedException
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:884)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:803)
+	at org.apache.flume.sink.kafka.KafkaSink.process(KafkaSink.java:227)
+	... 3 more
+Caused by: java.lang.InterruptedException
+	at java.base/java.lang.Object.wait(Native Method)
+	at org.apache.kafka.clients.Metadata.awaitUpdate(Metadata.java:193)
+	at org.apache.kafka.clients.producer.KafkaProducer.waitOnMetadata(KafkaProducer.java:938)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:823)
+	... 5 more
+12 Dec 2020 21:56:31,279 INFO  [agent-shutdown-hook] (org.apache.kafka.clients.producer.KafkaProducer.close:1090)  - [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: SINK, name: ToKafka stopped
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: SINK, name: ToKafka. sink.start.time == 1607806583217
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: SINK, name: ToKafka. sink.stop.time == 1607806591285
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.kafka.event.send.time == 0
+12 Dec 2020 21:56:31,285 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. channel.rollback.count == 1
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.complete == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.empty == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.batch.underflow == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.channel.read.fail == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.closed.count == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.creation.count == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.connection.failed.count == 0
+12 Dec 2020 21:56:31,286 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.attempt == 1
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.drain.sucess == 0
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: SINK, name: ToKafka. sink.event.write.fail == 1
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.sink.kafka.KafkaSink.stop:290)  - Kafka Sink ToKafka stopped. Metrics: SINK:ToKafka{sink.batch.underflow=0, sink.event.write.fail=1, sink.connection.failed.count=0, sink.channel.read.fail=0, sink.connection.closed.count=0, channel.kafka.event.send.time=0, sink.event.drain.attempt=1, sink.batch.complete=0, sink.event.drain.sucess=0, sink.connection.creation.count=0, channel.rollback.count=1, sink.batch.empty=0}
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.node.Application.stopAllComponents:149)  - Stopping Channel twitter
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.unsupervise:169)  - Stopping component: org.apache.flume.channel.MemoryChannel{name: twitter}
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:149)  - Component type: CHANNEL, name: twitter stopped
+12 Dec 2020 21:56:31,287 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:155)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.start.time == 1607806583070
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:161)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.stop.time == 1607806591287
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.capacity == 10000
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.current.size == 76
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.attempt == 76
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.put.success == 76
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.attempt == 1
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.instrumentation.MonitoredCounterGroup.stop:177)  - Shutdown Metric for type: CHANNEL, name: twitter. channel.event.take.success == 0
+12 Dec 2020 21:56:31,288 INFO  [agent-shutdown-hook] (org.apache.flume.lifecycle.LifecycleSupervisor.stop:78)  - Stopping lifecycle supervisor 14
+12 Dec 2020 21:56:31,289 INFO  [agent-shutdown-hook] (org.apache.flume.node.PollingPropertiesFileConfigurationProvider.stop:84)  - Configuration provider stopping
