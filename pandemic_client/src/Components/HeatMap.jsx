@@ -280,25 +280,25 @@ class HeatMap extends React.Component {
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
-                  Corona stream
+                  Corona stream, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
               </label>
             </div>
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleHistoricCorona} checked={this.state.isHistoricCoronaToggled} />
-                  Corona Historic
+                  Corona Historic, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
               </label>
             </div>
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
-                  News-correlation stream
+                  News-correlation stream, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
               </label>
             </div>
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleHistoricNewsCorrelatedData} checked={this.state.isNewsCorrelatedHistoricToggled} />
-                  News-correlation historic
+                  News-correlation historic, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
               </label>
             </div>
             <div style={{padding:"0 20px", textAlign:"center"}}>
