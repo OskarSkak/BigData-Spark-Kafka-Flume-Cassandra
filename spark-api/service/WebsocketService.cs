@@ -27,7 +27,8 @@ namespace spark_api.service
         
         public  Task StartAsync(CancellationToken cancellationToken)
         {
-             InitKafkaConsumer();
+            SubscribeCoronaStream();
+            SubscribeNewsCorrelatedStream();
             //_cassandraService.CleanUp();
             return Task.CompletedTask;
             
@@ -67,7 +68,8 @@ namespace spark_api.service
                         { 
                             var cr = c.Consume(cts.Token);
                             await _hub.Clients.All.SendAsync("newscorrelated", cr.Message);
-                            Console.WriteLine(cr.Message);
+                            twitteranalyzed tweet = parseToObject(cr.Message.Value);
+                            //_cassandraService.AddNewscorrelated(tweet);
                         }
                         catch (ConsumeException e)
                         {
@@ -113,29 +115,23 @@ namespace spark_api.service
             using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
             {
                // c.Assign(new TopicPartitionOffset("twitterraw", 0, new Offset(30155)));
-                c.Subscribe("twitteranalyzed");
-
-                
+                c.Subscribe("corona");
                 CancellationTokenSource cts = new CancellationTokenSource();
                 Console.CancelKeyPress += (_, e) => {
                     e.Cancel = true; // prevent the process from terminating.
                     cts.Cancel();
                 };
-                
-
                 try
-                {
-                    while (true)
-                    {
-                        
+                { while (true) 
+                    { 
                         await Task.Delay(100);
                         try
                         { 
-                            var cr = c.Consume(cts.Token);
-                           // await _hub.Clients.All.SendAsync("twitterraw", cr.Message);
+                            var cr = c.Consume(cts.Token); 
+                            await _hub.Clients.All.SendAsync("corona", cr.Message);
                            twitteranalyzed tweet = parseToObject(cr.Message.Value);
-                            _cassandraService.Add(tweet);
-                          // Console.WriteLine();
+                            //_cassandraService.AddCorona(tweet);
+                       
                         }
                         catch (ArgumentOutOfRangeException e)
                         {
