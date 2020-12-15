@@ -34,7 +34,7 @@ public class SentimentAnalyzedTwitterDataToCovidConsumer {
     
     public void initiate() throws InterruptedException{
         Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put("bootstrap.servers", "node-master:9092");
+        kafkaParams.put("bootstrap.servers", "node-master:9092,node1:19092,node2:29092");
         kafkaParams.put("key.deserializer", StringDeserializer.class);
         kafkaParams.put("value.deserializer", StringDeserializer.class);
         kafkaParams.put("group.id", "sentimenttocovid");
