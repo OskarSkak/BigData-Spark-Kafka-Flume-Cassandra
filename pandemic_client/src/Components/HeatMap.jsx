@@ -20,6 +20,8 @@ class HeatMap extends React.Component {
   positiveNewsData = {type: "FeatureCollection", features: []};
   negativeNewsData = {type: "FeatureCollection", features: []};
 
+  hourSlider = 500;
+
   constructor(props) {
     super(props)
     this.state = {
@@ -36,7 +38,7 @@ class HeatMap extends React.Component {
       isCoronaLayerAdded: false,
       isNewsLayerAdded: false,
       isStatesToggled: false,
-      dateSlider:[50,1 ],
+      dateSlider:[1,this.hourSlider],
       covidData: null,
     };
   }
@@ -56,12 +58,6 @@ class HeatMap extends React.Component {
   onMapLoad = () => {
     this.setState({isStatesToggled: true})
     this.paintStates();
-
-    // Initialize the different heatmaps
-    // this.plotPositiveCoronaHeatmap();
-    // this.plotNegativeCoronaHeatmap();
-    // this.plotPositiveNewsHeatmap();
-    // this.plotNegativeNewsHeatmap();
   }
 
   plotPositiveNewsHeatmap = () => {
@@ -202,7 +198,7 @@ class HeatMap extends React.Component {
       this.addNewsLayer();
       // Start adding news correlated stream data
       // check if layer should be added
-      let result = await methods.fetchHistoricNewsStream(0,1);
+      let result = await methods.fetchHistoricNewsStream((this.state.dateSlider[0] - this.hourSlider) * -1, (this.state.dateSlider[1] - this.hourSlider) * -1);
       result.forEach(element => {
         let center = this.getCenter(element.coordinates);
         let feature = {type: "Feature", properties: { type: "historic", city: element.screen_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
@@ -240,7 +236,7 @@ class HeatMap extends React.Component {
       // Check if layer could be removed
     } else {
       // Fetch historic data
-      let result = await methods.fetchHistoricCoronaStream(0,1);
+      let result = await methods.fetchHistoricCoronaStream((this.state.dateSlider[0] - this.hourSlider) * -1,(this.state.dateSlider[1] - this.hourSlider) * -1);
       result.forEach(element => {
         let center = this.getCenter(element.coordinates);
         let feature = {type: "Feature", properties: { type: "historic", city: element.screen_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
@@ -303,7 +299,10 @@ class HeatMap extends React.Component {
             </div>
             <div style={{padding:"0 20px", textAlign:"center"}}>
             <Typography id="range-slider" gutterBottom>
-              Get data between {(this.state.dateSlider[1] - 50) * -1} and {(this.state.dateSlider[0] -50) * -1} days ago
+              To = {(this.state.dateSlider[1] - this.hourSlider) * -1} hours ago
+            </Typography>
+            <Typography id="range-slider" gutterBottom>
+              From = {(this.state.dateSlider[0] - this.hourSlider) * -1} hours ago
             </Typography>
             <Slider 
               value={this.state.dateSlider}
@@ -311,7 +310,7 @@ class HeatMap extends React.Component {
               //valueLabelDisplay="auto"
               //aria-labelledby="range-slider"
               //getAriaValueText={this.handleText}
-              max={50}
+              max={this.hourSlider}
               min={1}
             />
             </div>

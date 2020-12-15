@@ -1,5 +1,6 @@
 import States from './us_state_capitals.json';
 import usStates from '../us-states.json';
+import axios from "axios";
 
 export default{
     fetchCovidData: async () => {
@@ -22,7 +23,10 @@ export default{
     },
 
     fetchHistoricCoronaStream: async (from, to) => {
-        return [
+
+        var result = await axios.get(`http://localhost:5001/api/historictweets?type=corona&from=${from}&to=${to}`)
+        console.log(result);
+        /*return [
             {
                 id: "123123123",
                 timestamp_ms: 19283019283,
@@ -43,11 +47,14 @@ export default{
                 positiveConfidence: 0.49,
                 text: "Ulrik er den bedste"
             }
-        ]
+        ]*/
     },
 
     fetchHistoricNewsStream: async (from, to) => {
-        return [
+
+        var result = await axios.get(`http://localhost:5001/api/historictweets?type=newscorrelated&from=${from}&to=${to}`)
+        console.log(result);
+        /*return [
             {
                 id: "123123123",
                 timestamp_ms: 19283019283,
@@ -68,6 +75,6 @@ export default{
                 positiveConfidence: 0.49,
                 text: "Ulrik er den bedste"
             }
-        ]
+        ]*/
     }
 }

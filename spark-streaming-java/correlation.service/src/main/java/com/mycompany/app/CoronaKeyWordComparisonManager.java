@@ -26,7 +26,7 @@ public class CoronaKeyWordComparisonManager {
     
     static{
         //Could be troublesome, we'll see
-        File f = new File("./src/main/java/com/mycompany/app/CORONA_KEY_WORDS.txt");
+        /*File f = new File("./src/main/java/com/mycompany/app/CORONA_KEY_WORDS.txt");
         
         try(BufferedReader in = new BufferedReader(
                                 new FileReader(f))){
@@ -38,7 +38,29 @@ public class CoronaKeyWordComparisonManager {
             in.close();
         } catch (IOException ex) {
             Logger.getLogger(CoronaKeyWordComparisonManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
+        
+        keywords.add("Acute respiratory stress syndrome");
+        keywords.add("ARDS");
+        keywords.add("Asymptomatic"); 
+        keywords.add("Case fatality rate"); 
+        keywords.add("Clinical trial"); 
+        keywords.add("Confirmed positive case"); 
+        keywords.add("Contactless spreading"); 
+        keywords.add("Containment area"); 
+        keywords.add("Epidemic"); 
+        keywords.add("Epidemic curve"); 
+        keywords.add("Epidemiology"); 
+        keywords.add("Essential business"); 
+        keywords.add("Flattening the curve"); 
+        keywords.add("Forehead thermometer"); 
+        keywords.add("Herd immunity"); 
+        keywords.add("Hydroxychloroquine"); 
+        keywords.add("Immune surveillance");
+        keywords.add("Immunosuppressed");
+        keywords.add("Incubation period");
+        keywords.add("Intensivist");
+        keywords.add("and");
     }
     
     public static boolean isCorrelatedWithCovidKeywords(String val){
