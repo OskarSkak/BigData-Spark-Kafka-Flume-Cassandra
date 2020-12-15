@@ -10,6 +10,7 @@ import paints from './paints';
 import {renderCovidLayers, renderStateLayers, renderNegativeCoronaHeatmap, renderPositiveCoronaHeatmap, renderNegativeNewsHeatmap, renderPositiveNewsHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
 import { timeout } from "d3";
+import { TextField } from "@material-ui/core";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
@@ -40,6 +41,7 @@ class HeatMap extends React.Component {
       isStatesToggled: false,
       dateSlider:[1,this.hourSlider],
       covidData: null,
+      querySize: 100000
     };
   }
 
@@ -176,12 +178,14 @@ class HeatMap extends React.Component {
   }
 
   removeUnusedLayers = () => {
-    if(!this.state.isNewsCorrelatedHistoricToggled && !this.state.isNewsCorralatedToggled && this.state.isNewsLayerAdded) {
+
+    if(!this.state.isHistoricNewsCorrelatedToggled && !this.state.isNewsCorralatedToggled && this.state.isNewsLayerAdded) {
       this.removeNegativeNewsHeatmap();
       this.removePositiveNewsHeatmap();
       this.setState({isNewsLayerAdded: false});
     }
 
+    
     if(!this.state.isCronaStreamToggled && !this.state.isHistoricCoronaToggled && this.state.isCoronaLayerAdded) {
       this.removeNegativeCoronaHeatmap();
       this.removePositiveCoronaHeatmap();
@@ -227,8 +231,9 @@ class HeatMap extends React.Component {
       this.addNewsLayer();
       // Start adding news correlated stream data
       // check if layer should be added
-      let result = await methods.fetchHistoricNewsStream((this.state.dateSlider[0] - this.hourSlider) * -1, (this.state.dateSlider[1] - this.hourSlider) * -1);
-      result.forEach(element => {
+      let result = await methods.fetchHistoricNewsStream((this.state.dateSlider[0] - this.hourSlider) * -1, (this.state.dateSlider[1] - this.hourSlider) * -1, this.state.querySize);
+      for(let i = 0; i < result.length; i++) {
+        let element = result[i];
         let feature = {type: "Feature", properties: { 
           type: "historic", 
           username: element.screen_name, 
@@ -243,8 +248,8 @@ class HeatMap extends React.Component {
         } else {
           this.negativeNewsData.features.push(feature);
         }
-        this.updateNewsCorrelatedLayerData();
-      })
+      }
+      this.updateNewsCorrelatedLayerData();
     }
 
     this.setState({isHistoricNewsCorrelatedToggled: !this.state.isHistoricNewsCorrelatedToggled})
@@ -272,8 +277,10 @@ class HeatMap extends React.Component {
       // Check if layer could be removed
     } else {
       // Fetch historic data
-      let result = await methods.fetchHistoricCoronaStream((this.state.dateSlider[0] - this.hourSlider) * -1,(this.state.dateSlider[1] - this.hourSlider) * -1);
-      result.forEach(element => {
+      this.addCoronaLayer();
+      let result = await methods.fetchHistoricCoronaStream((this.state.dateSlider[0] - this.hourSlider) * -1,(this.state.dateSlider[1] - this.hourSlider) * -1, this.state.querySize);
+      for(let i = 0; i < result.length; i++) {
+        let element = result[i];
         let feature = {type: "Feature", properties: { 
           type: "historic", 
           username: element.screen_name, 
@@ -289,10 +296,8 @@ class HeatMap extends React.Component {
         } else {
           this.negativeCoronaData.features.push(feature);
         }
-        this.updateCoronaLayerData();
-      }) 
-      // Check if layer should be added?
-      this.addCoronaLayer();
+      }
+      this.updateCoronaLayerData();
     }
     this.setState({isHistoricCoronaToggled: !this.state.isHistoricCoronaToggled});
   }
@@ -341,22 +346,34 @@ class HeatMap extends React.Component {
                   News-correlation historic, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
               </label>
             </div>
+            <div style={{width: "100%", display: "flex", justifyContent:"center"}}>
+              <TextField
+                style={{width: "90%", paddingBottom: "10px"}}
+                type="number"
+                label="Query Size"
+                onChange={(evt) => this.setState({querySize: evt.target.value})}
+                value={this.state.querySize}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
             <div style={{padding:"0 20px", textAlign:"center"}}>
-            <Typography id="range-slider" gutterBottom>
-              To = {(this.state.dateSlider[1] - this.hourSlider) * -1} hours ago
-            </Typography>
-            <Typography id="range-slider" gutterBottom>
-              From = {(this.state.dateSlider[0] - this.hourSlider) * -1} hours ago
-            </Typography>
-            <Slider 
-              value={this.state.dateSlider}
-              onChange={this.handleSlider}
-              //valueLabelDisplay="auto"
-              //aria-labelledby="range-slider"
-              //getAriaValueText={this.handleText}
-              max={this.hourSlider}
-              min={1}
-            />
+              <Typography id="range-slider" gutterBottom>
+                To = {(this.state.dateSlider[1] - this.hourSlider) * -1} hours ago
+              </Typography>
+              <Typography id="range-slider" gutterBottom>
+                From = {(this.state.dateSlider[0] - this.hourSlider) * -1} hours ago
+              </Typography>
+              <Slider 
+                value={this.state.dateSlider}
+                onChange={this.handleSlider}
+                //valueLabelDisplay="auto"
+                //aria-labelledby="range-slider"
+                //getAriaValueText={this.handleText}
+                max={this.hourSlider}
+                min={1}
+              />
             </div>
           </div>
         </form>

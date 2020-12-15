@@ -22,13 +22,15 @@ export default{
         return covidData;
     },
 
-    fetchHistoricCoronaStream: async (from, to) => {
-        let result = await axios.get(`http://localhost:5000/api/historictweets?from=${from}&to=${to}&type=corona`)
+    fetchHistoricCoronaStream: async (from, to, size) => {
+        let result = await axios.get(`/api/historictweets?from=${from}&to=${to}&type=corona&querySize=${size}`, {timeout: 100000})
+        console.log(result.data.length);
         return result.data;
     },
 
-    fetchHistoricNewsStream: async (from, to) => {
-        let result = await axios.get(`http://localhost:5000/api/historictweets?from=${from}&to=${to}&type=newscorrelated`);
+    fetchHistoricNewsStream: async (from, to, size) => {
+        let result = await axios.get(`/api/historictweets?from=${from}&to=${to}&type=newscorrelated&querySize=${size}`, {timeout: 100000});
+        console.log(result.data.length)
         return result.data;
     }
 }

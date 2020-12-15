@@ -27,11 +27,11 @@ namespace spark_api.service
         
         public  Task StartAsync(CancellationToken cancellationToken)
         {
+            
             SubscribeCoronaStream();
             SubscribeNewsCorrelatedStream();
             //_cassandraService.CleanUp();
             return Task.CompletedTask;
-            
         }
         
         public async Task SubscribeNewsCorrelatedStream()
@@ -39,7 +39,7 @@ namespace spark_api.service
             var conf = new ConsumerConfig
             { 
                 GroupId = "test-consumer-group",
-                BootstrapServers = "localhost:9092",
+                BootstrapServers = "node-master:9092,node1:19092,node2:29092",
                
                 // Note: The AutoOffsetReset property determines the start offset in the event
                 // there are not yet any committed offsets for the consumer group for the
@@ -90,7 +90,7 @@ namespace spark_api.service
             var conf = new ConsumerConfig
             {
                 GroupId = "test-consumer-group",
-                BootstrapServers = "localhost:9092",
+                BootstrapServers = "nodemaster:9092,node1:19092,node2:29092",
 
                 // Note: The AutoOffsetReset property determines the start offset in the event
                 // there are not yet any committed offsets for the consumer group for the
