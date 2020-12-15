@@ -21,6 +21,9 @@ services:
       - "5001:5001"
     -networks:
       - outside
+    deploy:
+      mode: replicated
+      replicas: 3
 
 networks:
   outside:
