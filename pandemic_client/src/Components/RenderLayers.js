@@ -251,7 +251,7 @@ const renderPositiveCoronaHeatmap = (map, source) => {
 const renderPositiveNewsHeatmap = (map, source) => {
     map?.addLayer(
         {
-            'id': 'PositiveNewsHeatmap-heat',
+            'id': 'PositiveNews-heat',
             'type': 'heatmap',
             'source': source,
             'maxzoom': 9,
@@ -274,7 +274,7 @@ const renderPositiveNewsHeatmap = (map, source) => {
                     'interpolate',
                     ['linear'],
                     ['heatmap-density'],
-                    0,"#C5FCC5",
+                    0, 'rgba(197, 252, 197,0)',
                     0.1,"#9AF59A",
                     0.3,"#8DE08D",
                     0.5,"#78FF78",
@@ -306,7 +306,7 @@ const renderPositiveNewsHeatmap = (map, source) => {
                 
         map?.addLayer(
         {
-            'id': 'PositiveNewsHeatmap-point',
+            'id': 'PositiveNews-point',
             'type': 'circle',
             'source': source,
             'minzoom': 7,
@@ -341,7 +341,7 @@ const renderPositiveNewsHeatmap = (map, source) => {
 const renderNegativeNewsHeatmap = (map, source) => {
     map?.addLayer(
         {
-            'id': 'NegativeNewsHeatmap-heat',
+            'id': 'NegativeNews-heat',
             'type': 'heatmap',
             'source': source,
             'maxzoom': 9,
@@ -364,7 +364,7 @@ const renderNegativeNewsHeatmap = (map, source) => {
                     'interpolate',
                     ['linear'],
                     ['heatmap-density'],
-                    0,"#BA8FFF",
+                    0,"rgba(186, 143, 255,0)",
                     0.1,"#9568DE",
                     0.3,"#7350AB",
                     0.5,"#6B41B0",
@@ -396,7 +396,7 @@ const renderNegativeNewsHeatmap = (map, source) => {
                 
         map?.addLayer(
         {
-            'id': 'NegativeNewsHeatmap-point',
+            'id': 'NegativeNews-point',
             'type': 'circle',
             'source': source,
             'minzoom': 7,

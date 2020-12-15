@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 import methods from "./methods";
 import paints from './paints';
-import {renderCovidLayers, renderStateLayers, renderNegativeCoronaHeatmap, renderPositiveCoronaHeatmap} from "./RenderLayers";
+import {renderCovidLayers, renderStateLayers, renderNegativeCoronaHeatmap, renderPositiveCoronaHeatmap, renderNegativeNewsHeatmap, renderPositiveNewsHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
 import { timeout } from "d3";
 
@@ -58,12 +58,14 @@ class HeatMap extends React.Component {
     // Initialize the different heatmaps
     this.plotPositiveCoronaHeatmap();
     this.plotNegativeCoronaHeatmap();
+    this.plotPositiveNewsHeatmap();
+    this.plotNegativeNewsHeatmap();
   }
 
   plotPositiveNewsHeatmap = () => {
     this.state.map?.addSource("PositiveNewsSource", {
       type: "geojson",
-      data: this.positiveCoronaData
+      data: this.positiveNewsData
     })
     renderPositiveNewsHeatmap(this.state.map, "PositiveNewsSource");
     this.state.map?.on("click", 'PositiveNews-point', this.onPositiveNewsClicked)
@@ -88,13 +90,61 @@ class HeatMap extends React.Component {
     }
   }
 
+  plotNegativeNewsHeatmap = () => {
+    this.state.map?.addSource("NegativeNewsSource", {
+      type: "geojson",
+      data: this.negativeNewsData
+    })
+    renderNegativeNewsHeatmap(this.state.map, "NegativeNewsSource");
+    this.state.map?.on("click", 'NegativeNews-point', this.onNegativeNewsClicked)
+  }
+
+  onNegativeNewsClicked = (e) => {
+      new mapboxgl.Popup()
+          .setLngLat(e.features[0].geometry.coordinates)
+          .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+          .addTo(this.state.map);
+  }
+
+  removeNegativeNewsHeatmap = () => {
+    try {
+      this.state.map?.off("click", "NegativeNews-point", this.onNegativeNewsClicked)
+      this.state.map?.removeLayer("NegativeNews-point");
+      this.state.map?.removeLayer("NegativeNews-heat");
+      this.state.map?.removeSource("NegativeNewsSource");
+      this.negativeNewsData.features = [];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   handleNewsCorrelated = (event) => {
     if(this.state.isNewsCorralatedToggled) {
-      
-      /*let center = this.getCenter(event.place.bounding_box.coordinates);
-      let feature = {type: "Feature", properties: { city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
-      this.newsCorrelatedData.features.push(feature);
-      this.state.map?.getSource("NewsCorrelatedSource")?.setData(this.newsCorrelatedData);*/
+      let center = this.getCenter(event.place.bounding_box.coordinates);
+      let feature = {type: "Feature", properties: { type: "stream", city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+
+      if(event.sentiment.prediction === "Positive") {
+        this.positiveNewsData.features.push(feature);
+        this.state.map?.getSource("PositiveNewsSource")?.setData(this.positiveNewsData);
+      } else {
+        this.negativeNewsData.features.push(feature);
+        this.state.map?.getSource("NegativeNewsSource")?.setData(this.negativeNewsData);
+      }
+    }
+  }
+
+  handleCoronaEvent = (event) => {
+    if(this.state.isCronaStreamToggled) {
+      let center = this.getCenter(event.place.bounding_box.coordinates);
+      let feature = {type: "Feature", properties: { type: "stream", city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+
+      if(event.sentiment.prediction === "Positive") {
+        this.positiveCoronaData.features.push(feature);
+        this.state.map?.getSource("PositiveCoronaHeatmapSource")?.setData(this.positiveCoronaData);
+      } else {
+        this.negativeCoronaData.features.push(feature);
+        this.state.map?.getSource("NegativeCoronaSource")?.setData(this.negativeCoronaData);
+      }
     }
   }
 
@@ -109,17 +159,29 @@ class HeatMap extends React.Component {
     this.setState({isNewsCorralatedToggled: !this.state.isNewsCorralatedToggled})
   }
 
-  toggleHistoricNewsCorrelatedData = () => {
+  toggleHistoricNewsCorrelatedData = async () => {
+    
     if(this.state.isHistoricNewsCorrelatedToggled) {
       // Remove stream data from news correlated
-      
+      this.filterNewsCorrelatedData("historic")
       // check if layer could be removed
     } else {
       // Start adding news correlated stream data
       // check if layer should be added
+      let result = await methods.fetchHistoricNewsStream(0,1);
+      result.forEach(element => {
+        let center = this.getCenter(element.coordinates);
+        let feature = {type: "Feature", properties: { type: "historic", city: element.screen_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+        if(element.prediction === "Positive") {
+          this.positiveNewsData.features.push(feature);
+        } else {
+          this.negativeNewsData.features.push(feature);
+        }
+        this.updateNewsCorrelatedLayerData();
+      })
     }
 
-    this.setState({isNewsCorrelatedHistoricToggled: !this.state.isNewsCorrelatedHistoricToggled})
+    this.setState({isHistoricNewsCorrelatedToggled: !this.state.isHistoricNewsCorrelatedToggled})
   }
 
   toggleCoronaStream = () => {
@@ -278,7 +340,8 @@ class HeatMap extends React.Component {
   }
 
   updateNewsCorrelatedLayerData = () => {
-    //this.state.map?.getSource("")
+    this.state.map?.getSource("PositiveNewsSource")?.setData(this.positiveNewsData);
+    this.state.map?.getSource("NegativeNewsSource")?.setData(this.negativeNewsData);
   }
 
   updateCoronaLayerData = () => {
@@ -409,21 +472,6 @@ class HeatMap extends React.Component {
       this.negativeCoronaData.features = [];
     } catch(err) {
       console.log(err)
-    }
-  }
-
-  handleCoronaEvent = (event) => {
-    if(this.state.isCronaStreamToggled) {
-      let center = this.getCenter(event.place.bounding_box.coordinates);
-      let feature = {type: "Feature", properties: { type: "stream", city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
-
-      if(event.sentiment.prediction === "Positive") {
-        this.positiveCoronaData.features.push(feature);
-        this.state.map?.getSource("PositiveCoronaHeatmapSource")?.setData(this.positiveCoronaData);
-      } else {
-        this.negativeCoronaData.features.push(feature);
-        this.state.map?.getSource("NegativeCoronaSource")?.setData(this.negativeCoronaData);
-      }
     }
   }
 };
