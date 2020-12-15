@@ -26,6 +26,7 @@ public class CoronaKeyWordComparisonManager {
     
     static{
         //Could be troublesome, we'll see
+        //It was in fact troublesome - hard coded words now - very ugly, but works
         /*File f = new File("./src/main/java/com/mycompany/app/CORONA_KEY_WORDS.txt");
         
         try(BufferedReader in = new BufferedReader(
@@ -61,6 +62,38 @@ public class CoronaKeyWordComparisonManager {
         keywords.add("Incubation period");
         keywords.add("Intensivist");
         keywords.add("and");
+        keywords.add("Lockdown");
+        keywords.add("National emergency");
+        keywords.add("Pandemic");
+        keywords.add("Person-to-person transmission");
+        keywords.add("Physical distancing");
+        keywords.add("PBE");
+        keywords.add("Pre-symptomatic");
+        keywords.add("Presumptive positive case");
+        keywords.add("PUI");
+        keywords.add("Remdesivir");
+        keywords.add("Respirator");
+        keywords.add("Self-isolation");
+        keywords.add("Shelter-in-place");
+        keywords.add("Spanish flu");
+        keywords.add("Symptomatic");
+        keywords.add("Vaccine");
+        keywords.add("Ventilator");
+        keywords.add("WHO");
+        keywords.add("World health organization");
+        keywords.add("Working from home");
+        keywords.add("Covid-19");
+        keywords.add("covid");
+        keywords.add("corona");
+        keywords.add("plague");
+        keywords.add("wuhan virus");
+        keywords.add("wuhan");
+        keywords.add("china plague");
+        keywords.add("Anthony Faucci");
+        keywords.add("Faucci");
+        keywords.add("Pfizer");
+        keywords.add("BionTech");
+        keywords.add("Pfizer Inc");
     }
     
     public static boolean isCorrelatedWithCovidKeywords(String val){
