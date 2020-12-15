@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 import methods from "./methods";
 import paints from './paints';
-import {renderCovidLayers, renderStateLayers, renderCoronaHeatmap, renderPositiveCoronaHeatmap} from "./RenderLayers";
+import {renderCovidLayers, renderStateLayers, renderNegativeCoronaHeatmap, renderPositiveCoronaHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
 import { timeout } from "d3";
 
@@ -60,6 +60,7 @@ class HeatMap extends React.Component {
 
     // Initialize the different heatmaps
     this.plotPositiveCoronaHeatmap();
+    this.plotNegativeCoronaHeatmap();
   }
 
   paintStates = () => {
@@ -108,7 +109,7 @@ class HeatMap extends React.Component {
       type: "geojson",
       data: this.positiveCoronaData
     })
-    renderPositiveCoronaHeatmap(this.state.map, "PositiveCoronaHeatmap");
+    renderPositiveCoronaHeatmap(this.state.map, "PositiveCoronaHeatmapSource");
     this.state.map?.on("click", 'PositiveCoronaHeatmap-point', this.onPositiveHeatmapClicked)
   }
 
@@ -125,26 +126,26 @@ class HeatMap extends React.Component {
       this.state.map?.removeLayer("PositiveCoronaHeatmap-point");
       this.state.map?.removeLayer("PositiveCoronaHeatmap-heat");
       this.state.map?.removeSource("PositiveCoronaHeatmapSource");
-      this.newsCorrelatedData.features = [];
+      this.positiveCoronaData.features = [];
     } catch (err) {
       console.log(err);
     }
   }
 
-  plotCoronaHeatmap = () => {
-    this.state.map?.addSource("CoronaSource", {
+  plotNegativeCoronaHeatmap = () => {
+    this.state.map?.addSource("NegativeCoronaSource", {
       type: "geojson",
       data: this.coronaCorrelatedData
     })
-    renderCoronaHeatmap(this.state.map, "CoronaSource");
+    renderNegativeCoronaHeatmap(this.state.map, "NegativeCoronaSource");
   }
 
-  removeCoronaHeatmap = () => {
+  removeNegativeCoronaHeatmap = () => {
     try {
-      this.state.map?.removeLayer("Corona-heat");
-      this.state.map?.removeLayer("Corona-point");
-      this.state.map?.removeSource("CoronaSource")
-      this.coronaCorrelatedData.features = [];
+      this.state.map?.removeLayer("NegativeCorona-heat");
+      this.state.map?.removeLayer("NegativeCorona-point");
+      this.state.map?.removeSource("NegativeCoronaSource")
+      this.negativeCoronaData.features = [];
     } catch(err) {
       console.log(err)
     }
@@ -168,20 +169,27 @@ class HeatMap extends React.Component {
 
   handleCoronaEvent = (event) => {
     if(this.state.isCronaStreamToggled) {
+      console.log(event);
       let center = this.getCenter(event.place.bounding_box.coordinates);
-      let feature = {type: "Feature", properties: { city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
-      this.coronaCorrelatedData.features.push(feature);
-      this.state.map?.getSource("CoronaSource")?.setData(this.coronaCorrelatedData);
+      let feature = {type: "Feature", properties: { type: "stream", city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+
+      if(event.sentiment.prediction === "Positive") {
+        this.positiveCoronaData.features.push(feature);
+        this.state.map?.getSource("PositiveCoronaHeatmapSource")?.setData(this.positiveCoronaData);
+      } else {
+        this.negativeCoronaData.features.push(feature);
+        this.state.map?.getSource("NegativeCoronaSource")?.setData(this.negativeCoronaData);
+      }
     }
   }
 
   handleNewsCorrelated = (event) => {
     if(this.state.isNewsCorralatedToggled) {
-      console.log(event)
-      let center = this.getCenter(event.place.bounding_box.coordinates);
+      
+      /*let center = this.getCenter(event.place.bounding_box.coordinates);
       let feature = {type: "Feature", properties: { city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
       this.newsCorrelatedData.features.push(feature);
-      this.state.map?.getSource("NewsCorrelatedSource")?.setData(this.newsCorrelatedData);
+      this.state.map?.getSource("NewsCorrelatedSource")?.setData(this.newsCorrelatedData);*/
     }
   }
 

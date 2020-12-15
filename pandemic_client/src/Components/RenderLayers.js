@@ -58,10 +58,10 @@ const renderStateLayers = (map, source) => {
       })
 }
 
-const renderCoronaHeatmap = (map, source) => {
+const renderNegativeCoronaHeatmap = (map, source) => {
     map?.addLayer(
     {
-        'id': 'Corona-heat',
+        'id': 'NegativeCorona-heat',
         'type': 'heatmap',
         'source': source,
         'maxzoom': 9,
@@ -125,7 +125,7 @@ const renderCoronaHeatmap = (map, source) => {
             
     map?.addLayer(
     {
-        'id': 'Corona-point',
+        'id': 'NegativeCorona-point',
         'type': 'circle',
         'source': source,
         'minzoom': 7,
@@ -262,6 +262,6 @@ const renderPositiveCoronaHeatmap = (map, source) => {
 export {
     renderCovidLayers,
     renderStateLayers,
-    renderCoronaHeatmap,
+    renderNegativeCoronaHeatmap,
     renderPositiveCoronaHeatmap
 }
