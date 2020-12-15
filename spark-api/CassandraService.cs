@@ -13,8 +13,8 @@ namespace spark_api
         void CleanUp();
         Task<List<twitteranalyzed>> GetAllNews();
         Task<List<twitteranalyzed>> GetAllCorona();
-        Task<List<twitteranalyzed>> GetAllBetweenNews(int from, int to);
-        Task<List<twitteranalyzed>> GetAllBetweenCorona(int from, int to);
+        Task<List<twitteranalyzed>> GetAllBetweenNews(int from, int to , int size);
+        Task<List<twitteranalyzed>> GetAllBetweenCorona(int from, int to ,int size);
     }
     public class CassandraService : ICassandraService
     {
@@ -36,10 +36,10 @@ namespace spark_api
         {
             //string query = " INSERT INTO tweet(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet ) VALUES ('" + tweet.id + "'," + tweet.created_at.Second + "," + tweet.negativeConfidence + "," + tweet.positiveConfidence + ",'" + tweet.prediction + "','" + tweet.screen_name + "','" + tweet.tweet + "'"+ ")";
             
-            var ps = _session.Prepare(" INSERT INTO news(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet , latitude , longitude) VALUES (? , ? , ? , ? , ? , ? , ? , ? , ?)");
+            var ps = _session.Prepare(" INSERT INTO covid(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet , latitude , longitude , typeof) VALUES (? , ? , ? , ? , ? , ? , ? , ? , ? , ?)");
 
 // ...bind different parameters every time you need to execute
-            var statement = ps.Bind(tweet.id , tweet.created_at , tweet.negativeConfidence , tweet.positiveConfidence , tweet.prediction , tweet.screen_name , tweet.tweet , tweet.latitude , tweet.longitude);
+            var statement = ps.Bind(tweet.id , tweet.created_at , tweet.negativeConfidence , tweet.positiveConfidence , tweet.prediction , tweet.screen_name , tweet.tweet , tweet.latitude , tweet.longitude , "news");
 // Execute the bound statement with the provided parameters
            
             
@@ -53,10 +53,10 @@ namespace spark_api
         {
             //string query = " INSERT INTO tweet(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet ) VALUES ('" + tweet.id + "'," + tweet.created_at.Second + "," + tweet.negativeConfidence + "," + tweet.positiveConfidence + ",'" + tweet.prediction + "','" + tweet.screen_name + "','" + tweet.tweet + "'"+ ")";
             
-            var ps = _session.Prepare(" INSERT INTO tweet(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet , latitude , longitude) VALUES (? , ? , ? , ? , ? , ? , ? , ? , ?)");
+            var ps = _session.Prepare(" INSERT INTO covid(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet , latitude , longitude, typeof) VALUES (? , ? , ? , ? , ? , ? , ? , ? , ? , ?)");
 
            // ...bind different parameters every time you need to execute
-            var statement = ps.Bind(tweet.id , tweet.created_at , tweet.negativeConfidence , tweet.positiveConfidence , tweet.prediction , tweet.screen_name , tweet.tweet , tweet.latitude , tweet.longitude);
+            var statement = ps.Bind(tweet.id , tweet.created_at , tweet.negativeConfidence , tweet.positiveConfidence , tweet.prediction , tweet.screen_name , tweet.tweet , tweet.latitude , tweet.longitude, "corona");
         // Execute the bound statement with the provided parameters
            
             
@@ -122,7 +122,7 @@ namespace spark_api
            return historicTweets;
         }
 
-        public async Task<List<twitteranalyzed>> GetAllBetweenNews(int @from, int to)
+        public async Task<List<twitteranalyzed>> GetAllBetweenNews(int @from, int to, int size)
         {
             DateTime newFrom = DateTime.Now.AddHours(-from);;
             DateTime newTo = DateTime.Now.AddHours(-to);
@@ -130,8 +130,8 @@ namespace spark_api
             List<twitteranalyzed> historicTweets = new List<twitteranalyzed>();
 
             //var ps = _session.Prepare(" INSERT INTO tweet(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet , latitude , longitude) VALUES (? , ? , ? , ? , ? , ? , ? , ? , ?)");
-            var ps = await _session.PrepareAsync("SELECT * FROM news  WHERE created_at >= ? AND  created_at <= ? ALLOW FILTERING;");
-            var statement = ps.Bind(newFrom , newTo);
+            var ps = await _session.PrepareAsync("SELECT * FROM covid  WHERE created_at >= ? AND  created_at <= ? and typeof = ? limit ?;");
+            var statement = ps.Bind(newFrom , newTo , "news" , size);
             var rs = await _session.ExecuteAsync(statement);
             foreach (var row in rs)
             {
@@ -155,7 +155,7 @@ namespace spark_api
             return historicTweets;
         }
 
-        public async Task<List<twitteranalyzed>> GetAllBetweenCorona(int @from, int to)
+        public async Task<List<twitteranalyzed>> GetAllBetweenCorona(int @from, int to,int size)
         {
             DateTime newFrom = DateTime.Now.AddHours(-from);;
             DateTime newTo = DateTime.Now.AddHours(-to);
@@ -163,8 +163,8 @@ namespace spark_api
             List<twitteranalyzed> historicTweets = new List<twitteranalyzed>();
 
             //var ps = _session.Prepare(" INSERT INTO tweet(id , created_at , negativeconfidence , positiveconfidence , prediction , screen_name ,  tweet , latitude , longitude) VALUES (? , ? , ? , ? , ? , ? , ? , ? , ?)");
-            var ps = await _session.PrepareAsync("SELECT * FROM tweet  WHERE created_at >= ? AND  created_at <= ? ALLOW FILTERING;");
-            var statement = ps.Bind(newFrom , newTo);
+            var ps = await _session.PrepareAsync("SELECT * FROM covid  WHERE created_at >= ? AND  created_at <= ? and typeof = ? limit ? ;");
+            var statement = ps.Bind(newFrom , newTo, "corona" , size);
             var rs = await _session.ExecuteAsync(statement);
             foreach (var row in rs)
             {

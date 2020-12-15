@@ -52,7 +52,7 @@ namespace spark_api.service
 
             using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
             {
-                c.Subscribe("twitteranalyzed");
+                c.Subscribe("newscorrelated");
 
                 CancellationTokenSource cts = new CancellationTokenSource();
                 Console.CancelKeyPress += (_, e) => {
@@ -69,7 +69,8 @@ namespace spark_api.service
                             var cr = c.Consume(cts.Token);
                             await _hub.Clients.All.SendAsync("newscorrelated", cr.Message);
                             twitteranalyzed tweet = parseToObject(cr.Message.Value);
-                            //_cassandraService.AddNewscorrelated(tweet);
+                            _cassandraService.AddNewscorrelated(tweet);
+                            
                         }
                         catch (ConsumeException e)
                         {
@@ -130,7 +131,8 @@ namespace spark_api.service
                             var cr = c.Consume(cts.Token); 
                             await _hub.Clients.All.SendAsync("corona", cr.Message);
                            twitteranalyzed tweet = parseToObject(cr.Message.Value);
-                            //_cassandraService.AddCorona(tweet);
+                            _cassandraService.AddCorona(tweet);
+                            Console.WriteLine("adding2");
                        
                         }
                         catch (ArgumentOutOfRangeException e)
