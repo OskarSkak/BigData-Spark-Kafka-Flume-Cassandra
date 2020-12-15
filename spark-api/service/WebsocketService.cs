@@ -27,11 +27,11 @@ namespace spark_api.service
         
         public  Task StartAsync(CancellationToken cancellationToken)
         {
+            
             SubscribeCoronaStream();
             SubscribeNewsCorrelatedStream();
             //_cassandraService.CleanUp();
             return Task.CompletedTask;
-            
         }
         
         public async Task SubscribeNewsCorrelatedStream()
@@ -39,15 +39,14 @@ namespace spark_api.service
             var conf = new ConsumerConfig
             { 
                 GroupId = "test-consumer-group",
-                BootstrapServers = "localhost:9092",
+                BootstrapServers = "node-master:9092,node1:19092,node2:29092",
                
                 // Note: The AutoOffsetReset property determines the start offset in the event
                 // there are not yet any committed offsets for the consumer group for the
                 // topic/partitions of interest. By default, offsets are committed
                 // automatically, so in this example, consumption will only start from the
                 // earliest message in the topic 'my-topic' the first time you run the program.
-                AutoOffsetReset = AutoOffsetReset.Latest,
-               
+                AutoOffsetReset = AutoOffsetReset.Latest
             };
 
             using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
@@ -70,7 +69,6 @@ namespace spark_api.service
                             await _hub.Clients.All.SendAsync("newscorrelated", cr.Message);
                             twitteranalyzed tweet = parseToObject(cr.Message.Value);
                             _cassandraService.AddNewscorrelated(tweet);
-                            
                         }
                         catch (ConsumeException e)
                         {
@@ -89,29 +87,18 @@ namespace spark_api.service
 
         public async Task SubscribeCoronaStream()
         {
-            
-            
-
-            /*while (true)
-            {
-                await Task.Delay(1000);
-                await _hub.Clients.All.SendAsync("twitterraw", "Hej");
-            }*/
-            
             var conf = new ConsumerConfig
-            { 
+            {
                 GroupId = "test-consumer-group",
-                BootstrapServers = "localhost:9092",
-               
+                BootstrapServers = "nodemaster:9092,node1:19092,node2:29092",
+
                 // Note: The AutoOffsetReset property determines the start offset in the event
                 // there are not yet any committed offsets for the consumer group for the
                 // topic/partitions of interest. By default, offsets are committed
                 // automatically, so in this example, consumption will only start from the
                 // earliest message in the topic 'my-topic' the first time you run the program.
-                AutoOffsetReset = AutoOffsetReset.Latest,
-               
+                AutoOffsetReset = AutoOffsetReset.Latest
             };
-            
 
             using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
             {
@@ -123,17 +110,14 @@ namespace spark_api.service
                     cts.Cancel();
                 };
                 try
-                { while (true) 
-                    { 
+                { while (true) { 
                         await Task.Delay(100);
                         try
                         { 
-                            var cr = c.Consume(cts.Token); 
+                            var cr = c.Consume(cts.Token);
                             await _hub.Clients.All.SendAsync("corona", cr.Message);
-                           twitteranalyzed tweet = parseToObject(cr.Message.Value);
+                            twitteranalyzed tweet = parseToObject(cr.Message.Value);
                             _cassandraService.AddCorona(tweet);
-                            Console.WriteLine("adding2");
-                       
                         }
                         catch (ArgumentOutOfRangeException e)
                         {

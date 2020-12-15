@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.1",
     "@testing-library/user-event": "^12.2.2",
+    "axios": "^0.21.0",
     "d3": "^5.16.0",
     "d3-geo-projection": "^2.9.0",
     "d3-tip": "^0.9.1",

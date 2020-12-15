@@ -10,6 +10,7 @@ import paints from './paints';
 import {renderCovidLayers, renderStateLayers, renderNegativeCoronaHeatmap, renderPositiveCoronaHeatmap, renderNegativeNewsHeatmap, renderPositiveNewsHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
 import { timeout } from "d3";
+import { TextField } from "@material-ui/core";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
@@ -19,6 +20,8 @@ class HeatMap extends React.Component {
 
   positiveNewsData = {type: "FeatureCollection", features: []};
   negativeNewsData = {type: "FeatureCollection", features: []};
+
+  hourSlider = 500;
 
   constructor(props) {
     super(props)
@@ -36,8 +39,9 @@ class HeatMap extends React.Component {
       isCoronaLayerAdded: false,
       isNewsLayerAdded: false,
       isStatesToggled: false,
-      dateSlider:[50,1 ],
+      dateSlider:[1,this.hourSlider],
       covidData: null,
+      querySize: 100000
     };
   }
 
@@ -56,12 +60,6 @@ class HeatMap extends React.Component {
   onMapLoad = () => {
     this.setState({isStatesToggled: true})
     this.paintStates();
-
-    // Initialize the different heatmaps
-    // this.plotPositiveCoronaHeatmap();
-    // this.plotNegativeCoronaHeatmap();
-    // this.plotPositiveNewsHeatmap();
-    // this.plotNegativeNewsHeatmap();
   }
 
   plotPositiveNewsHeatmap = () => {
@@ -76,7 +74,13 @@ class HeatMap extends React.Component {
   onPositiveNewsClicked = (e) => {
     new mapboxgl.Popup()
         .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+        .setHTML(`
+        <b>Username:</b>  ${e.features[0].properties.username}. <br/>
+        <b>Tweet:</b>  ${e.features[0].properties.tweet}. <br/>
+        <b>Created_at:</b>  ${e.features[0].properties.created_at}. <br/>
+        <b>Prediction:</b>  ${e.features[0].properties.prediction}. <br/>
+        <b>Negative confidence:</b>  ${e.features[0].properties.negativeConfidence}. <br/>
+        <b>Positive confidence:</b>  ${e.features[0].properties.positiveConfidence}. <br/>`)
         .addTo(this.state.map);
   }
 
@@ -86,7 +90,7 @@ class HeatMap extends React.Component {
       this.state.map?.removeLayer("PositiveNews-point");
       this.state.map?.removeLayer("PositiveNews-heat");
       this.state.map?.removeSource("PositiveNewsSource");
-      this.positiveCoronaData.features = [];
+      this.positiveNewsData.features = [];
     } catch (err) {
       console.log(err);
     }
@@ -104,7 +108,13 @@ class HeatMap extends React.Component {
   onNegativeNewsClicked = (e) => {
     new mapboxgl.Popup()
       .setLngLat(e.features[0].geometry.coordinates)
-      .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+      .setHTML(`
+      <b>Username:</b>  ${e.features[0].properties.username}. <br/>
+      <b>Tweet:</b>  ${e.features[0].properties.tweet}. <br/>
+      <b>Created_at:</b>  ${e.features[0].properties.created_at}. <br/>
+      <b>Prediction:</b>  ${e.features[0].properties.prediction}. <br/>
+      <b>Negative confidence:</b>  ${e.features[0].properties.negativeConfidence}. <br/>
+      <b>Positive confidence:</b>  ${e.features[0].properties.positiveConfidence}. <br/>`)
       .addTo(this.state.map);
   }
 
@@ -121,9 +131,18 @@ class HeatMap extends React.Component {
   }
 
   handleNewsCorrelated = (event) => {
+    //console.log(event)
     if(this.state.isNewsCorralatedToggled) {
       let center = this.getCenter(event.place.bounding_box.coordinates);
-      let feature = {type: "Feature", properties: { type: "stream", city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+      let feature = {type: "Feature", properties: { 
+        type: "stream", 
+        username: event.user.screen_name, 
+        prediction: event.sentiment.prediction, 
+        tweet: event.sentiment.tweet, 
+        created_at: event.created_at, 
+        positiveConfidence: event.sentiment.positiveConfidence, 
+        negativeConfidence: event.sentiment.negativeConfidence 
+      }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
 
       if(event.sentiment.prediction === "Positive") {
         this.positiveNewsData.features.push(feature);
@@ -138,7 +157,15 @@ class HeatMap extends React.Component {
   handleCoronaEvent = (event) => {
     if(this.state.isCronaStreamToggled) {
       let center = this.getCenter(event.place.bounding_box.coordinates);
-      let feature = {type: "Feature", properties: { type: "stream", city: event.place.full_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+      let feature = {type: "Feature", properties: { 
+        type: "stream", 
+        username: event.user.screen_name, 
+        prediction: event.sentiment.prediction, 
+        tweet: event.sentiment.tweet, 
+        created_at: event.created_at, 
+        positiveConfidence: event.sentiment.positiveConfidence, 
+        negativeConfidence: event.sentiment.negativeConfidence 
+      }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
 
       if(event.sentiment.prediction === "Positive") {
         this.positiveCoronaData.features.push(feature);
@@ -151,12 +178,14 @@ class HeatMap extends React.Component {
   }
 
   removeUnusedLayers = () => {
-    if(!this.state.isNewsCorrelatedHistoricToggled && !this.state.isHistoricNewsCorrelatedToggled && this.state.isNewsLayerAdded) {
+
+    if(!this.state.isHistoricNewsCorrelatedToggled && !this.state.isNewsCorralatedToggled && this.state.isNewsLayerAdded) {
       this.removeNegativeNewsHeatmap();
       this.removePositiveNewsHeatmap();
       this.setState({isNewsLayerAdded: false});
     }
 
+    
     if(!this.state.isCronaStreamToggled && !this.state.isHistoricCoronaToggled && this.state.isCoronaLayerAdded) {
       this.removeNegativeCoronaHeatmap();
       this.removePositiveCoronaHeatmap();
@@ -202,17 +231,25 @@ class HeatMap extends React.Component {
       this.addNewsLayer();
       // Start adding news correlated stream data
       // check if layer should be added
-      let result = await methods.fetchHistoricNewsStream(0,1);
-      result.forEach(element => {
-        let center = this.getCenter(element.coordinates);
-        let feature = {type: "Feature", properties: { type: "historic", city: element.screen_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+      let result = await methods.fetchHistoricNewsStream((this.state.dateSlider[0] - this.hourSlider) * -1, (this.state.dateSlider[1] - this.hourSlider) * -1, this.state.querySize);
+      for(let i = 0; i < result.length; i++) {
+        let element = result[i];
+        let feature = {type: "Feature", properties: { 
+          type: "historic", 
+          username: element.screen_name, 
+          prediction: element.prediction, 
+          tweet: element.tweet, 
+          created_at: element.created_at, 
+          positiveConfidence: element.positiveConfidence, 
+          negativeConfidence: element.negativeConfidence 
+        }, geometry: { type: "Point", coordinates: [element.longitude, element.latitude]}}
         if(element.prediction === "Positive") {
           this.positiveNewsData.features.push(feature);
         } else {
           this.negativeNewsData.features.push(feature);
         }
-        this.updateNewsCorrelatedLayerData();
-      })
+      }
+      this.updateNewsCorrelatedLayerData();
     }
 
     this.setState({isHistoricNewsCorrelatedToggled: !this.state.isHistoricNewsCorrelatedToggled})
@@ -240,19 +277,27 @@ class HeatMap extends React.Component {
       // Check if layer could be removed
     } else {
       // Fetch historic data
-      let result = await methods.fetchHistoricCoronaStream(0,1);
-      result.forEach(element => {
-        let center = this.getCenter(element.coordinates);
-        let feature = {type: "Feature", properties: { type: "historic", city: element.screen_name }, geometry: { type: "Point", coordinates: [center.long, center.lat]}}
+      this.addCoronaLayer();
+      let result = await methods.fetchHistoricCoronaStream((this.state.dateSlider[0] - this.hourSlider) * -1,(this.state.dateSlider[1] - this.hourSlider) * -1, this.state.querySize);
+      for(let i = 0; i < result.length; i++) {
+        let element = result[i];
+        let feature = {type: "Feature", properties: { 
+          type: "historic", 
+          username: element.screen_name, 
+          prediction: element.prediction, 
+          tweet: element.tweet, 
+          created_at: element.created_at, 
+          positiveConfidence: element.positiveConfidence, 
+          negativeConfidence: element.negativeConfidence 
+        }, geometry: { type: "Point", coordinates: [element.longitude, element.latitude]}}
+
         if(element.prediction === "Positive") {
           this.positiveCoronaData.features.push(feature);
         } else {
           this.negativeCoronaData.features.push(feature);
         }
-        this.updateCoronaLayerData();
-      }) 
-      // Check if layer should be added?
-      this.addCoronaLayer();
+      }
+      this.updateCoronaLayerData();
     }
     this.setState({isHistoricCoronaToggled: !this.state.isHistoricCoronaToggled});
   }
@@ -280,40 +325,55 @@ class HeatMap extends React.Component {
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
-                  Corona stream
+                  Corona stream, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
               </label>
             </div>
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleHistoricCorona} checked={this.state.isHistoricCoronaToggled} />
-                  Corona Historic
+                  Corona Historic, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
               </label>
             </div>
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
-                  News-correlation stream
+                  News-correlation stream, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
               </label>
             </div>
             <div className="radio">
               <label>
                 <input type="checkbox" value="option1" onClick={this.toggleHistoricNewsCorrelatedData} checked={this.state.isNewsCorrelatedHistoricToggled} />
-                  News-correlation historic
+                  News-correlation historic, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
               </label>
             </div>
+            <div style={{width: "100%", display: "flex", justifyContent:"center"}}>
+              <TextField
+                style={{width: "90%", paddingBottom: "10px"}}
+                type="number"
+                label="Query Size"
+                onChange={(evt) => this.setState({querySize: evt.target.value})}
+                value={this.state.querySize}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
             <div style={{padding:"0 20px", textAlign:"center"}}>
-            <Typography id="range-slider" gutterBottom>
-              Get data between {(this.state.dateSlider[1] - 50) * -1} and {(this.state.dateSlider[0] -50) * -1} days ago
-            </Typography>
-            <Slider 
-              value={this.state.dateSlider}
-              onChange={this.handleSlider}
-              //valueLabelDisplay="auto"
-              //aria-labelledby="range-slider"
-              //getAriaValueText={this.handleText}
-              max={50}
-              min={1}
-            />
+              <Typography id="range-slider" gutterBottom>
+                To = {(this.state.dateSlider[1] - this.hourSlider) * -1} hours ago
+              </Typography>
+              <Typography id="range-slider" gutterBottom>
+                From = {(this.state.dateSlider[0] - this.hourSlider) * -1} hours ago
+              </Typography>
+              <Slider 
+                value={this.state.dateSlider}
+                onChange={this.handleSlider}
+                //valueLabelDisplay="auto"
+                //aria-labelledby="range-slider"
+                //getAriaValueText={this.handleText}
+                max={this.hourSlider}
+                min={1}
+              />
             </div>
           </div>
         </form>
@@ -468,7 +528,13 @@ class HeatMap extends React.Component {
   onPositiveHeatmapClicked = (e) => {
       new mapboxgl.Popup()
           .setLngLat(e.features[0].geometry.coordinates)
-          .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+          .setHTML(`
+          <b>Username:</b>  ${e.features[0].properties.username}. <br/>
+          <b>Tweet:</b>  ${e.features[0].properties.tweet}. <br/>
+          <b>Created_at:</b>  ${e.features[0].properties.created_at}. <br/>
+          <b>Prediction:</b>  ${e.features[0].properties.prediction}. <br/>
+          <b>Negative confidence:</b>  ${e.features[0].properties.negativeConfidence}. <br/>
+          <b>Positive confidence:</b>  ${e.features[0].properties.positiveConfidence}. <br/>`)
           .addTo(this.state.map);
   }
 
@@ -500,10 +566,25 @@ class HeatMap extends React.Component {
       data: this.negativeCoronaData
     })
     renderNegativeCoronaHeatmap(this.state.map, "NegativeCoronaSource");
+    this.state.map?.on("click", 'NegativeCorona-point', this.onNegativeHeatmapClicked)
   }
+
+  onNegativeHeatmapClicked = (e) => {
+    new mapboxgl.Popup()
+        .setLngLat(e.features[0].geometry.coordinates)
+        .setHTML(`
+        <b>Username:</b>  ${e.features[0].properties.username}. <br/>
+        <b>Tweet:</b>  ${e.features[0].properties.tweet}. <br/>
+        <b>Created_at:</b>  ${e.features[0].properties.created_at}. <br/>
+        <b>Prediction:</b>  ${e.features[0].properties.prediction}. <br/>
+        <b>Negative confidence:</b>  ${e.features[0].properties.negativeConfidence}. <br/>
+        <b>Positive confidence:</b>  ${e.features[0].properties.positiveConfidence}. <br/>`)
+        .addTo(this.state.map);
+  } 
 
   removeNegativeCoronaHeatmap = () => {
     try {
+      this.state.map?.off("click", "NegativeCorona-point", this.onNegativeHeatmapClicked)
       this.state.map?.removeLayer("NegativeCorona-heat");
       this.state.map?.removeLayer("NegativeCorona-point");
       this.state.map?.removeSource("NegativeCoronaSource")
