@@ -23,13 +23,13 @@ export default{
     },
 
     fetchHistoricCoronaStream: async (from, to, size) => {
-        let result = await axios.get(`/api/historictweets?from=${from}&to=${to}&type=corona&querySize=${size}`, {timeout: 100000})
+        let result = await axios.get(`/api/historictweets?from=${from}&to=${to}&type=corona&size=${size}`, {timeout: 100000})
         console.log(result.data.length);
         return result.data;
     },
 
     fetchHistoricNewsStream: async (from, to, size) => {
-        let result = await axios.get(`/api/historictweets?from=${from}&to=${to}&type=newscorrelated&querySize=${size}`, {timeout: 100000});
+        let result = await axios.get(`/api/historictweets?from=${from}&to=${to}&type=newscorrelated&size=${size}`, {timeout: 100000});
         console.log(result.data.length)
         return result.data;
     }
