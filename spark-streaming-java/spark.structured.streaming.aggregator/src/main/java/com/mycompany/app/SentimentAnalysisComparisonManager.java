@@ -3,8 +3,6 @@ package com.mycompany.app;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  *
@@ -21,7 +19,7 @@ public class SentimentAnalysisComparisonManager {
     }
     
     public static boolean hasClearlyNegativeSentiment(String val){
-        try{
+        /*try{
             val = val.substring(1, val.length() -1);
             JSONObject jObject = new JSONObject(val);
             String prediction = jObject.getJSONObject(SENTIMENT).getString(PREDICTION);
@@ -31,6 +29,7 @@ public class SentimentAnalysisComparisonManager {
         }catch(JSONException e){
             System.err.print(Arrays.toString(e.getStackTrace()));
         }
+        return false;*/
         return false;
     }
     

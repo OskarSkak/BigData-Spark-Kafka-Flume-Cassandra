@@ -11,12 +11,12 @@ public class App
 {
     public static void main( String[] args ) throws InterruptedException
     {
-        SparkConf conf = new SparkConf().setAppName("app name").setMaster("local[*]");
+        SparkConf conf = new SparkConf().setAppName("analysis service");
         JavaStreamingContext ssc = new JavaStreamingContext(conf, Durations.minutes(5));
         ssc.ssc().sc().setLogLevel("WARN");
         
         new NewsCorrelatedKeyWordCountConsumer(conf, ssc).initiate();
-        new SentimentAnalyzedTwitterDataToCovidConsumer(conf, ssc).initiate();
+        //new SentimentAnalyzedTwitterDataToCovidConsumer(conf, ssc).initiate();
         //new SentimentAnalyzedTwitterDataToNewsConsumer(conf, ssc).initiate();
         //new SentimentAnalyzedTwitterDataToCovidConsumer(conf, ssc).initiate();
         
