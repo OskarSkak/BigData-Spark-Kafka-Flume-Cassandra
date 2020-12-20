@@ -9,13 +9,14 @@ import java.util.Map;
  * @author skakk
  */
 public class SentimentAnalysisComparisonManager {
-    private final static String NEGATIVE_PREDICTION = "negative", POSITIVE_PREDICTION = "positive";
+    /*private final static String NEGATIVE_PREDICTION = "negative", POSITIVE_PREDICTION = "positive";
     private final static String PREDICTION = "prediction", SENTIMENT = "sentiment";
     private final static String NEGATIVE_CONFIDENCE = "negativeConfidence", POSITIVE_CONFIDENCE = "positiveConfidence";
-    private final static double NEGATIVE_CONFIDENCE_THRESHOLD = 0.65, POSITIVE_CONFIDENCE_THRESHOLD = 0.65;
+    private final static double NEGATIVE_CONFIDENCE_THRESHOLD = 0.65, POSITIVE_CONFIDENCE_THRESHOLD = 0.65;*/
     
     public static boolean hasNegativeSentiment(String val){
-        return val.toLowerCase().contains(NEGATIVE_PREDICTION.toLowerCase());
+        //return val.toLowerCase().contains(NEGATIVE_PREDICTION.toLowerCase());
+        return false;
     }
     
     public static boolean hasClearlyNegativeSentiment(String val){
@@ -34,14 +35,15 @@ public class SentimentAnalysisComparisonManager {
     }
     
     public static int hasClearlyPositiveOrNegativeSentiment(String val){
-        Map<String, Double> confidenceCertaintyMap = extractConfidenceValues(POSITIVE_CONFIDENCE, NEGATIVE_CONFIDENCE, val);
+        /*Map<String, Double> confidenceCertaintyMap = extractConfidenceValues(POSITIVE_CONFIDENCE, NEGATIVE_CONFIDENCE, val);
         if(confidenceCertaintyMap.get(POSITIVE_CONFIDENCE) >= POSITIVE_CONFIDENCE_THRESHOLD) return 1;
         else if(confidenceCertaintyMap.get(NEGATIVE_CONFIDENCE) >= NEGATIVE_CONFIDENCE_THRESHOLD) return -1;
-        else return 0;
+        else return 0;*/
+        return 0;
     }
     
     private static Map<String, Double> extractConfidenceValues(String positiveIndicator, String negativeIndicator, String val){
-        String negativeConfidence = "";
+        /*String negativeConfidence = "";
         String posititveConfidence = "";
         
         boolean negativeFound = false;
@@ -65,7 +67,8 @@ public class SentimentAnalysisComparisonManager {
         if(!negativeConfidence.isBlank()) res.put(NEGATIVE_CONFIDENCE, extractConfidence(negativeConfidence));
         if(!posititveConfidence.isBlank()) res.put(POSITIVE_CONFIDENCE, extractConfidence(posititveConfidence));
         
-        return res;
+        return res;*/
+        return null;
     }
     
     private static double extractConfidence(String val){
