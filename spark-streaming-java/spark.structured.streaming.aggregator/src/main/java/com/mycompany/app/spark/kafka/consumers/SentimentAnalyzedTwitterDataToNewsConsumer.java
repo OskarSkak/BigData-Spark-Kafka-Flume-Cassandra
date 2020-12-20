@@ -2,7 +2,7 @@ package com.mycompany.app.spark.kafka.consumers;
 
 import com.mycompany.app.MediaKeyWordComparisonManager;
 import com.mycompany.app.SentimentAnalysisComparisonManager;
-import com.mycompany.app.kafka.producers.NewsMediaCorrelatedEventProducer;
+import com.mycompany.app.kafka.producers.AnalysisProducer;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -64,10 +64,10 @@ public class SentimentAnalyzedTwitterDataToNewsConsumer {
         
         clearlyNegativeOrPositiveAndCorrelated.foreachRDD(rdd -> {
             rdd.foreachPartition(partitionOfRecords -> {
-                NewsMediaCorrelatedEventProducer producer = new NewsMediaCorrelatedEventProducer();
+                AnalysisProducer producer = new AnalysisProducer();
                 while(partitionOfRecords.hasNext()){
                     String nextRecord = partitionOfRecords.next();
-                    producer.sendNewsCorrelatedEvent(nextRecord);
+                    producer.sendAnalysisEvent(nextRecord);
                 }
                 producer.close();
             });

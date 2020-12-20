@@ -13,17 +13,17 @@ import org.apache.kafka.common.serialization.StringSerializer;
  *
  * @author skakk
  */
-public class SentimentAnalysisCorrelatedProducer {
+public class WordCountProducer {
     String topicName = "sentiment";
     Properties kafkaParams = new Properties();
     Producer<String, String> producer;
     
-    public SentimentAnalysisCorrelatedProducer(){
+    public WordCountProducer(){
         Map<String, Object> kafkaParams = new HashMap<>();
         kafkaParams.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         kafkaParams.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         kafkaParams.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        kafkaParams.put("group.id", "pandemic.group.sentiment");
+        kafkaParams.put("group.id", "pandemic.group.word");
         kafkaParams.put("auto.offset.reset", "latest");
         kafkaParams.put("enable.auto.commit", false);
         
