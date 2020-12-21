@@ -32,8 +32,9 @@ namespace spark_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+            Console.WriteLine("starting");
             services.AddHostedService<WebsocketService>();
+            Console.WriteLine("service started");
             services.AddSingleton<ICassandraService , CassandraService>();
             services.AddSignalR();
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });

@@ -10,7 +10,10 @@ import paints from './paints';
 import {renderCovidLayers, renderStateLayers, renderNegativeCoronaHeatmap, renderPositiveCoronaHeatmap, renderNegativeNewsHeatmap, renderPositiveNewsHeatmap} from "./RenderLayers";
 import WebsocketManager from "./WebsocketManager";
 import { timeout } from "d3";
-import { TextField } from "@material-ui/core";
+import { Collapse, Fade, Grow, Paper, TextField } from "@material-ui/core";
+import axios from "axios";
+import { ArrowBackIos, ArrowForward, ArrowForwardIos } from "@material-ui/icons";
+import { StatePopulation } from "./resources";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidWxyaWtzYW5kYmVyZyIsImEiOiJja2ZwYXlsdDkwM2tuMzVycHpyeXFjanc0In0.iq4edTiobCrtZBUrd_9T2g';
 class HeatMap extends React.Component {
@@ -41,7 +44,9 @@ class HeatMap extends React.Component {
       isStatesToggled: false,
       dateSlider:[1,this.hourSlider],
       covidData: null,
-      querySize: 100000
+      querySize: 100000,
+      latestStatistics: null,
+      statisticOpen: false
     };
   }
 
@@ -55,6 +60,18 @@ class HeatMap extends React.Component {
     this.setState({map: map});
     // Bind eventhandlers to map below
     map.on("load", this.onMapLoad)
+    this.fetchLatestStatistics();
+  }
+
+  fetchLatestStatistics = async () => {
+    var result = await axios.get("/api/historictweets/statistics")
+
+    if(result.data === "") {
+      console.log("No statistcs yet")
+    } else {
+      console.log(result.data);
+      this.setState({latestStatistics: result.data})
+    }
   }
 
   onMapLoad = () => {
@@ -302,78 +319,106 @@ class HeatMap extends React.Component {
     this.setState({isHistoricCoronaToggled: !this.state.isHistoricCoronaToggled});
   }
 
+  onStatisticOpen = () => {
+    this.setState({statisticOpen: !this.state.statisticOpen})
+    this.fetchLatestStatistics();
+  }
+
   render = () => {
     return (
       <Fragment>
         <div ref={el => this.mapContainer = el} />
         <>
         <form>
-          <div className="checkFrom">
-          <h4 style={{padding:"10px"}}>Visualization parameters:</h4>
-            <div className="radio">
-              <label>
-                <input type="checkbox" value="option1" onClick={this.toggleStatesData} checked={this.state.isStatesToggled} />
-                State Boundaries
-              </label>
+          <div className="checkFrom" style={{display: "flex", flexDirection: "row"}}>
+            <div>
+              <h4 style={{padding:"10px"}}>Visualization parameters:</h4>
+              <div className="radio">
+                <label>
+                  <input type="checkbox" value="option1" onClick={this.toggleStatesData} checked={this.state.isStatesToggled} />
+                  State Boundaries
+                </label>
+              </div>
+              <div className="radio">
+                <label>
+                  <input type="checkbox" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
+                    Covid data
+                </label>
+              </div>
+              <div className="radio">
+                <label>
+                  <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
+                    Corona stream, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
+                </label>
+              </div>
+              <div className="radio">
+                <label>
+                  <input type="checkbox" value="option1" onClick={this.toggleHistoricCorona} checked={this.state.isHistoricCoronaToggled} />
+                    Corona Historic, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
+                </label>
+              </div>
+              <div className="radio">
+                <label>
+                  <input type="checkbox" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
+                    News-correlation stream, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
+                </label>
+              </div>
+              <div className="radio">
+                <label>
+                  <input type="checkbox" value="option1" onClick={this.toggleHistoricNewsCorrelatedData} checked={this.state.isNewsCorrelatedHistoricToggled} />
+                    News-correlation historic, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
+                </label>
+              </div>
+              <div style={{width: "100%", display: "flex", justifyContent:"center"}}>
+                <TextField
+                  style={{width: "90%", paddingBottom: "10px"}}
+                  type="number"
+                  label="Query Size"
+                  onChange={(evt) => this.setState({querySize: evt.target.value})}
+                  value={this.state.querySize}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </div>
+              <div style={{padding:"0 20px", textAlign:"center"}}>
+                <Typography id="range-slider" gutterBottom>
+                  To = {(this.state.dateSlider[1] - this.hourSlider) * -1} hours ago
+                </Typography>
+                <Typography id="range-slider" gutterBottom>
+                  From = {(this.state.dateSlider[0] - this.hourSlider) * -1} hours ago
+                </Typography>
+                <Slider 
+                  value={this.state.dateSlider}
+                  onChange={this.handleSlider}
+                  //valueLabelDisplay="auto"
+                  //aria-labelledby="range-slider"
+                  //getAriaValueText={this.handleText}
+                  max={this.hourSlider}
+                  min={1}
+                />
+              </div>
             </div>
-            <div className="radio">
-              <label>
-                <input type="checkbox" value="option1" onClick={this.toggleCovidData} checked={this.state.isCovidDataToggled} />
-                  Covid data
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="checkbox" value="option1" onClick={this.toggleCoronaStream} checked={this.state.isCronaStreamToggled} />
-                  Corona stream, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="checkbox" value="option1" onClick={this.toggleHistoricCorona} checked={this.state.isHistoricCoronaToggled} />
-                  Corona Historic, P/N (<div style={{display:"inline-block", backgroundColor:"#e31a1c", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#1c9099", width:"10px", height:"10px"}}/>)
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="checkbox" value="option1" onClick={this.toggleNewsCorrlated} checked={this.state.isNewsCorralatedToggled} />
-                  News-correlation stream, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="checkbox" value="option1" onClick={this.toggleHistoricNewsCorrelatedData} checked={this.state.isNewsCorrelatedHistoricToggled} />
-                  News-correlation historic, P/N (<div style={{display:"inline-block", backgroundColor:"#00D400", width:"10px", height:"10px"}}/>/<div style={{display:"inline-block",backgroundColor:"#4200AD", width:"10px", height:"10px"}}/>)
-              </label>
-            </div>
-            <div style={{width: "100%", display: "flex", justifyContent:"center"}}>
-              <TextField
-                style={{width: "90%", paddingBottom: "10px"}}
-                type="number"
-                label="Query Size"
-                onChange={(evt) => this.setState({querySize: evt.target.value})}
-                value={this.state.querySize}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </div>
-            <div style={{padding:"0 20px", textAlign:"center"}}>
-              <Typography id="range-slider" gutterBottom>
-                To = {(this.state.dateSlider[1] - this.hourSlider) * -1} hours ago
-              </Typography>
-              <Typography id="range-slider" gutterBottom>
-                From = {(this.state.dateSlider[0] - this.hourSlider) * -1} hours ago
-              </Typography>
-              <Slider 
-                value={this.state.dateSlider}
-                onChange={this.handleSlider}
-                //valueLabelDisplay="auto"
-                //aria-labelledby="range-slider"
-                //getAriaValueText={this.handleText}
-                max={this.hourSlider}
-                min={1}
-              />
+            <div style={{display: "flex", justifyContent: "center", alignContent: "center", alignItems: "center"}}>
+              {this.state.statisticOpen
+              ? <Fade in={this.state.statisticOpen}>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center"}}>
+                <h4 style={{padding:"10px"}}>Latest statistics:</h4>
+                <Paper elevation={3}>
+                  <div style={{width: this.state.statisticOpen ? "350px" : "0px", maxHeight: "500px", overflow: "auto", backgroundColor: "white", opacity: "1", padding: "10px"}}>
+                    {this.state.latestStatistics 
+                    ? this.state.latestStatistics.split("\n").map((ele, key) => {
+                      return <div>{ele}</div>
+                    })
+                    : null}
+                  </div>
+                </Paper>
+                </div>
+            </Fade>
+              : null}
+              {this.state.statisticOpen
+              ? <div style={{paddingLeft: "20px"}}><ArrowBackIos onClick={() => this.onStatisticOpen()} style={{cursor: "pointer"}}></ArrowBackIos></div>
+              : <ArrowForwardIos onClick={() => this.onStatisticOpen()} style={{cursor: "pointer"}}></ArrowForwardIos>}
             </div>
           </div>
         </form>
@@ -467,7 +512,7 @@ class HeatMap extends React.Component {
     } else {
       // Add data
       if(this.state.covidData) {
-        this.plotCovidData(this.state.covidData)
+        this.plotCovidData(this.state.covidData, false)
       } else {
         this.fetchCovid()
       }
@@ -498,7 +543,17 @@ class HeatMap extends React.Component {
     this.setState({covidData: covidData}, () => this.plotCovidData(covidData))
   }
   
-  plotCovidData = (data) => {
+  plotCovidData = (data, calculate = true) => {
+    console.log(StatePopulation)
+    if(calculate) {
+      for(let i = 0; i < data.features.features.length; i++) {
+        let feature = data.features.features[i];
+        console.log(feature.properties)
+        let statePopulation = StatePopulation[feature.properties.state];
+        feature.properties.posetive = Math.trunc(feature.properties.posetive / (statePopulation / 100000))
+      }
+    }
+
     this.state.map?.addSource("CovidSource", {
       type: "geojson",
       data: data.features

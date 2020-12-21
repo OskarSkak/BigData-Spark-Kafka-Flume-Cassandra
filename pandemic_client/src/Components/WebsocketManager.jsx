@@ -5,8 +5,10 @@ class WebsocketManager extends React.Component {
 
     componentDidMount() {
         const connection = new HubConnectionBuilder()
-            .withUrl("https://localhost:5001/api/hub")
+            .withUrl("https://localhost:5005/api/hub")
             .build();
+
+            console.log("5005")
 
         connection
           .start()

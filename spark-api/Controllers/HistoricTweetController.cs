@@ -13,6 +13,7 @@ namespace spark_api.Controllers
         public HistoricTweetController(ICassandraService cassandraService)
         {
             _cassandraService = cassandraService;
+            
         }
         
         [HttpGet]
@@ -28,9 +29,13 @@ namespace spark_api.Controllers
                 var resCorona = await _cassandraService.GetAllBetweenCorona( from , to ,size);
                 return Ok(resCorona);
             }
-
-           
         }
 
+        [HttpGet]
+        [Route("statistics")]
+        public async Task<IActionResult> GetStatistics()
+        {
+            return new ObjectResult(StaticStore.LatestStatistics);
+        }
     }
 }

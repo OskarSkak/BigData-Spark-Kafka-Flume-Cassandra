@@ -41,12 +41,7 @@ namespace spark_api
 // ...bind different parameters every time you need to execute
             var statement = ps.Bind(tweet.id , tweet.created_at , tweet.negativeConfidence , tweet.positiveConfidence , tweet.prediction , tweet.screen_name , tweet.tweet , tweet.latitude , tweet.longitude , "news");
 // Execute the bound statement with the provided parameters
-           
-            
-            
             _session.Execute(statement);
-            
-            
         }
         
         public void AddCorona(twitteranalyzed tweet)

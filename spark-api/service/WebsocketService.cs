@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Cassandra;
 using Confluent.Kafka;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
@@ -23,13 +24,17 @@ namespace spark_api.service
         {
             _hub = hub;
             _cassandraService = cassandraService;
+            Console.WriteLine("In websocket constructor");
         }
         
         public  Task StartAsync(CancellationToken cancellationToken)
         {
-            
+            Console.WriteLine("Initiating subscribe corona stream");
             SubscribeCoronaStream();
+            Console.WriteLine("Initiating news correlated stream");
             SubscribeNewsCorrelatedStream();
+            Console.WriteLine("Both stream started");
+            SubscribeStatistics();
             //_cassandraService.CleanUp();
             return Task.CompletedTask;
         }
@@ -38,7 +43,7 @@ namespace spark_api.service
         {
             var conf = new ConsumerConfig
             { 
-                GroupId = "test-consumer-group",
+                GroupId = "test-consumer-group2",
                 BootstrapServers = "node-master:9092,node1:19092,node2:29092",
                
                 // Note: The AutoOffsetReset property determines the start offset in the event
@@ -66,6 +71,7 @@ namespace spark_api.service
                         try
                         { 
                             var cr = c.Consume(cts.Token);
+                            Console.WriteLine("Push newscorrelated event: " + cr.Message);
                             await _hub.Clients.All.SendAsync("newscorrelated", cr.Message);
                             twitteranalyzed tweet = parseToObject(cr.Message.Value);
                             _cassandraService.AddNewscorrelated(tweet);
@@ -89,7 +95,7 @@ namespace spark_api.service
         {
             var conf = new ConsumerConfig
             {
-                GroupId = "test-consumer-group",
+                GroupId = "test-consumer-group2",
                 BootstrapServers = "nodemaster:9092,node1:19092,node2:29092",
 
                 // Note: The AutoOffsetReset property determines the start offset in the event
@@ -115,9 +121,65 @@ namespace spark_api.service
                         try
                         { 
                             var cr = c.Consume(cts.Token);
+                            Console.WriteLine("Push corona event: " + cr.Message);
                             await _hub.Clients.All.SendAsync("corona", cr.Message);
                             twitteranalyzed tweet = parseToObject(cr.Message.Value);
                             _cassandraService.AddCorona(tweet);
+                        }
+                        catch (ArgumentOutOfRangeException e)
+                        {
+                            Console.WriteLine($"Error occured: {e}");
+                        }
+                        
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    // Ensure the consumer leaves the group cleanly and final offsets are committed.
+                    c.Close();
+                    _cassandraService.CleanUp();
+                }
+            }
+            _cassandraService.CleanUp();
+        }
+
+        public async Task SubscribeStatistics()
+        {
+            //StaticStore.LatestStatistics = "Hejsa";
+            //Console.WriteLine("Setting data");
+            var conf = new ConsumerConfig
+            {
+                GroupId = "test-consumer-group2",
+                BootstrapServers = "nodemaster:9092,node1:19092,node2:29092",
+
+                // Note: The AutoOffsetReset property determines the start offset in the event
+                // there are not yet any committed offsets for the consumer group for the
+                // topic/partitions of interest. By default, offsets are committed
+                // automatically, so in this example, consumption will only start from the
+                // earliest message in the topic 'my-topic' the first time you run the program.
+                AutoOffsetReset = AutoOffsetReset.Latest
+            };
+
+            using (var c = new ConsumerBuilder<Ignore, string>(conf).Build())
+            {
+               // c.Assign(new TopicPartitionOffset("twitterraw", 0, new Offset(30155)));
+                c.Subscribe("sqlanalysis");
+                CancellationTokenSource cts = new CancellationTokenSource();
+                Console.CancelKeyPress += (_, e) => {
+                    e.Cancel = true; // prevent the process from terminating.
+                    cts.Cancel();
+                };
+                try
+                { while (true) { 
+                        try
+                        { 
+                            await Task.Delay(100);
+                            var cr = c.Consume(cts.Token);
+                            StaticStore.NumberOfEvents += 1;
+                            StaticStore.LatestStatistics += "-----------------------------\n";
+                            StaticStore.LatestStatistics += $"Event #{StaticStore.NumberOfEvents} \n";
+                            StaticStore.LatestStatistics += "-----------------------------\n";
+                            StaticStore.LatestStatistics += cr.Message.Value;
                         }
                         catch (ArgumentOutOfRangeException e)
                         {

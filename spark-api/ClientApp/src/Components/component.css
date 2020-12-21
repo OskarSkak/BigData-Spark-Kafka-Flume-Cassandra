@@ -80,7 +80,7 @@ svg {
     bottom: 0;
     align-content: center;
     border-top-right-radius: 10px;
-    width:350px;
+    padding-right: 20px
   }
   .mapboxgl-ctrl{ 
     display: none !important;
