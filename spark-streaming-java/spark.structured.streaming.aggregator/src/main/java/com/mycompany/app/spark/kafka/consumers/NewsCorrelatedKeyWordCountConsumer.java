@@ -1,5 +1,6 @@
 package com.mycompany.app.spark.kafka.consumers;
 
+import com.mycompany.app.CoronaKeyWordComparisonManager;
 import com.mycompany.app.MediaKeyWordComparisonManager;
 import com.mycompany.app.SentimentAnalysisComparisonManager;
 import com.mycompany.app.kafka.producers.AnalysisProducer;
@@ -7,6 +8,7 @@ import com.mycompany.app.kafka.producers.JavaRecord;
 import com.mycompany.app.kafka.producers.WordCountProducer;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +38,7 @@ public final class NewsCorrelatedKeyWordCountConsumer {
     Map<String, Object> kafkaParams = new HashMap<>();
     SparkConf conf;
     JavaStreamingContext ssc;
-    static final String TIMESPAN = "1 minute";
+    static final String TIMESPAN = "10 minutes";
     private static final Pattern SPACE = Pattern.compile(" ");
     
     public NewsCorrelatedKeyWordCountConsumer(SparkConf _conf, JavaStreamingContext _ssc){
@@ -97,52 +99,59 @@ public final class NewsCorrelatedKeyWordCountConsumer {
             Dataset<Row> wordsCountsDataFrame = spark.sql(query);
             wordsCountsDataFrame.show();
             
+            String queryCorona = "select upper(word), count(*)"
+                            + " as total"
+                            + " from words"
+                            + " where ";
+            
+            for(int i = 0; i < CoronaKeyWordComparisonManager.getKeywords().size(); i++)
+                if(i < CoronaKeyWordComparisonManager.getKeywords().size() - 1)  queryCorona += "upper(word)=\'"+CoronaKeyWordComparisonManager.getKeywords().get(i).toUpperCase()+"\' or ";
+                else    queryCorona += "upper(word)=\'"+CoronaKeyWordComparisonManager.getKeywords().get(i).toUpperCase()+"\'";
+                    
+            queryCorona += " group by upper(word)";
+            
+            Dataset<Row> wordsCountsCoronaDataFrame = spark.sql(queryCorona);
+            wordsCountsCoronaDataFrame.show();
+            
             List<Row> collected = wordsCountsDataFrame.collectAsList();
+            List<Row> collectedCorona = wordsCountsCoronaDataFrame.collectAsList();
             
-            String res = "NEWS CORRELATION BATCH ANALYSIS\n";
+            Date now = new Date(System.currentTimeMillis());
+            Date startBatch = new Date(System.currentTimeMillis() - 1000*60*10);
             
+            
+            String res = "BATCH ANALYSIS\n";
+            res +=       "-----------------------------" + 
+                        "\nTweets Analyzed: " + tweetsInBatch + 
+                        "\nFrom " + startBatch.getHours() + "." + startBatch.getMinutes() +"." + startBatch.getSeconds() + " " +
+                                    "To " + now.getHours() + "." + now.getMinutes() +"." + now.getSeconds() +  
+                        "\nPercentage correlated with news: " + (double)collected.size()/(double)tweetsInBatch.get() + 
+                        "\nPercentage correlated with news: " + (double)collectedCorona.size()/(double)tweetsInBatch.get() + 
+                        "\nTotal correlated words found: " + collected.size() + 
+                        "\nTotal correlated words found: " + collectedCorona.size() + 
+                        "\nTimspan of analyzed batch: " + TIMESPAN;
+            res += "\nNEWS CORRELATION\n-----------------------------\n";
+            res+=format("|WORD|", "|OCCURENCES|") + "\n";
             for(int i = 0; i < collected.size(); i++)
-                       res += "Rank: " + i+1 + " - " + collected.get(i).getAs("upper(word)") + "\n";
+                       res += format(collected.get(i).getAs("upper(word)"), collected.get(i).getAs("total")+"") + "\n";
             
-            res += 
-                        "\nTweets Analyzed: \t\t\t" + tweetsInBatch + 
-                        "\nPercentage correlated with news: \t\t\t" + (double)collected.size()/(double)tweetsInBatch.get() + 
-                        "\nTotal correlated words found: \t\t\t" + collected.size() + 
-                        "\nTimspan of analyzed batch: \t\t\t" + TIMESPAN;
+            res += "\n-----------------------------\nCORONA CORRELATION\n-----------------------------\n";
+            
+            res+=format("|WORD|","|OCCURENCES|") + "\n";
+            for(int i = 0; i < collectedCorona.size(); i++)
+                       res += format(collectedCorona.get(i).getAs("upper(word)"), collectedCorona.get(i).getAs("total")+"") + " \n";
+            res += "-----------------------------";
             
             System.out.println("*****************\n" + res + "\n**********************");
             producer.sendAnalysisEvent(res);
             producer.close();
         });
-        /*
-        lines.foreachRDD((rdd ) -> {
-            SparkSession spark = JavaSparkSessionSingleton.getInstance(conf);
-            
-            JavaRDD<JavaRecord> rowRDD = rdd.map(word -> {
-                JavaRecord record = new JavaRecord();
-                record.setWord(word);
-                return record;
-            });
-            
-            Dataset<Row> linesDFrame = spark.createDataFrame(rowRDD, JavaRecord.class);
-            
-            linesDFrame.createOrReplaceTempView("lines");
-            
-            String query = "select word, count(*)"
-                            + " as total"
-                            + " from lines"
-                            + " where ";
-            
-            for(int i = 0; i < MediaKeyWordComparisonManager.getKeywords().size(); i++)
-                if(i < MediaKeyWordComparisonManager.getKeywords().size() - 1)  query += "word like \'%"+MediaKeyWordComparisonManager.getKeywords().get(i)+"%\' or ";
-                else    query += "word like \'%"+MediaKeyWordComparisonManager.getKeywords().get(i)+"%\'";
-                    
-            query += " group by word";
-            
-            Dataset<Row> linesCorrelatedDataFrame = spark.sql(query);
-            linesCorrelatedDataFrame.show();
-        }); */
     }
+   
+    private static String format(String v1, String v2){
+        return String.format("%10s : %-10s", v1, v2);
+    }
+    
 }
 
 class JavaSparkSessionSingleton{

@@ -12,7 +12,7 @@ public class App
     public static void main( String[] args ) throws InterruptedException
     {
         SparkConf conf = new SparkConf().setAppName("analysis service");
-        JavaStreamingContext ssc = new JavaStreamingContext(conf, Durations.minutes(5));
+        JavaStreamingContext ssc = new JavaStreamingContext(conf, Durations.minutes(10));
         ssc.ssc().sc().setLogLevel("WARN");
         
         new NewsCorrelatedKeyWordCountConsumer(conf, ssc).initiate();
