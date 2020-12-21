@@ -36,7 +36,6 @@ public class MediaKeyWordComparisonManager {
             Logger.getLogger(CoronaKeyWordComparisonManager.class.getName()).log(Level.SEVERE, null, ex);
         }*/
         keywords.add("mediaroom");
-        keywords.add("mediator");
         keywords.add("MediaSocial");
         keywords.add("mediajob");
         keywords.add("mediacontent");
@@ -60,17 +59,17 @@ public class MediaKeyWordComparisonManager {
         keywords.add("MediaKit");
         keywords.add("media bias");
         keywords.add("fake news");
-        keywords.add("cnn");
+        keywords.add("CNN");
         keywords.add("Forbes");
         keywords.add("AT&T");
         keywords.add("Comcast");
-        keywords.add("walt disney");
+        keywords.add("Walt Disney");
         keywords.add("disney");
         keywords.add("viacom");
         keywords.add("national amusements");
-        keywords.add("nbc");
+        keywords.add("NBC");
         keywords.add("news corp");
-        keywords.add("fox news");
+        keywords.add("Fox News");
         keywords.add("wall street journal");
         keywords.add("new york post");
         keywords.add("viacom");
@@ -101,15 +100,24 @@ public class MediaKeyWordComparisonManager {
         keywords.add("bloomberg");
         keywords.add("vice news");
         keywords.add("huffpost");
-        keywords.add("tmz");
-        keywords.add("cnet");
-        keywords.add("npr");
+        keywords.add("TMZ");
+        keywords.add("CNET");
+        keywords.add("NPR");
         keywords.add("the hollywood reporter");
         keywords.add("hollywood reporter");
         keywords.add("newsweek");
-        keywords.add("time");
+        keywords.add("TIMES");
         keywords.add("u.s. news & world report");
         keywords.add("the guardian");
+        keywords.add("trump");
+        keywords.add("white house");
+        keywords.add("fake");
+        keywords.add("election");
+        keywords.add("election fraud");
+        keywords.add("election2020");
+        keywords.add("AOC");
+        keywords.add("Pelosi");
+        keywords.add("fraudulent");
     }
     
     public static boolean isCorrelatedWithCoronaKeywords(String val){
