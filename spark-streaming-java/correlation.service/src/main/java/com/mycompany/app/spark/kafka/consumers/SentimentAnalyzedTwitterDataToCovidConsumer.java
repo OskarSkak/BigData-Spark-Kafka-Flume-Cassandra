@@ -49,7 +49,6 @@ public class SentimentAnalyzedTwitterDataToCovidConsumer {
                         LocationStrategies.PreferConsistent(), 
                         ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams)
                 );
-        
         JavaDStream<String> lines = stream.map(ConsumerRecord::value);
         
         JavaDStream<String> correlatedWithCovid = lines.filter(line -> {

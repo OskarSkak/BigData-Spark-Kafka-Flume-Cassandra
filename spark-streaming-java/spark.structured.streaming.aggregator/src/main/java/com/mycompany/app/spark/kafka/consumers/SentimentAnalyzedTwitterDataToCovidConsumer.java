@@ -37,11 +37,11 @@ public class SentimentAnalyzedTwitterDataToCovidConsumer {
         kafkaParams.put("bootstrap.servers", "localhost:9092");
         kafkaParams.put("key.deserializer", StringDeserializer.class);
         kafkaParams.put("value.deserializer", StringDeserializer.class);
-        kafkaParams.put("group.id", "raw");
-        kafkaParams.put("auto.offset.reset", "latest");
+        kafkaParams.put("group.id", "yoyoyo");
+        kafkaParams.put("auto.offset.reset", "earliest");
         kafkaParams.put("enable.auto.commit", false);
         
-        Collection<String> topics = Arrays.asList("twitteranalyzed");
+        Collection<String> topics = Arrays.asList("sqlanalysis");
         
         JavaInputDStream<ConsumerRecord<String, String>> stream = 
                 KafkaUtils.createDirectStream(
@@ -51,24 +51,7 @@ public class SentimentAnalyzedTwitterDataToCovidConsumer {
                 );
         
         JavaDStream<String> lines = stream.map(ConsumerRecord::value);
-        
-        JavaDStream<String> correlatedWithCovid = lines.filter(line -> {
-            return CoronaKeyWordComparisonManager.isCorrelatedWithCovidKeywords(line);
-        });
-        
-        JavaDStream<String> clearlyPositiveOrNegativeAndCorrelatedWithCovid = correlatedWithCovid.filter(t -> {
-            return !(SentimentAnalysisComparisonManager.hasClearlyPositiveOrNegativeSentiment(t) == NEUTRAL_INDICATOR);
-        });
-        
-        clearlyPositiveOrNegativeAndCorrelatedWithCovid.foreachRDD(rdd -> {
-            rdd.foreachPartition(partitionOfRecords -> {
-                CoronaCorrelatedEventProducer producer = new CoronaCorrelatedEventProducer();
-                while(partitionOfRecords.hasNext()){
-                    String nextRecord = partitionOfRecords.next();
-                    producer.sendCoronaCorrelatedEvent(nextRecord);
-                }
-                producer.close();
-            });
-        });
+        System.out.println("PRINT: ");
+        lines.print();
     }
 }

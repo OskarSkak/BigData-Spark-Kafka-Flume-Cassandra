@@ -4,8 +4,8 @@ import com.mycompany.app.CoronaKeyWordComparisonManager;
 import com.mycompany.app.MediaKeyWordComparisonManager;
 import com.mycompany.app.SentimentAnalysisComparisonManager;
 import com.mycompany.app.kafka.producers.CoronaCorrelatedEventProducer;
-import com.mycompany.app.kafka.producers.NewsMediaCorrelatedEventProducer;
-import com.mycompany.app.kafka.producers.SentimentAnalysisCorrelatedProducer;
+import com.mycompany.app.kafka.producers.AnalysisProducer;
+import com.mycompany.app.kafka.producers.WordCountProducer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,7 +21,6 @@ import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
-import org.json.JSONObject;
 
 /**
  *

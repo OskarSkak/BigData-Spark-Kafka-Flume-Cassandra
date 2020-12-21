@@ -13,24 +13,22 @@ import org.apache.kafka.common.serialization.StringSerializer;
  *
  * @author skakk
  */
-public class NewsMediaCorrelatedEventProducer {
-    String topicName = "newscorrelated";
+public class AnalysisProducer {
+    String topicName = "sqlanalysis";
     Properties kafkaParams = new Properties();
     Producer<String, String> producer;
     
-    public NewsMediaCorrelatedEventProducer(){
+    public AnalysisProducer(){
         Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        kafkaParams.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "node-master:9092,node1:19092,node2:29092");
         kafkaParams.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         kafkaParams.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        kafkaParams.put("group.id", "pandemic.group.news");
-        kafkaParams.put("auto.offset.reset", "latest");
-        kafkaParams.put("enable.auto.commit", false);
+        kafkaParams.put("enable.auto.commit", true);
         
         producer = new KafkaProducer<>(kafkaParams);
     }
     
-    public void sendNewsCorrelatedEvent(String val){
+    public void sendAnalysisEvent(String val){
         this.producer.send(new ProducerRecord<>(this.topicName, val));
     }
     

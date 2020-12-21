@@ -61,7 +61,6 @@ public class CoronaKeyWordComparisonManager {
         keywords.add("Immunosuppressed");
         keywords.add("Incubation period");
         keywords.add("Intensivist");
-        keywords.add("and");
         keywords.add("Lockdown");
         keywords.add("National emergency");
         keywords.add("Pandemic");
